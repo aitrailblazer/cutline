@@ -1,0 +1,8 @@
+Baseline executed on 2026-07-31 against the untouched official ADK scaffold.
+- Existing unit test: 1 passed, but it is a placeholder and covers no CUTLINE behavior.
+- Existing collection: five stock tests, including a live generic assistant test; none cover CUTLINE stories.
+- Lint/type/spelling baseline: passed.
+- Root route resolves to the stock ADK dev UI.
+- All ten required CUTLINE API/readiness/audit endpoints returned HTTP 404.
+- All 30 tracker stories are therefore Failed Test and authorized for tracker-backed implementation.
+No live model invocation or cloud deployment occurred during baseline.

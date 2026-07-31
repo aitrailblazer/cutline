@@ -1,0 +1,3 @@
+Thirty user-visible stories are inventoried in feature_status_tracker.csv.
+Each row contains a user-facing story, expected behavior, test type, concrete steps, severity, retest plan, and product boundary.
+No CUTLINE implementation fix was applied before this checkpoint.

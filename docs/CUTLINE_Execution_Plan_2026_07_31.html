@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CUTLINE — Implementation Execution Plan</title>
+  <style>html{color-scheme:dark;background:#08090b;color:#f8fafc;font-family:Inter,system-ui,sans-serif}body{margin:0}cutline-plan:not(:defined){display:block;padding:32px}</style>
+</head>
+<body>
+  <cutline-plan></cutline-plan>
+  <script id="cutline-plan-xml" type="application/xml">
+<CUTLINEExecutionPlan version="1.0" date="2026-07-31" status="active">
+  <CanonicalArtifact><Path>docs/CUTLINE_Execution_Plan_2026_07_31.html</Path><Purpose>Sequence discovery, implementation, verification, and deployment preparation without bypassing the feature-audit evidence loop.</Purpose></CanonicalArtifact>
+  <OperatingRules>
+    <Rule>Discovery, stories, and test plans precede implementation changes.</Rule>
+    <Rule>Only tracker-backed failures may be fixed.</Rule>
+    <Rule>The canonical tracker is feature_status_tracker.csv; XLSX and HTML are generated views.</Rule>
+    <Rule>Cloud deployment and billable evaluation require a separate explicit approval.</Rule>
+    <Rule>One scenario, one recovery, and one memorable verification reveal remain the scope ceiling.</Rule>
+  </OperatingRules>
+  <Phase number="0" name="Orientation" exit="Repository, dependencies, current routes, credentials boundary, and source artifacts recorded."/>
+  <Phase number="1" name="Stories" exit="Every user-visible success, rejection, empty, blocked, failed, and responsive behavior has a stable tracker row."/>
+  <Phase number="2" name="Test Plan" exit="Every row has concrete steps, test type, expected result, and evidence destination."/>
+  <Phase number="3" name="Baseline" exit="Tests execute against the scaffold and every observed failure is recorded."/>
+  <Phase number="4" name="Implementation" exit="Only failed tracker rows drive code changes; domain, adapters, API, UI, and agent boundaries remain isolated."/>
+  <Phase number="5" name="Retest" exit="All changed and adjacent stories pass with command, API, browser, accessibility, and screenshot evidence."/>
+  <Phase number="6" name="Coverage" exit="In-scope deterministic application code reports 100 percent statements and branches; exclusions are explicit."/>
+  <Phase number="7" name="Deployment Preparation" exit="Cloud Run and Cloud Build assets validate locally; cost and credential gates remain closed."/>
+  <WorkBreakdown>
+    <Stream name="Domain">Typed records, deterministic calculations, state machine, policy, freshness, idempotency, and audit lineage.</Stream>
+    <Stream name="Evidence">Grafana MCP interface, local deterministic adapter, live fail-closed adapter, evidence normalization, and source IDs.</Stream>
+    <Stream name="Action">Approval binding, allowlisted recovery, local executor, live Cloud Run executor contract, and receipts.</Stream>
+    <Stream name="Agent">ADK root agent, bounded tools, deterministic delegation, no authoritative arithmetic, and eval dataset.</Stream>
+    <Stream name="API">FastAPI state, reset, investigate, approve, reject, execute, verify, audit, health, and readiness routes.</Stream>
+    <Stream name="UI">Release command, cutline projection, shot manifest, evidence, diagnosis, impact, approval, execution, verification, audit, and failure states.</Stream>
+    <Stream name="QA">Unit, contract, integration, browser, accessibility, responsive, security, coverage, five-run reliability, and tracker regeneration.</Stream>
+  </WorkBreakdown>
+  <CoverageContract>
+    <Included>All authored Python domain, service, adapter, API-route, and agent-tool code plus authored browser behavior.</Included>
+    <Excluded>Generated Google scaffold internals, third-party libraries, and direct non-deterministic model prose.</Excluded>
+    <Metric>pytest-cov must report 100 percent statements and branches for included Python modules.</Metric>
+    <Metric>Every feature tracker row must finish Verified or retain an explicit blocker or product decision.</Metric>
+  </CoverageContract>
+  <DeploymentGate>
+    <Prerequisite>Local audit complete, five-run reliability passes, no secrets detected, container builds, and user explicitly approves deployment.</Prerequisite>
+    <Target>Dedicated CUTLINE Google Cloud project under the confirmed billing account, Cloud Run, Cloud Build, Artifact Registry, Secret Manager, and Vertex AI.</Target>
+    <CostControl>Min instances zero, bounded max instances, request timeout, budget alerts, log retention bounds, and no managed eval loops without approval.</CostControl>
+  </DeploymentGate>
+  <DefinitionOfDone>
+    <Requirement>Winning spec, execution plan, tracker, workbook, HTML tracker, QA report, changelog, and evidence folders are complete.</Requirement>
+    <Requirement>All tracker-backed features pass or disclose a genuine external blocker.</Requirement>
+    <Requirement>One clean command reproduces local install, tests, coverage, and artifact validation.</Requirement>
+    <Requirement>The repository is safe to publish and contains an OSI-approved license.</Requirement>
+    <Requirement>No cloud resource is created by this plan without explicit approval.</Requirement>
+  </DefinitionOfDone>
+</CUTLINEExecutionPlan>
+  </script>
+  <script type="module">
+    import{LitElement,html,css}from'https://unpkg.com/lit@3/index.js?module';
+    const phases=[
+      ['0','Orient','Inventory scaffold, routes, dependencies, GCP boundary, and source evidence.'],
+      ['1','Story','Define every success, error, rejection, blocked, and responsive outcome.'],
+      ['2','Plan tests','Bind each story to exact steps and evidence before implementation.'],
+      ['3','Baseline','Run tests and record failures without fixing them.'],
+      ['4','Implement','Change only tracker-backed behavior in isolated layers.'],
+      ['5','Retest','Verify affected and adjacent journeys with durable evidence.'],
+      ['6','Coverage','Reach 100% statement and branch coverage for authored deterministic code.'],
+      ['7','Prepare deploy','Validate Google deployment assets; stop before billable action.']
+    ];
+    class CutlinePlan extends LitElement{
+      static styles=css`
+        :host{--bg:#08090b;--panel:#12151a;--line:#29303a;--text:#f8fafc;--muted:#9aa6b4;--orange:#ff783f;--green:#55e0a1;display:block;min-height:100vh;background:radial-gradient(circle at 10% 0,rgba(85,224,161,.11),transparent 28rem),var(--bg);color:var(--text)}*{box-sizing:border-box}.shell{max-width:1120px;margin:auto;padding:28px 24px 72px}.top{display:flex;gap:14px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:20px}.mark{width:44px;height:44px;border-radius:14px;background:var(--green);color:#06110c;display:grid;place-items:center;font-weight:900}.status{margin-left:auto;color:var(--green);font-size:11px}.hero{padding:70px 0 34px}.eyebrow{color:var(--orange);font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:900}h1{font-size:clamp(48px,8vw,86px);line-height:.92;letter-spacing:-.06em;margin:8px 0 18px}.hero p{font-size:19px;color:#d5dde6;max-width:760px}.timeline{display:grid;gap:10px}.phase{display:grid;grid-template-columns:56px 150px 1fr;gap:16px;padding:18px;border-left:3px solid var(--green);background:var(--panel);border-radius:0 16px 16px 0}.phase b{color:var(--green)}.phase span{color:var(--muted)}section{margin:52px 0}.head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:16px}.head h2{font-size:34px;margin:4px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card,details{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:20px}.card h3{margin:4px 0 8px}.card p{margin:0;color:var(--muted);font-size:14px}.gate{border-color:rgba(255,120,63,.45);background:rgba(255,120,63,.07)}details{padding:0}summary{padding:16px;cursor:pointer;font-weight:800}pre{padding:0 18px 18px;color:#b9f6d6;max-height:420px;overflow:auto;white-space:pre-wrap;font-size:11px}@media(max-width:750px){.grid{grid-template-columns:1fr}.phase{grid-template-columns:44px 1fr}.phase span{grid-column:2}.status{display:none}}
+      `;
+      render(){const xml=document.getElementById('cutline-plan-xml')?.textContent.trim()??'';return html`<main class="shell"><header class="top"><div class="mark">✓</div><div><strong>CUTLINE</strong><div class="eyebrow">Implementation execution plan</div></div><div class="status">Audit-first • cloud gate closed</div></header><section class="hero"><div class="eyebrow">Execution doctrine</div><h1>Prove before<br>you deploy.</h1><p>Complete discovery, stories, and test construction first. Then let tracker-backed failures—not enthusiasm—authorize implementation.</p></section><section><div class="head"><div><div class="eyebrow">Fixed sequence</div><h2>Eight controlled phases</h2></div></div><div class="timeline">${phases.map(([n,t,b])=>html`<div class="phase"><b>${n}</b><strong>${t}</strong><span>${b}</span></div>`)}</div></section><section><div class="head"><div><div class="eyebrow">Parallel workstreams</div><h2>Small, isolated, testable layers</h2></div></div><div class="grid">${[['Domain','Math, state, policy, freshness, and audit lineage.'],['Evidence','Grafana MCP contract plus explicit local test adapter.'],['Action','Bound approval, allowlisted recovery, and immutable receipt.'],['Agent','ADK synthesis within deterministic boundaries.'],['Product','Sequence-first accessible release command UI.'],['QA','Tracker, unit, integration, browser, a11y, responsive, security.']].map(([t,b])=>html`<article class="card"><h3>${t}</h3><p>${b}</p></article>`)}</div></section><section class="card gate"><div class="eyebrow">Hard stop</div><h2>No cloud spend in this phase</h2><p>Cloud Run and Cloud Build assets may be generated and validated locally. Resource creation, deployment, or managed evaluation requires a new explicit approval after local gates pass.</p></section><details><summary>Machine / LLM contract — embedded XML</summary><pre>${xml}</pre></details></main>`}
+    }customElements.define('cutline-plan',CutlinePlan);
+  </script>
+</body>
+</html>

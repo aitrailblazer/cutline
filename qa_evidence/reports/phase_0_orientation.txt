@@ -1,0 +1,4 @@
+Repository orientation complete on 2026-07-31.
+Current code is the official Google agents-cli 0.3.0 ADK scaffold with a stock weather/time agent, stock ADK web surface, and feedback endpoint.
+No CUTLINE domain model, evidence adapter, workflow, API, or release-command UI exists.
+Active local Google auth and ADC are valid; cloud deployment remains out of scope pending explicit approval.

@@ -1,0 +1,24 @@
+CUTLINE browser acceptance — 2026-07-31 — in-app Chromium
+URL: http://127.0.0.1:8011
+
+READY
+- Controlled/local disclosure visible.
+- Release projection: 12/18 at risk, 4,800 frames, 120 f/min, 16 minutes late.
+- Decision parent hidden (display:none) before investigation.
+- Screenshot: qa_evidence/screenshots/cutline_ready_desktop.png
+
+WORKFLOW
+- Investigate -> AWAITING_APPROVAL; 4 evidence items; diagnosis and proposal visible.
+- Approve -> execute control visible.
+- Execute -> VERIFYING; immutable receipt visible; verify control visible.
+- Verify -> VERIFIED; 0/18 at risk; 320 f/min; 9 minutes early; six gates passed.
+- Refresh audit -> current VERIFIED with decision, receipt, verification, and lineage IDs.
+- Screenshot: qa_evidence/screenshots/cutline_verified_desktop.png
+
+REFRESH / RESPONSIVE / ACCESSIBILITY
+- Reload preserved the current VERIFIED server state.
+- 390x844 viewport: document scrollWidth 390, no page overflow, command grid collapsed to 366px.
+- Mobile screenshot: qa_evidence/screenshots/cutline_verified_mobile.png
+- Semantic snapshot exposed banner, main, named regions/articles, table headers, buttons, skip link,
+  aria-live announcement, meaningful chart/shot labels, and focusable native controls.
+- Native hidden state was confirmed via computed style; reduced-motion media query is present.

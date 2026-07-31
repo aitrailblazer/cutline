@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+uv run pytest \
+  --cov=app \
+  --cov-branch \
+  --cov-report=term-missing \
+  --cov-report=xml:qa_evidence/reports/coverage.xml \
+  --cov-report=html:qa_evidence/reports/htmlcov
+uv run ruff check .
+uv run ruff format --check .
+uv run codespell .
+node --check app/web/app.js
+

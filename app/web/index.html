@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="CUTLINE release assurance command center for agentic cinema.">
+  <title>CUTLINE — Release Command</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ff5364'/%3E%3Cpath d='M43 17a19 19 0 1 0 0 30l-6-8a9 9 0 1 1 0-14z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to release command</a>
+  <header class="topbar">
+    <div class="brand"><span class="mark" aria-hidden="true">C</span><span>CUTLINE<small>Release assurance</small></span></div>
+    <div class="status"><span id="mode-badge">LOADING</span><span id="connection">Checking evidence…</span></div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="release-title">
+      <div>
+        <p class="eyebrow">Eclipse Protocol — Episode 6</p>
+        <h1 id="release-title">SQ-42 release command</h1>
+        <p class="lede">18 final VFX shots must cross package lock. CUTLINE turns operational evidence into one governed release decision.</p>
+      </div>
+      <div class="clock" aria-label="Package lock countdown"><span>Package lock</span><strong>24:00</strong><small>Scenario-mode deadline</small></div>
+    </section>
+    <div id="announcement" class="sr-only" aria-live="polite"></div>
+    <section class="disclosure" aria-label="Evidence disclosure">
+      <strong>Controlled demonstration.</strong>
+      <span id="disclosure">Loading evidence boundary…</span>
+    </section>
+    <section class="command-grid">
+      <article class="panel cutline-panel">
+        <header><div><p class="eyebrow">Release projection</p><h2>Will SQ-42 cross the cutline?</h2></div><span id="state-pill" class="pill">READY</span></header>
+        <div class="projection" role="img" aria-labelledby="projection-label">
+          <span id="projection-label" class="sr-only">Shot completion projection against package lock</span>
+          <div class="cutline" aria-hidden="true"><span>PACKAGE LOCK</span></div>
+          <div id="shot-bars" class="shot-bars"></div>
+        </div>
+        <div class="metrics" aria-label="Release impact">
+          <div><span>Shots at risk</span><strong id="risk-count">12 / 18</strong></div>
+          <div><span>Backlog</span><strong id="backlog">4,800 frames</strong></div>
+          <div><span>Throughput</span><strong id="throughput">120 f/min</strong></div>
+          <div><span>Projection</span><strong id="variance" class="danger">16 minutes late</strong></div>
+        </div>
+      </article>
+      <aside class="panel actions" aria-labelledby="actions-title">
+        <p class="eyebrow">Operator controls</p><h2 id="actions-title">Maya Chen</h2>
+        <button id="reset" class="secondary">Reset scenario</button>
+        <button id="investigate">Investigate with Grafana evidence</button>
+        <div id="decision-actions" hidden>
+          <button id="approve" class="approve">Approve recovery</button>
+          <button id="reject" class="secondary">Reject</button>
+        </div>
+        <button id="execute" hidden>Execute approved plan</button>
+        <button id="verify" hidden>Verify with fresh evidence</button>
+        <p id="action-help" class="help">Reset or begin the evidence-backed investigation.</p>
+      </aside>
+    </section>
+    <section class="panel" aria-labelledby="manifest-title">
+      <header><div><p class="eyebrow">Media-native exposure</p><h2 id="manifest-title">SQ-42 shot manifest</h2></div><span id="manifest-summary">12 at risk</span></header>
+      <div class="table-wrap"><table><thead><tr><th>Shot</th><th>Frame range</th><th>Status</th><th>Remaining</th><th>Attempts</th><th>Worker</th><th>ETA</th><th>Dependency</th></tr></thead><tbody id="shots"></tbody></table></div>
+    </section>
+    <section class="two-col">
+      <article class="panel" aria-labelledby="evidence-title">
+        <header><div><p class="eyebrow">Grafana evidence</p><h2 id="evidence-title">Evidence ledger</h2></div><span id="evidence-count">0 items</span></header>
+        <div id="evidence" class="empty">Run an investigation to retrieve evidence.</div>
+      </article>
+      <article class="panel" aria-labelledby="diagnosis-title">
+        <p class="eyebrow">Adversarial synthesis</p><h2 id="diagnosis-title">Diagnosis</h2>
+        <div id="diagnosis" class="empty">No diagnosis until current evidence is available.</div>
+      </article>
+    </section>
+    <section class="two-col">
+      <article class="panel" aria-labelledby="impact-title">
+        <p class="eyebrow">Deterministic impact</p><h2 id="impact-title">Deadline arithmetic</h2>
+        <div id="formulas"></div>
+      </article>
+      <article class="panel approval" aria-labelledby="approval-title">
+        <p class="eyebrow">Human-governed action</p><h2 id="approval-title">Recovery proposal</h2>
+        <div id="proposal" class="empty">Investigation must complete before a proposal exists.</div>
+      </article>
+    </section>
+    <section class="two-col">
+      <article class="panel" aria-labelledby="receipt-title"><p class="eyebrow">Immutable action</p><h2 id="receipt-title">Execution receipt</h2><div id="receipt" class="empty">No action executed.</div></article>
+      <article class="panel" aria-labelledby="verification-title"><p class="eyebrow">Fresh proof</p><h2 id="verification-title">Verification report</h2><div id="verification" class="empty">Recovery has not been verified.</div></article>
+    </section>
+    <section class="panel" aria-labelledby="audit-title">
+      <header><div><p class="eyebrow">Decision record</p><h2 id="audit-title">Audit lineage</h2></div><button id="refresh-audit" class="secondary compact">Refresh audit</button></header>
+      <pre id="audit">No audit objects yet.</pre>
+    </section>
+  </main>
+  <footer>Controlled synthetic production • Real Grafana MCP and Google Cloud action required in submitted live mode</footer>
+  <script type="module" src="/assets/app.js"></script>
+</body>
+</html>
