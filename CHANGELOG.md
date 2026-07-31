@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-07-31 — Submission compliance
+
+- Added a top-level Apache-2.0 license so the public source repository satisfies
+  the contest's open-source submission requirement.
+
 ## 2026-07-31 — Initial feature-audit and implementation pass
 
 - Audited 30 user-visible CUTLINE stories from release overview through
