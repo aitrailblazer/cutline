@@ -16,6 +16,10 @@ async def test_adk_agent_is_bounded_and_uses_cutline_tools():
     instruction = root_agent.instruction.lower()
     assert "never invent telemetry" in instruction
     assert "never perform authoritative deadline arithmetic" in instruction
+    assert "uses tool evidence" in instruction
+    assert "without asking a follow-up question" in instruction
+    assert root_agent.model.model == "gemini-2.5-flash"
+    assert root_agent.generate_content_config.temperature == 0
     assert len(root_agent.tools) == 2
 
 

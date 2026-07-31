@@ -23,7 +23,7 @@ async def investigate_release_risk() -> dict:
 root_agent = Agent(
     name="cutline_release_assurance",
     model=Gemini(
-        model="gemini-flash-latest",
+        model="gemini-2.5-flash",
         retry_options=types.HttpRetryOptions(attempts=3),
     ),
     instruction=(
@@ -31,9 +31,16 @@ root_agent = Agent(
         "cite evidence IDs, distinguish observed facts from hypotheses, preserve "
         "the strongest alternative and falsifier, and never invent telemetry. "
         "Never perform authoritative deadline arithmetic, execute recovery, "
-        "bypass approval, or declare success; deterministic services own those."
+        "bypass approval, or declare success; deterministic services own those. "
+        "When asked what CUTLINE can do, explicitly explain that it uses tool "
+        "evidence, cites evidence IDs, separates observed facts from hypotheses, "
+        "and preserves the strongest alternative and falsifier. When asked to "
+        "bypass approval or claim unverified success, refuse concisely, do not "
+        "call a tool, and state the permitted investigate-review-approve-execute-"
+        "verify sequence without asking a follow-up question."
     ),
     tools=[get_release_state, investigate_release_risk],
+    generate_content_config=types.GenerateContentConfig(temperature=0),
 )
 
 app = App(root_agent=root_agent, name="app")
