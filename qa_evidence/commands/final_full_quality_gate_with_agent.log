@@ -1,0 +1,44 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 33 items
+
+tests/integration/test_api.py ......                                     [ 18%]
+tests/integration/test_workflow.py ............                          [ 54%]
+tests/unit/test_adapters.py ........                                     [ 78%]
+tests/unit/test_agent_contract.py F.                                     [ 84%]
+tests/unit/test_domain.py .....                                          [100%]
+
+=================================== FAILURES ===================================
+_______________ test_adk_agent_is_bounded_and_uses_cutline_tools _______________
+
+    @pytest.mark.asyncio
+    async def test_adk_agent_is_bounded_and_uses_cutline_tools():
+        state = await get_release_state()
+        assert state["state"] == "READY"
+        investigated = await investigate_release_risk()
+        assert investigated["state"] == "AWAITING_APPROVAL"
+        assert root_agent.name == "cutline_release_assurance"
+        assert "never invent telemetry" in root_agent.instruction
+>       assert "never perform authoritative deadline arithmetic" in root_agent.instruction
+E       assert 'never perform authoritative deadline arithmetic' in "You are CUTLINE's bounded evidence-synthesis agent. Use tool evidence, cite evidence IDs, distinguish observed facts ...ritative deadline arithmetic, execute recovery, bypass approval, or declare success; deterministic services own those."
+E        +  where "You are CUTLINE's bounded evidence-synthesis agent. Use tool evidence, cite evidence IDs, distinguish observed facts ...ritative deadline arithmetic, execute recovery, bypass approval, or declare success; deterministic services own those." = LlmAgent(name='cutline_release_assurance', description='', parent_agent=None, sub_agents=[], before_agent_callback=Non...k=None, on_model_error_callback=None, before_tool_callback=None, after_tool_callback=None, on_tool_error_callback=None).instruction
+
+tests/unit/test_agent_contract.py:17: AssertionError
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     409      0     36      0   100%
+
+5 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+=========================== short test summary info ============================
+FAILED tests/unit/test_agent_contract.py::test_adk_agent_is_bounded_and_uses_cutline_tools
+========================= 1 failed, 32 passed in 1.46s =========================

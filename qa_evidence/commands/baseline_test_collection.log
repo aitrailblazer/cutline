@@ -1,0 +1,7 @@
+tests/integration/test_agent.py::test_agent_stream
+tests/integration/test_server_e2e.py::test_chat_stream
+tests/integration/test_server_e2e.py::test_chat_stream_error_handling
+tests/integration/test_server_e2e.py::test_collect_feedback
+tests/unit/test_dummy.py::test_dummy
+
+5 tests collected in 4.68s

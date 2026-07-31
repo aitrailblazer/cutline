@@ -1,0 +1,128 @@
+  ▸ uv sync --dev --extra lint
+Resolved 172 packages in 27ms
+Checked 139 packages in 29ms
+  ▸ uv run ruff check .
+All checks passed!
+  ▸ uv run ruff format . --check
+unformatted: File would be reformatted
+  --> app/agent.py:40:1
+   |
+39 | app = App(root_agent=root_agent, name="app")
+   -
+   |
+
+unformatted: File would be reformatted
+   --> app/api.py:134:1
+    |
+133 | app = create_app()
+    -
+    |
+
+unformatted: File would be reformatted
+   --> app/domain.py:161:16
+    |
+160 |         raise ValueError("backlog, deadline, and throughput must be positive")
+    -     minimum = (
+    -         Decimal(backlog_frames) / Decimal(deadline_minutes)
+    -     ).quantize(Decimal("1"), rounding=ROUND_HALF_UP)
+    -     safe = (minimum * Decimal("1.20")).quantize(
+161 +     minimum = (Decimal(backlog_frames) / Decimal(deadline_minutes)).quantize(
+162 +         Decimal("1"), rounding=ROUND_HALF_UP
+163 +     )
+164 +     safe = (minimum * Decimal("1.20")).quantize(Decimal("1"), rounding=ROUND_HALF_UP)
+165 +     projected = (Decimal(backlog_frames) / Decimal(throughput)).quantize(
+166 |         Decimal("1"), rounding=ROUND_HALF_UP
+167 |     )
+    -     projected = (
+    -         Decimal(backlog_frames) / Decimal(throughput)
+    -     ).quantize(Decimal("1"), rounding=ROUND_HALF_UP)
+168 |     variance = Decimal(deadline_minutes) - projected
+    |
+
+unformatted: File would be reformatted
+ --> app/fast_api_app.py:6:1
+  |
+5 | __all__ = ["app"]
+  -
+  |
+
+unformatted: File would be reformatted
+   --> app/service.py:231:18
+    |
+230 |         throughput = int(metric.values.get("throughput", 0)) if metric else 0
+    -         impact = calculate_impact(4800, 24, throughput) if throughput > 0 else calculate_impact(4800, 24, 1)
+231 +         impact = (
+232 +             calculate_impact(4800, 24, throughput)
+233 +             if throughput > 0
+234 +             else calculate_impact(4800, 24, 1)
+235 +         )
+236 |         gates = {
+    |
+
+unformatted: File would be reformatted
+  --> tests/conftest.py:27:1
+   |
+26 |     return await service.execute(key)
+   -
+   |
+
+unformatted: File would be reformatted
+  --> tests/integration/test_api.py:32:12
+   |
+31 |     assert executed["state"] == "VERIFYING"
+   -     assert client.get("/api/scenario").json()["receipt"]["id"] == executed["receipt"]["id"]
+32 +     assert (
+33 +         client.get("/api/scenario").json()["receipt"]["id"] == executed["receipt"]["id"]
+34 +     )
+35 |     verified = client.post("/api/scenario/verify").json()
+--------------------------------------------------------------------------------
+77 |     monkeypatch.setenv("CUTLINE_ACTION_URL", "https://action")
+   -     ready = TestClient(create_app(service_from_environment())).get("/api/readiness").json()
+78 +     ready = (
+79 +         TestClient(create_app(service_from_environment())).get("/api/readiness").json()
+80 +     )
+81 |     assert ready["ready"] is True
+   |
+
+unformatted: File would be reformatted
+   --> tests/integration/test_workflow.py:42:31
+    |
+41  |     await service.investigate()
+    -     rejected = service.decide(
+    -         approve=False, approver="Maya", reason="Not now"
+    -     )
+42  +     rejected = service.decide(approve=False, approver="Maya", reason="Not now")
+43  |     assert rejected.state == WorkflowState.REJECTED
+--------------------------------------------------------------------------------
+78  |             from app.adapters import EvidenceUnavailable
+79  +
+80  |             raise EvidenceUnavailable("down")
+--------------------------------------------------------------------------------
+144 |                 from app.adapters import EvidenceUnavailable
+145 +
+146 |                 raise EvidenceUnavailable("post down")
+    |
+
+unformatted: File would be reformatted
+  --> tests/unit/test_adapters.py:30:13
+   |
+29 | async def test_local_evidence_fault_modes():
+   -     item = (await LocalGrafanaAdapter(stale=True, wrong_run=True, oom_after=True).collect("run", True))[0]
+30 +     item = (
+31 +         await LocalGrafanaAdapter(stale=True, wrong_run=True, oom_after=True).collect(
+32 +             "run", True
+33 +         )
+34 +     )[0]
+35 |     assert item.run_id == "wrong-run"
+   |
+
+unformatted: File would be reformatted
+  --> tests/unit/test_domain.py:58:1
+   |
+57 |     assert all(shot.status == "READY" for shot in recovered)
+   -
+   |
+
+10 files would be reformatted, 8 files already formatted
+agents-cli v0.3.0
+Error: Ruff format check failed (exit code 1)

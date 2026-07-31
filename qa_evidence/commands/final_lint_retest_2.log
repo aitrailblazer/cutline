@@ -1,0 +1,34 @@
+  ▸ uv sync --dev --extra lint
+Resolved 172 packages in 4ms
+Checked 139 packages in 3ms
+  ▸ uv run ruff check .
+All checks passed!
+  ▸ uv run ruff format . --check
+18 files already formatted
+  ▸ uv run codespell
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:150: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:180: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:181: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:202: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:203: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:203: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:238: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:239: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:242: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:355: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:119: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:121: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:123: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:125: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:209: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:211: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:213: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:215: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:217: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:219: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:221: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:223: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:225: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:227: mis ==> miss, mist
+agents-cli v0.3.0
+Error: Codespell check failed (exit code 65)

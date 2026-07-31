@@ -1,0 +1,72 @@
+...............F...............                                          [100%]
+=================================== FAILURES ===================================
+______________ test_verification_fail_closed[adapter3-active_run] ______________
+
+adapter = <app.adapters.LocalGrafanaAdapter object at 0x10e597f50>
+failed_gate = 'active_run'
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "adapter,failed_gate",
+        [
+            (LocalGrafanaAdapter(throughput_after=220), "safe_throughput"),
+            (LocalGrafanaAdapter(oom_after=True), "oom_declining"),
+            (LocalGrafanaAdapter(stale=True), "fresh_after_execution"),
+            (LocalGrafanaAdapter(wrong_run=True), "active_run"),
+        ],
+    )
+    async def test_verification_fail_closed(adapter, failed_gate):
+        service = CutlineService(adapter, LocalActionExecutor())
+>       await advance_to_verification(service)
+
+tests/integration/test_workflow.py:116: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/conftest.py:25: in advance_to_verification
+    await advance_to_approval(service)
+tests/conftest.py:20: in advance_to_approval
+    await service.investigate()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <app.service.CutlineService object at 0x10e7a5160>
+
+    async def investigate(self) -> Scenario:
+        with self._lock:
+            if self._current.state not in {
+                WorkflowState.READY,
+                WorkflowState.BLOCKED,
+            }:
+                raise WorkflowError(
+                    "INVALID_STATE", "Reset before starting another investigation."
+                )
+            run_id = self._current.run_id
+        try:
+            evidence = await self.evidence_adapter.collect(run_id, False)
+        except EvidenceUnavailable as exc:
+            with self._lock:
+                self._current.state = WorkflowState.BLOCKED
+                self._current.blockers = [str(exc)]
+            raise WorkflowError(
+                "LIVE_EVIDENCE_UNAVAILABLE",
+                "Live Grafana MCP evidence is unavailable; no diagnosis was created.",
+                503,
+            ) from exc
+        if any(item.run_id != run_id for item in evidence):
+>           raise WorkflowError(
+                "EVIDENCE_RUN_MISMATCH", "Evidence does not belong to the active run."
+            )
+E           app.service.WorkflowError: Evidence does not belong to the active run.
+
+app/service.py:91: WorkflowError
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     408      0     34      0   100%
+
+5 files skipped due to complete coverage.
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+=========================== short test summary info ============================
+FAILED tests/integration/test_workflow.py::test_verification_fail_closed[adapter3-active_run]
+1 failed, 30 passed in 0.89s

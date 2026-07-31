@@ -1,0 +1,75 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 31 items
+
+tests/integration/test_api.py ......                                     [ 19%]
+tests/integration/test_workflow.py ............                          [ 58%]
+tests/unit/test_adapters.py ........                                     [ 83%]
+tests/unit/test_domain.py .....                                          [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     409      0     36      0   100%
+
+5 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+============================== 31 passed in 0.83s ==============================
+All checks passed!
+18 files already formatted
+./qa_evidence/commands/final_lint_retest_2.log:9: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:10: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:11: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:12: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:13: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:14: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:15: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:16: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:17: numer ==> number
+./qa_evidence/commands/final_lint_retest_2.log:18: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:19: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:20: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:21: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:22: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:23: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:24: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:25: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:26: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:27: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:28: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:29: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:30: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:31: mis ==> miss, mist
+./qa_evidence/commands/final_lint_retest_2.log:32: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:150: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:180: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:181: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:202: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:203: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:203: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:238: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:239: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:242: numer ==> number
+./qa_evidence/reports/htmlcov/coverage_html_cb_dd2e7eb5.js:355: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:119: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:121: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:123: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:125: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:209: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:211: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:213: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:215: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:217: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:219: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:221: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:223: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:225: mis ==> miss, mist
+./qa_evidence/reports/htmlcov/style_cb_4667309f.css:227: mis ==> miss, mist

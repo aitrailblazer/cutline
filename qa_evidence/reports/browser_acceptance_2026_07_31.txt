@@ -18,7 +18,13 @@ WORKFLOW
 REFRESH / RESPONSIVE / ACCESSIBILITY
 - Reload preserved the current VERIFIED server state.
 - 390x844 viewport: document scrollWidth 390, no page overflow, command grid collapsed to 366px.
+- 768x1024 viewport: document scrollWidth 768, no page overflow, command grid collapsed to 720px.
+- 1440x1000 viewport: document scrollWidth 1440, no page overflow, two-column 818px/300px command grid.
 - Mobile screenshot: qa_evidence/screenshots/cutline_verified_mobile.png
 - Semantic snapshot exposed banner, main, named regions/articles, table headers, buttons, skip link,
   aria-live announcement, meaningful chart/shot labels, and focusable native controls.
 - Native hidden state was confirmed via computed style; reduced-motion media query is present.
+- Lighthouse/axe baseline found one serious button-contrast issue (3.14:1).
+- Tracker-backed F-026 fix cdaa0e2 changed the action color; retest scored Accessibility 100,
+  Best Practices 100, SEO 100, Agentic Browsing 100, with 32 passed and 0 failed audits.
+- Machine evidence: qa_evidence/reports/lighthouse_accessibility.json

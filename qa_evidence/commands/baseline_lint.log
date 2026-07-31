@@ -1,0 +1,18 @@
+  ▸ uv sync --dev --extra lint
+Resolved 169 packages in 4ms
+Downloading ruff (10.1MiB)
+Downloading ty (10.9MiB)
+ Downloaded ruff
+ Downloaded ty
+Prepared 3 packages in 7.14s
+Installed 3 packages in 2ms
+ + codespell==2.4.3
+ + ruff==0.16.1
+ + ty==0.0.65
+  ▸ uv run ruff check .
+All checks passed!
+  ▸ uv run ruff format . --check
+12 files already formatted
+  ▸ uv run codespell
+  ▸ uv run ty check .
+All checks passed!

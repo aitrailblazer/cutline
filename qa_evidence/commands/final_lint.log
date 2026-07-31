@@ -1,0 +1,107 @@
+  ▸ uv sync --dev --extra lint
+Resolved 172 packages in 4ms
+Installed 3 packages in 13ms
+ + codespell==2.4.3
+ + ruff==0.16.1
+ + ty==0.0.65
+  ▸ uv run ruff check .
+F401 [*] `app.domain.Receipt` imported but unused
+  --> app/adapters.py:12:48
+   |
+10 | import httpx
+11 |
+12 | from app.domain import Evidence, EvidenceMode, Receipt, utcnow
+   |                                                ^^^^^^^
+help: Remove unused import: `app.domain.Receipt`
+   |
+11 |
+   - from app.domain import Evidence, EvidenceMode, Receipt, utcnow
+12 + from app.domain import Evidence, EvidenceMode, utcnow
+13 |
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> app/domain.py:3:1
+   |
+ 1 |   """CUTLINE deterministic domain contract."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from datetime import UTC, datetime
+ 6 | | from decimal import Decimal, ROUND_HALF_UP
+ 7 | | from enum import StrEnum
+ 8 | | from typing import Any
+ 9 | |
+10 | | from pydantic import BaseModel, Field
+   | |_____________________________________^
+help: Organize imports
+  |
+5 | from datetime import UTC, datetime
+  - from decimal import Decimal, ROUND_HALF_UP
+6 + from decimal import ROUND_HALF_UP, Decimal
+7 | from enum import StrEnum
+  |
+
+F401 [*] `app.domain.EvidenceMode` imported but unused
+  --> app/service.py:18:5
+   |
+16 |     Decision,
+17 |     Diagnosis,
+18 |     EvidenceMode,
+   |     ^^^^^^^^^^^^
+19 |     Receipt,
+20 |     RecoveryProposal,
+   |
+help: Remove unused import: `app.domain.EvidenceMode`
+   |
+17 |     Diagnosis,
+   -     EvidenceMode,
+18 |     Receipt,
+   |
+
+F401 [*] `os` imported but unused
+ --> tests/integration/test_api.py:1:8
+  |
+1 | import os
+  |        ^^
+2 |
+3 | from fastapi.testclient import TestClient
+  |
+help: Remove unused import: `os`
+  |
+  - import os
+1 |
+  |
+
+F401 [*] `app.service.CutlineService` imported but unused
+ --> tests/integration/test_api.py:8:25
+  |
+6 | from app.api import create_app, service_from_environment
+7 | from app.domain import EvidenceMode
+8 | from app.service import CutlineService
+  |                         ^^^^^^^^^^^^^^
+help: Remove unused import: `app.service.CutlineService`
+  |
+7 | from app.domain import EvidenceMode
+  - from app.service import CutlineService
+8 |
+  |
+
+F401 [*] `json` imported but unused
+ --> tests/unit/test_adapters.py:1:8
+  |
+1 | import json
+  |        ^^^^
+2 |
+3 | import httpx
+  |
+help: Remove unused import: `json`
+  |
+  - import json
+1 |
+  |
+
+Found 6 errors.
+[*] 6 fixable with the `--fix` option.
+agents-cli v0.3.0
+Error: Ruff check failed (exit code 1)

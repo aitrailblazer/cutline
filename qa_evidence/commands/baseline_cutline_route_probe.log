@@ -1,0 +1,11 @@
+GET / 200 text/html; charset=utf-8
+GET /healthz 404 application/json
+GET /api/readiness 404 application/json
+GET /api/scenario 404 application/json
+POST /api/scenario/reset 404 application/json
+POST /api/scenario/investigate 404 application/json
+POST /api/scenario/approve 404 application/json
+POST /api/scenario/reject 404 application/json
+POST /api/scenario/execute 404 application/json
+POST /api/scenario/verify 404 application/json
+GET /api/audit 404 application/json
