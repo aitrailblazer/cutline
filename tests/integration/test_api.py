@@ -1,9 +1,32 @@
 from fastapi.testclient import TestClient
 
 from app.actions import MemoryActionRecordStore
-from app.adapters import CloudRunActionExecutor, LiveGrafanaMCPAdapter
+from app.adapters import (
+    CloudRunActionExecutor,
+    LiveGrafanaMCPAdapter,
+    LocalActionExecutor,
+    LocalGrafanaAdapter,
+)
+from app.agent_runtime import AgentSynthesisUnavailable, HostedInvestigator
 from app.api import create_app, service_from_environment
 from app.domain import EvidenceMode
+from app.service import CutlineService
+
+
+class FakeLiveGrafanaAdapter(LocalGrafanaAdapter):
+    mode = EvidenceMode.LIVE
+
+
+class FakeHostedInvestigator(HostedInvestigator):
+    def __init__(self, fail=False):
+        self.fail = fail
+        self.run_ids = []
+
+    async def synthesize(self, run_id):
+        self.run_ids.append(run_id)
+        if self.fail:
+            raise AgentSynthesisUnavailable("ADK_AGENT_REQUEST_FAILED")
+        return "Observed evidence pre-1; hypothesis retained with alternative."
 
 
 def test_index_health_readiness_and_assets(client):
@@ -143,6 +166,36 @@ def test_live_action_boundary_handler_conflict(monkeypatch, service):
     )
     assert response.status_code == 409
     assert response.json()["detail"] == "STORE_CONFLICT"
+
+
+def test_live_investigation_invokes_agent_and_records_synthesis():
+    service = CutlineService(FakeLiveGrafanaAdapter(), LocalActionExecutor())
+    investigator = FakeHostedInvestigator()
+    client = TestClient(create_app(service, MemoryActionRecordStore(), investigator))
+    response = client.post("/api/scenario/investigate")
+    assert response.status_code == 200
+    scenario = response.json()
+    assert investigator.run_ids == [scenario["run_id"]]
+    assert scenario["agent_model"] == "gemini-2.5-flash"
+    assert "pre-1" in scenario["agent_synthesis"]
+
+
+def test_live_investigation_blocks_when_agent_fails():
+    service = CutlineService(FakeLiveGrafanaAdapter(), LocalActionExecutor())
+    client = TestClient(
+        create_app(
+            service,
+            MemoryActionRecordStore(),
+            FakeHostedInvestigator(fail=True),
+        )
+    )
+    response = client.post("/api/scenario/investigate")
+    assert response.status_code == 503
+    assert response.json()["error"]["code"] == "AGENT_SYNTHESIS_UNAVAILABLE"
+    scenario = client.get("/api/scenario").json()
+    assert scenario["state"] == "BLOCKED"
+    assert scenario["proposal"] is None
+    assert scenario["blockers"] == ["ADK_AGENT_REQUEST_FAILED"]
 
 
 def test_five_consecutive_api_runs(client):

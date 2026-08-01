@@ -24,6 +24,11 @@ from app.adapters import (
     LocalActionExecutor,
     LocalGrafanaAdapter,
 )
+from app.agent_runtime import (
+    ADKHostedInvestigator,
+    AgentSynthesisUnavailable,
+    HostedInvestigator,
+)
 from app.domain import EvidenceMode
 from app.service import CutlineService, WorkflowError
 
@@ -56,6 +61,7 @@ def service_from_environment() -> CutlineService:
 def create_app(
     service: CutlineService | None = None,
     action_store: ActionRecordStore | None = None,
+    investigator: HostedInvestigator | None = None,
 ) -> FastAPI:
     app = FastAPI(
         title="CUTLINE",
@@ -64,6 +70,12 @@ def create_app(
     )
     app.state.cutline = service or service_from_environment()
     app.state.action_store = action_store or action_store_from_environment()
+    app.state.investigator = investigator
+    if (
+        app.state.investigator is None
+        and app.state.cutline.get().mode == EvidenceMode.LIVE
+    ):
+        app.state.investigator = ADKHostedInvestigator()
     app.mount("/assets", StaticFiles(directory=WEB), name="assets")
 
     @app.exception_handler(WorkflowError)
@@ -122,7 +134,19 @@ def create_app(
 
     @app.post("/api/scenario/investigate")
     async def investigate():
-        return await app.state.cutline.investigate()
+        scenario = await app.state.cutline.investigate()
+        if scenario.mode != EvidenceMode.LIVE:
+            return scenario
+        try:
+            synthesis = await app.state.investigator.synthesize(scenario.run_id)
+            return app.state.cutline.record_agent_synthesis(scenario.run_id, synthesis)
+        except AgentSynthesisUnavailable as exc:
+            app.state.cutline.block_agent_synthesis(scenario.run_id, str(exc))
+            raise WorkflowError(
+                "AGENT_SYNTHESIS_UNAVAILABLE",
+                "Gemini synthesis is unavailable; no live recovery can be approved.",
+                503,
+            ) from exc
 
     @app.post("/api/scenario/approve")
     async def approve(request: DecisionRequest):

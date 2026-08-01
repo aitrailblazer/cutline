@@ -74,7 +74,7 @@ function renderEvidence(items) {
   );
 }
 
-function renderDiagnosis(value) {
+function renderDiagnosis(value, synthesis, model) {
   if (!value) {
     $("diagnosis").className = "empty";
     $("diagnosis").textContent =
@@ -82,14 +82,16 @@ function renderDiagnosis(value) {
     return;
   }
   $("diagnosis").className = "";
-  $("diagnosis").replaceChildren(
-    ...[
+  const facts = [
       ["Evidence", value.evidence_status],
       ["Hypothesis", value.hypothesis],
       ["Alternative", value.alternative],
       ["Discriminator", value.discriminator],
       ["Falsifier", value.falsifier],
-    ].map(([label, text]) => {
+    ];
+  if (synthesis) facts.push([`ADK synthesis · ${model}`, synthesis]);
+  $("diagnosis").replaceChildren(
+    ...facts.map(([label, text]) => {
       const fact = node("div", "fact");
       fact.append(node("small", "", label), node("b", "", text));
       return fact;
@@ -149,7 +151,7 @@ function render(data) {
   $("variance").className = data.impact.variance_minutes > 0 ? "success" : "danger";
   renderShots(data.shots);
   renderEvidence(data.evidence);
-  renderDiagnosis(data.diagnosis);
+  renderDiagnosis(data.diagnosis, data.agent_synthesis, data.agent_model);
   $("formulas").replaceChildren(
     ...data.impact.formulas.map((formula) => node("div", "formula", formula)),
   );

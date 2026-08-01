@@ -35,6 +35,20 @@ async def test_complete_success_and_audit(service):
 
 
 @pytest.mark.asyncio
+async def test_agent_synthesis_run_and_state_guards(service):
+    scenario = await service.investigate()
+    recorded = service.record_agent_synthesis(scenario.run_id, "bounded synthesis")
+    assert recorded.agent_synthesis == "bounded synthesis"
+    assert recorded.agent_model == "gemini-2.5-flash"
+    with pytest.raises(WorkflowError, match="another run"):
+        service.record_agent_synthesis("wrong-run", "invalid")
+    service.decide(approve=False, approver="Maya Chen")
+    with pytest.raises(WorkflowError, match="investigated proposal"):
+        service.record_agent_synthesis(scenario.run_id, "too late")
+    service.block_agent_synthesis("wrong-run", "ignored")
+
+
+@pytest.mark.asyncio
 async def test_reject_and_invalid_transitions(service):
     with pytest.raises(WorkflowError, match="current recovery proposal"):
         service.decide(approve=True, approver="Maya")

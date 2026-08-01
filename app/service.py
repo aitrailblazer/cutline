@@ -142,6 +142,28 @@ class CutlineService:
                 self._current.state = WorkflowState.REJECTED
             return self.get()
 
+    def record_agent_synthesis(self, run_id: str, synthesis: str) -> Scenario:
+        with self._lock:
+            if self._current.run_id != run_id:
+                raise WorkflowError(
+                    "AGENT_RUN_MISMATCH", "Agent synthesis belongs to another run."
+                )
+            if self._current.state != WorkflowState.AWAITING_APPROVAL:
+                raise WorkflowError(
+                    "INVALID_STATE", "An investigated proposal is required."
+                )
+            self._current.agent_synthesis = synthesis
+            self._current.agent_model = "gemini-2.5-flash"
+            return self.get()
+
+    def block_agent_synthesis(self, run_id: str, reason: str) -> None:
+        with self._lock:
+            if self._current.run_id != run_id:
+                return
+            self._current.state = WorkflowState.BLOCKED
+            self._current.blockers = [reason]
+            self._current.proposal = None
+
     async def execute(self, idempotency_key: str) -> Scenario:
         with self._lock:
             decision = self._current.decision

@@ -135,6 +135,8 @@ class Scenario(BaseModel):
     shots: list[Shot]
     evidence: list[Evidence] = Field(default_factory=list)
     diagnosis: Diagnosis | None = None
+    agent_synthesis: str | None = None
+    agent_model: str | None = None
     impact: Impact
     proposal: RecoveryProposal | None = None
     decision: Decision | None = None
