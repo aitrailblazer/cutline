@@ -108,7 +108,10 @@ def create_app(
         live = scenario.mode == EvidenceMode.LIVE
         configured = bool(
             os.getenv("GRAFANA_MCP_URL")
-            and os.getenv("GRAFANA_MCP_TOKEN")
+            and (
+                os.getenv("GRAFANA_MCP_TOKEN")
+                or os.getenv("GRAFANA_MCP_USE_GOOGLE_ID_TOKEN", "").lower() == "true"
+            )
             and os.getenv("CUTLINE_ACTION_URL")
             and os.getenv("CUTLINE_ACTION_TOKEN")
         )

@@ -1,3 +1,5 @@
+from types import SimpleNamespace
+
 import httpx
 import pytest
 
@@ -93,18 +95,65 @@ class FakeClient:
 
 @pytest.mark.asyncio
 async def test_live_adapters_parse_success(monkeypatch):
+    timestamp = utcnow().timestamp()
+
+    async def fake_session_call(_self, _name, _arguments=None):
+        return SimpleNamespace(
+            tools=[
+                SimpleNamespace(name="list_datasources"),
+                SimpleNamespace(name="query_prometheus"),
+                SimpleNamespace(name="query_loki_logs"),
+            ]
+        )
+
     async def fake_call(_self, name, _arguments):
+        if name == "list_datasources":
+            return {
+                "datasources": [
+                    {"uid": "prom", "type": "prometheus"},
+                    {"uid": "loki", "type": "loki"},
+                ]
+            }
+        if name == "query_prometheus":
+            return {
+                "data": {
+                    "resultType": "vector",
+                    "result": [
+                        {
+                            "metric": {
+                                "__name__": "cutline_release_backlog_frames",
+                                "run_id": "run-12345678",
+                            },
+                            "value": [timestamp, "4800"],
+                        },
+                        {
+                            "metric": {
+                                "__name__": "cutline_render_throughput_fpm",
+                                "run_id": "run-12345678",
+                            },
+                            "value": [timestamp, "320"],
+                        },
+                    ],
+                }
+            }
         return {
-            "id": f"e-{name}",
-            "summary": "ok",
-            "observed_at": utcnow().isoformat(),
-            "run_id": "run",
-            "values": {"throughput": 320},
+            "data": [
+                {
+                    "timestamp": str(int(timestamp * 1_000_000_000)),
+                    "line": '{"oom":false,"event":"render_status"}',
+                    "labels": {"run_id": "run-12345678"},
+                }
+            ]
         }
 
+    monkeypatch.setattr(LiveGrafanaMCPAdapter, "_session_call", fake_session_call)
     monkeypatch.setattr(LiveGrafanaMCPAdapter, "_call_tool", fake_call)
-    evidence = await LiveGrafanaMCPAdapter("https://mcp", "token").collect("run", True)
-    assert [item.kind for item in evidence] == ["alert", "metric", "log", "trace"]
+    evidence = await LiveGrafanaMCPAdapter("https://mcp", "token").collect(
+        "run-12345678", True
+    )
+    assert [item.kind for item in evidence] == ["metric", "log"]
+    assert evidence[0].values == {"backlog_frames": 4800, "throughput": 320}
+    assert evidence[1].values["oom"] is False
     assert all(item.source_mode == EvidenceMode.LIVE for item in evidence)
     monkeypatch.setattr(httpx, "AsyncClient", FakeClient)
     FakeClient.response = FakeResponse({"executor_mode": "CLOUD_RUN", "transition": {}})
@@ -112,6 +161,122 @@ async def test_live_adapters_parse_success(monkeypatch):
         run_id="run", approval_id="approval", idempotency_key="12345678"
     )
     assert result["executor_mode"] == "CLOUD_RUN"
+
+
+@pytest.mark.asyncio
+async def test_live_grafana_auth_tool_and_datasource_guards(monkeypatch):
+    token_adapter = LiveGrafanaMCPAdapter("https://mcp", "token")
+    assert await token_adapter._headers() == {"Authorization": "Bearer token"}
+
+    identity_adapter = LiveGrafanaMCPAdapter("https://mcp")
+    identity_adapter.use_google_identity = True
+    monkeypatch.setattr("app.adapters.fetch_id_token", lambda *_args: "id-token")
+    assert await identity_adapter._headers() == {"Authorization": "Bearer id-token"}
+    identity_adapter.use_google_identity = False
+    assert await identity_adapter._headers() == {}
+
+    async def missing_tools(_name, _arguments=None):
+        return SimpleNamespace(tools=[SimpleNamespace(name="list_datasources")])
+
+    identity_adapter._session_call = missing_tools
+    with pytest.raises(EvidenceUnavailable, match="REQUIRED_TOOLS_MISSING"):
+        await identity_adapter._verify_tools()
+    identity_adapter._tools_verified = True
+    await identity_adapter._verify_tools()
+
+    identity_adapter._datasources = {"prometheus": "p", "loki": "l"}
+    await identity_adapter._discover_datasources()
+    identity_adapter._datasources = {}
+
+    async def malformed_datasources(_name, _arguments):
+        return {"datasources": "wrong"}
+
+    identity_adapter._call_tool = malformed_datasources
+    with pytest.raises(EvidenceUnavailable, match="DATASOURCES_MALFORMED"):
+        await identity_adapter._discover_datasources()
+
+    async def missing_datasources(_name, _arguments):
+        return {
+            "datasources": [
+                "skip",
+                {"uid": "other", "type": "tempo"},
+                {"uid": "", "type": "loki"},
+            ]
+        }
+
+    identity_adapter._call_tool = missing_datasources
+    with pytest.raises(EvidenceUnavailable, match="DATASOURCES_MISSING"):
+        await identity_adapter._discover_datasources()
+
+
+def test_live_grafana_provider_evidence_guards():
+    timestamp = utcnow().timestamp()
+    with pytest.raises(EvidenceUnavailable, match="TIMESTAMP_MISSING"):
+        LiveGrafanaMCPAdapter._timestamp("not-time")
+    assert (
+        LiveGrafanaMCPAdapter._timestamp(int(timestamp * 1_000_000_000)).tzinfo
+        is not None
+    )
+
+    with pytest.raises(EvidenceUnavailable, match="METRIC_EVIDENCE_MISSING"):
+        LiveGrafanaMCPAdapter._metric_evidence({}, "run", "pre")
+    invalid_series = {
+        "data": {
+            "result": [
+                "skip",
+                {"metric": "wrong", "value": []},
+                {
+                    "metric": {"__name__": "unknown"},
+                    "value": [timestamp, "1"],
+                },
+            ]
+        }
+    }
+    with pytest.raises(EvidenceUnavailable, match="METRIC_PROVENANCE_INVALID"):
+        LiveGrafanaMCPAdapter._metric_evidence(invalid_series, "run-12345678", "pre")
+
+    for payload, error in [
+        ({}, "LOG_EVIDENCE_MISSING"),
+        ({"data": ["wrong"]}, "LOG_EVIDENCE_MALFORMED"),
+        (
+            {
+                "data": [
+                    {
+                        "timestamp": timestamp,
+                        "line": "{}",
+                        "labels": {"run_id": "wrong"},
+                    }
+                ]
+            },
+            "LOG_PROVENANCE_INVALID",
+        ),
+        (
+            {
+                "data": [
+                    {
+                        "timestamp": timestamp,
+                        "line": "not-json",
+                        "labels": {"run_id": "run"},
+                    }
+                ]
+            },
+            "LOG_EVIDENCE_MALFORMED",
+        ),
+        (
+            {
+                "data": [
+                    {
+                        "timestamp": timestamp,
+                        "line": '{"oom":"yes"}',
+                        "labels": {"run_id": "run"},
+                    }
+                ]
+            },
+            "LOG_EVIDENCE_MALFORMED",
+        ),
+    ]:
+        with pytest.raises(EvidenceUnavailable, match=error):
+            LiveGrafanaMCPAdapter._log_evidence(payload, "run", "pre")
 
 
 @pytest.mark.asyncio
@@ -131,6 +296,16 @@ async def test_live_adapter_failures(monkeypatch, response, adapter, error):
                 raise EvidenceUnavailable("GRAFANA_MCP_MALFORMED_RESPONSE")
             raise ValueError("invalid MCP payload")
 
+        async def tools_ok(_self, _name, _arguments=None):
+            return SimpleNamespace(
+                tools=[
+                    SimpleNamespace(name="list_datasources"),
+                    SimpleNamespace(name="query_prometheus"),
+                    SimpleNamespace(name="query_loki_logs"),
+                ]
+            )
+
+        monkeypatch.setattr(LiveGrafanaMCPAdapter, "_session_call", tools_ok)
         monkeypatch.setattr(LiveGrafanaMCPAdapter, "_call_tool", failed_call)
         with pytest.raises(EvidenceUnavailable, match=error):
             await LiveGrafanaMCPAdapter("https://mcp", "token").collect("run", False)
