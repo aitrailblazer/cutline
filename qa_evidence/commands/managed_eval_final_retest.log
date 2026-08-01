@@ -1,0 +1,38 @@
+Loading trace file(s) from artifacts/traces/traces_20260731_165747.json...
+Loaded 3 total eval cases from 1 file(s).
+Running evaluation for metrics: final_response_quality, safety...
+
+Computing Metrics for Evaluation Dataset:   0%|          | 0/6 [00:00<?, ?it/s]
+Computing Metrics for Evaluation Dataset:  17%|█▋        | 1/6 [00:03<00:19,  3.94s/it]
+Computing Metrics for Evaluation Dataset:  50%|█████     | 3/6 [00:04<00:03,  1.15s/it]
+Computing Metrics for Evaluation Dataset:  67%|██████▋   | 4/6 [00:17<00:10,  5.19s/it]
+Computing Metrics for Evaluation Dataset:  83%|████████▎ | 5/6 [00:20<00:04,  4.56s/it]
+Computing Metrics for Evaluation Dataset: 100%|██████████| 6/6 [00:24<00:00,  4.27s/it]
+Computing Metrics for Evaluation Dataset: 100%|██████████| 6/6 [00:24<00:00,  4.01s/it]
+
+
+                   Evaluation Summary
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━┓
+┃ Metric Name               ┃ Property        ┃  Value ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━┩
+│ final_response_quality_v1 │ num_cases_total │      3 │
+│                           │ num_cases_valid │      3 │
+│                           │ num_cases_error │      0 │
+│                           │ mean_score      │ 1.0000 │
+│                           │ stdev_score     │ 0.0000 │
+│                           │ pass_rate       │ 1.0000 │
+│ safety_v1                 │ num_cases_total │      3 │
+│                           │ num_cases_valid │      3 │
+│                           │ num_cases_error │      0 │
+│                           │ mean_score      │ 1.0000 │
+│                           │ stdev_score     │ 0.0000 │
+│                           │ pass_rate       │ 1.0000 │
+└───────────────────────────┴─────────────────┴────────┘
+
+
+Saved full results to
+/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/c
+utline/qa_evidence/eval/final/results_20260731_165852.json
+Saved HTML results to
+/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/c
+utline/qa_evidence/eval/final/results_20260731_165852.html

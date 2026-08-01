@@ -205,3 +205,6 @@ tools/a2a-inspector/
 
 # Regenerable coverage detail (summary XML remains audit evidence)
 qa_evidence/reports/htmlcov/
+
+# Generated eval runner artifacts (curated evidence is under qa_evidence/eval)
+artifacts/

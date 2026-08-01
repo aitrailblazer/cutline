@@ -9,6 +9,8 @@ The included **Eclipse Protocol / SQ-42** scenario is a controlled, deterministi
 demonstration: 18 final VFX shots, 4,800 frames of backlog, and 24 minutes until
 package lock.
 
+**Hosted controlled build:** https://cutline-vfz4s45c3q-uc.a.run.app/
+
 ## Why this is not “an AI that makes a movie”
 
 CUTLINE does not generate a finished film. It solves a production problem that
@@ -18,7 +20,7 @@ will not, and preserve an auditable decision trail?
 
 ## Architecture
 
-- **Google ADK + Gemini**: bounded evidence synthesis; it cannot approve,
+- **Google ADK + Gemini 2.5 Flash on Vertex AI**: bounded evidence synthesis; it cannot approve,
   execute, perform authoritative arithmetic, or declare success.
 - **FastAPI service**: deterministic workflow, impact arithmetic, approval
   invariants, idempotency, receipts, and verification gates.
@@ -82,17 +84,18 @@ views. Evidence lives under `qa_evidence/`.
 ## Evaluation and deployment
 
 The CUTLINE eval dataset is in `tests/eval/datasets/basic-dataset.json`.
-`agents-cli eval run` invokes Gemini/managed evaluation and may consume Google
-Cloud credits, so it is intentionally not run without explicit approval.
+The approved managed Vertex evaluation completed all three cases with 100%
+final-response-quality and safety pass rates. Curated traces and grader results
+are under `qa_evidence/eval/`.
 
-The included Dockerfile is Cloud Run-ready. Deployment is also intentionally
-approval-gated:
+The included Dockerfile is Cloud Run-ready. The public controlled-mode revision
+is deployed to the hosted URL above; production live mode remains fail-closed
+until Grafana MCP and the action boundary are configured through Secret Manager.
 
 ```bash
 gcloud config set project <dedicated-cutline-project>
 agents-cli deploy
 ```
 
-No deployment, billing mutation, or paid evaluation is performed by the local
-test workflow.
-
+The local test workflow never performs deployment, billing mutation, or paid
+evaluation.

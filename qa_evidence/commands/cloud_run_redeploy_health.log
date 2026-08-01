@@ -1,0 +1,14 @@
+Using project root directory: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+  ▸ gcloud run deploy cutline --project cutline-agentic-cinema --region us-central1 --source . --memory 1Gi --no-allow-unauthenticated --no-cpu-throttling --service-account cutline-runtime@cutline-agentic-cinema.iam.gserviceaccount.com --update-env-vars GOOGLE_GENAI_USE_VERTEXAI=TRUE,GOOGLE_CLOUD_PROJECT=cutline-agentic-cinema,GOOGLE_CLOUD_LOCATION=us-central1,CUTLINE_MODE=local,AGENT_VERSION=0.1.0,APP_URL=https://cutline-994258603452.us-central1.run.app --labels created-by=adk
+Building using Dockerfile and deploying container to Cloud Run service [cutline] in project [cutline-agentic-cinema] region [us-central1]
+Building and deploying...
+Validating configuration.........done
+Uploading sources.................done
+Building Container...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................done
+Setting IAM Policy..............done
+Creating Revision...............................................................................................................................................................................................................................................................................................................................done
+Routing traffic.....done
+Done.
+Service [cutline] revision [cutline-00002-d48] has been deployed and is serving 100 percent of traffic.
+Service URL: https://cutline-994258603452.us-central1.run.app
+Proxy locally with: gcloud run services proxy cutline --region us-central1 --project cutline-agentic-cinema

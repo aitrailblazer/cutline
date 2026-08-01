@@ -1,0 +1,22 @@
+CUTLINE hosted browser acceptance — 2026-07-31
+URL: https://cutline-vfz4s45c3q-uc.a.run.app/
+Browser: Edge DevTools MCP
+Result: PASS
+
+Verified in the accessibility tree after five sequential hosted workflows:
+- CUTLINE shell and skip link rendered.
+- Explicit LOCAL CONTROLLED disclosure rendered; no false live-evidence claim.
+- Final state VERIFIED with 0/18 shots at risk and 9 minutes early.
+- Eight evidence ledger items rendered with evidence IDs and mode labels.
+- Diagnosis includes hypothesis, alternative, discriminator, and falsifier.
+- Deterministic deadline arithmetic rendered.
+- Approval/action proposal, immutable receipt, and fresh verification report rendered.
+- Verification gates all true.
+
+Lighthouse navigation audit:
+- Accessibility 100
+- Best Practices 100
+- SEO 100
+- Agentic Browsing 100
+- 50 passed audits; one non-scored/remaining audit in full JSON report.
+Evidence: qa_evidence/reports/hosted_lighthouse.json and hosted_lighthouse.html

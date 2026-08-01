@@ -34,7 +34,7 @@ Tracker source: `feature_status_tracker.csv`
 - `app/adapters.py; app/service.py; app/api.py`
 - `app/service.py; app/api.py; app/web/app.js`
 - `app/api.py; app/web/index.html; app/web/app.js`
-- `app/api.py; Dockerfile`
+- `app/api.py; tests/integration/test_api.py; agents-cli-manifest.yaml; Cloud Run IAM policy`
 - `app/web/app.js; app/api.py; app/service.py`
 - `app/web/index.html; app/web/styles.css; app/web/app.js`
 - `app/web/styles.css; app/web/index.html`
@@ -45,7 +45,9 @@ Tracker source: `feature_status_tracker.csv`
 ## Commits Recorded In Tracker
 
 - `8db728e`
+- `2a53f46`
 - `cdaa0e2`
+- `1223c7e`
 
 ## Test Evidence
 

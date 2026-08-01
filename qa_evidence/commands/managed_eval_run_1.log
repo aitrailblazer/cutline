@@ -1,0 +1,110 @@
+─────────────────────────── Step 1/2: eval generate ────────────────────────────
+Syncing eval dependencies...
+  ▸ uv sync --dev --extra eval
+Resolved 172 packages in 19ms
+   Building rouge-score==0.1.2
+Downloading pandas (9.5MiB)
+Downloading litellm (16.2MiB)
+Downloading nltk (1.6MiB)
+Downloading openai (1.6MiB)
+Downloading hf-xet (3.7MiB)
+Downloading numpy (5.1MiB)
+Downloading tokenizers (2.9MiB)
+Downloading scikit-learn (7.9MiB)
+Downloading scipy (19.5MiB)
+      Built rouge-score==0.1.2
+ Downloaded nltk
+ Downloaded openai
+ Downloaded tokenizers
+ Downloaded hf-xet
+ Downloaded numpy
+ Downloaded scikit-learn
+ Downloaded pandas
+ Downloaded scipy
+ Downloaded litellm
+Prepared 26 packages in 2.69s
+Uninstalled 3 packages in 7ms
+Installed 26 packages in 150ms
+ + absl-py==2.5.0
+ - codespell==2.4.3
+ + defusedxml==0.7.1
+ + fastuuid==0.14.0
+ + filelock==3.32.2
+ + gepa==0.1.4
+ + hf-xet==1.5.2
+ + huggingface-hub==1.26.0
+ + jinja2==3.1.6
+ + jiter==0.16.0
+ + joblib==1.5.3
+ + litellm==1.85.7
+ + narwhals==2.24.0
+ + nltk==3.10.0
+ + numpy==2.5.1
+ + openai==2.52.0
+ + pandas==3.0.5
+ + regex==2026.7.19
+ + rouge-score==0.1.2
+ + ruamel-yaml==0.19.1
+ - ruff==0.16.1
+ + scikit-learn==1.9.0
+ + scipy==1.18.0
+ + tabulate==0.10.0
+ + threadpoolctl==3.6.0
+ + tiktoken==0.13.0
+ + tokenizers==0.23.1
+ + tqdm==4.70.0
+ - ty==0.0.65
+Running inference on dataset:
+/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/c
+utline/tests/eval/datasets/basic-dataset.json
+Using agent: app
+Project: cutline-agentic-cinema, region: us-central1
+  ▸ uv run python -u /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/.agents-cli-scripts/_inference_runner.py /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/app /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/tests/eval/datasets/basic-dataset.json /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/artifacts/traces/traces_20260731_165240.json
+[generate] loading dataset from /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/tests/eval/datasets/basic-dataset.json
+[generate] loaded 3 eval case(s)
+[generate] root_agent_name=cutline_release_assurance
+/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/.agents-cli-scripts/_inference_runner.py:253: FutureWarning: The vertexai.Client class is deprecated. Please use agentplatform.Client instead.
+  client = vertexai.Client(project=project, location=location)
+[generate] inference 1/3
+[92m16:53:04 - LiteLLM:WARNING[0m: common_utils.py:979 - litellm: could not pre-load bedrock-runtime response stream shape — Bedrock event-stream decoding will be unavailable. Error: No module named 'botocore'
+[92m16:53:05 - LiteLLM:WARNING[0m: common_utils.py:24 - litellm: could not pre-load sagemaker-runtime response stream shape — SageMaker event-stream decoding will be unavailable. Error: No module named 'botocore'
+
+Local Agent Run:   0%|          | 0/1 [00:00<?, ?it/s]App name mismatch detected. The runner is configured with app name "local_agent_run", but the root agent was loaded from "/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/app", which implies app name "app".
+Unexpected error during agent run on attempt 1/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+Unexpected error during agent run on attempt 2/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+Unexpected error during agent run on attempt 3/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+
+Local Agent Run: 100%|██████████| 1/1 [00:03<00:00,  3.64s/it]
+Local Agent Run: 100%|██████████| 1/1 [00:03<00:00,  3.64s/it]
+[generate] inference 1 FAILED: Inference returned no agent events. The agent's underlying calls may have failed silently (check stderr above for retried errors like PERMISSION_DENIED, NOT_FOUND, or quota).
+[generate] inference 2/3
+
+Local Agent Run:   0%|          | 0/1 [00:00<?, ?it/s]App name mismatch detected. The runner is configured with app name "local_agent_run", but the root agent was loaded from "/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/app", which implies app name "app".
+Unexpected error during agent run on attempt 1/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+Unexpected error during agent run on attempt 2/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+Unexpected error during agent run on attempt 3/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+
+Local Agent Run: 100%|██████████| 1/1 [00:03<00:00,  3.20s/it]
+Local Agent Run: 100%|██████████| 1/1 [00:03<00:00,  3.20s/it]
+[generate] inference 2 FAILED: Inference returned no agent events. The agent's underlying calls may have failed silently (check stderr above for retried errors like PERMISSION_DENIED, NOT_FOUND, or quota).
+[generate] inference 3/3
+
+Local Agent Run:   0%|          | 0/1 [00:00<?, ?it/s]App name mismatch detected. The runner is configured with app name "local_agent_run", but the root agent was loaded from "/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/app", which implies app name "app".
+Unexpected error during agent run on attempt 1/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+Unexpected error during agent run on attempt 2/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+Unexpected error during agent run on attempt 3/3: 404 NOT_FOUND. {'error': {'code': 404, 'message': 'Publisher model `projects/cutline-agentic-cinema/locations/us-central1/publishers/google/models/gemini-flash-latest` was not found or your project does not have access to it. Ensure you are using a valid model name and that the model is available in the specified region. For more information, see: https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/locations.', 'status': 'NOT_FOUND'}}
+
+Local Agent Run: 100%|██████████| 1/1 [00:03<00:00,  3.11s/it]
+Local Agent Run: 100%|██████████| 1/1 [00:03<00:00,  3.11s/it]
+[generate] inference 3 FAILED: Inference returned no agent events. The agent's underlying calls may have failed silently (check stderr above for retried errors like PERMISSION_DENIED, NOT_FOUND, or quota).
+
+[generate] Inference summary: 0/3 succeeded, 3 failed.
+[generate] Failed cases:
+  - case[0]: Inference returned no agent events. The agent's underlying calls may have failed silently (check stderr above for retried errors like PERMISSION_DENIED, NOT_FOUND, or quota).
+  - case[1]: Inference returned no agent events. The agent's underlying calls may have failed silently (check stderr above for retried errors like PERMISSION_DENIED, NOT_FOUND, or quota).
+  - case[2]: Inference returned no agent events. The agent's underlying calls may have failed silently (check stderr above for retried errors like PERMISSION_DENIED, NOT_FOUND, or quota).
+[generate] No artifact written: 0 of 3 cases produced output.
+/opt/homebrew/Caskroom/miniforge/base/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+agents-cli v0.3.0
+Error: Inference failed (exit code 1)

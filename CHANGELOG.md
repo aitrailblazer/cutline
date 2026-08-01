@@ -4,6 +4,16 @@
 
 - Added a top-level Apache-2.0 license so the public source repository satisfies
   the contest's open-source submission requirement.
+- Replaced the scaffold-only model alias with `gemini-2.5-flash`, fixed the
+  F-029 capability response, and set deterministic generation temperature.
+- Completed managed Vertex evaluation: all three cases were valid, with 100%
+  final-response-quality and safety pass rates.
+- Deployed revision `cutline-00002-d48` to a dedicated Google Cloud Run
+  project, added a portable `/health` endpoint, and restored the public invoker
+  policy after deployment.
+- Revalidated F-024 with five consecutive hosted workflows and a hosted
+  Lighthouse pass scoring 100 for accessibility, best practices, SEO, and
+  agentic browsing.
 
 ## 2026-07-31 — Initial feature-audit and implementation pass
 
