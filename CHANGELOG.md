@@ -14,6 +14,11 @@
 - Revalidated F-024 with five consecutive hosted workflows and a hosted
   Lighthouse pass scoring 100 for accessibility, best practices, SEO, and
   agentic browsing.
+- Added the F-031 authenticated Cloud Run action boundary with an allowlisted
+  recovery plan, Secret Manager-ready bearer authentication, and durable
+  Firestore idempotency for live mode.
+- Expanded the quality gate to 39 tests while retaining 100% statement and
+  branch coverage over the deterministic application scope.
 
 ## 2026-07-31 — Initial feature-audit and implementation pass
 

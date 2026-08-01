@@ -57,12 +57,17 @@ CUTLINE_MODE=live
 GRAFANA_MCP_URL=https://<hosted-grafana-mcp-endpoint>
 GRAFANA_MCP_TOKEN=<secret-manager-injected-token>
 CUTLINE_ACTION_URL=https://<cloud-run-action-service>
+CUTLINE_ACTION_TOKEN=<secret-manager-injected-action-token>
 ```
 
 The Grafana endpoint must expose these official MCP tool operations:
 `get_alert_rule_by_uid`, `query_prometheus`, `query_loki_logs`, and `get_trace`.
 Tool results must provide structured content with `summary`, `values`, and,
 when available, `observed_at`, `run_id`, and `id`.
+
+The live action route is authenticated, plan-allowlisted, and idempotent.
+Cloud Run stores action records with atomic-create semantics in Firestore, so
+retries return the original receipt and conflicting key reuse is rejected.
 
 ## Quality gates
 

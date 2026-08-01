@@ -1,0 +1,51 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 39 items
+
+tests/integration/test_api.py ........                                   [ 20%]
+tests/integration/test_workflow.py ............                          [ 51%]
+tests/unit/test_actions.py ....                                          [ 61%]
+tests/unit/test_adapters.py ........                                     [ 82%]
+tests/unit/test_agent_contract.py ..                                     [ 87%]
+tests/unit/test_domain.py .....                                          [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     489      0     50      0   100%
+
+6 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+============================== 39 passed in 2.23s ==============================
+All checks passed!
+unformatted: File would be reformatted
+   --> app/api.py:156:33
+    |
+155 |         if not expected:
+    -             raise HTTPException(status_code=503, detail="ACTION_BOUNDARY_NOT_CONFIGURED")
+156 +             raise HTTPException(
+157 +                 status_code=503, detail="ACTION_BOUNDARY_NOT_CONFIGURED"
+158 +             )
+159 |         if not secrets.compare_digest(supplied, f"Bearer {expected}"):
+    |
+
+unformatted: File would be reformatted
+   --> tests/integration/test_api.py:120:12
+    |
+119 |     assert invalid.status_code == 422
+    -     assert "action-secret" not in first.text + replay.text + conflict.text + invalid.text
+120 +     assert (
+121 +         "action-secret" not in first.text + replay.text + conflict.text + invalid.text
+122 +     )
+123 |
+    |
+
+2 files would be reformatted, 21 files already formatted

@@ -4,11 +4,11 @@ Tracker source: `feature_status_tracker.csv`
 
 ## Totals
 
-- Total features discovered: 30
-- Total verified before fixes: 30
-- Total failed before fixes: 30
+- Total features discovered: 31
+- Total verified before fixes: 31
+- Total failed before fixes: 31
 - Total fixed: 0
-- Total verified after retest: 30
+- Total verified after retest: 31
 - Total still blocked: 0
 - Total needing product decision: 0
 
@@ -41,6 +41,7 @@ Tracker source: `feature_status_tracker.csv`
 - `tests/integration/test_workflow.py; tests/integration/test_api.py`
 - `app/agent.py; tests/unit/test_agent_contract.py; tests/eval/datasets/basic-dataset.json`
 - `app/api.py; app/service.py; tests/integration/test_api.py`
+- `app/actions.py; app/api.py; app/adapters.py; tests/unit/test_actions.py; tests/unit/test_adapters.py; tests/integration/test_api.py; pyproject.toml; uv.lock; .env.example`
 
 ## Commits Recorded In Tracker
 
@@ -48,6 +49,7 @@ Tracker source: `feature_status_tracker.csv`
 - `2a53f46`
 - `cdaa0e2`
 - `1223c7e`
+- `6d3e13c`
 
 ## Test Evidence
 
