@@ -24,6 +24,15 @@
   synthesis on the run, and block approval if the provider is unavailable.
 - Expanded the quality gate to 44 tests at 100% statement and branch coverage;
   a real Vertex runner smoke also cited all four active evidence IDs.
+- Replaced the assumed Grafana calls with the current official
+  `grafana/mcp-grafana` contract: required-tool verification, datasource
+  discovery, Prometheus/Loki schemas, provider provenance checks, and private
+  Cloud Run service-identity authentication.
+- Expanded the quality gate to 46 tests, 651 statements, and 112 branches at
+  100% coverage.
+- Added a deployable, read-only private-Cloud-Run image wrapper pinned to the
+  official `grafana/mcp-grafana` OCI digest and verified the image builds
+  locally.
 
 ## 2026-07-31 — Initial feature-audit and implementation pass
 

@@ -24,8 +24,9 @@ will not, and preserve an auditable decision trail?
   execute, perform authoritative arithmetic, or declare success.
 - **FastAPI service**: deterministic workflow, impact arithmetic, approval
   invariants, idempotency, receipts, and verification gates.
-- **Grafana MCP**: protocol-native streamable-HTTP client for alert, Prometheus,
-  Loki, and trace evidence.
+- **Official Grafana MCP**: protocol-native streamable-HTTP client for a private
+  Cloud Run deployment of `grafana/mcp-grafana`, using service identity,
+  discovered datasource UIDs, and Prometheus/Loki evidence.
 - **Google Cloud Run action boundary**: the only live mutation path.
 - **Vanilla accessible web UI**: sequence-first command center with explicit
   controlled/live disclosure.
@@ -55,15 +56,24 @@ deployment. Never commit secrets.
 ```text
 CUTLINE_MODE=live
 GRAFANA_MCP_URL=https://<hosted-grafana-mcp-endpoint>
-GRAFANA_MCP_TOKEN=<secret-manager-injected-token>
+GRAFANA_MCP_TOKEN=
+GRAFANA_MCP_USE_GOOGLE_ID_TOKEN=true
+GRAFANA_MCP_AUDIENCE=https://<private-mcp-cloud-run-service>
 CUTLINE_ACTION_URL=https://<cloud-run-action-service>
 CUTLINE_ACTION_TOKEN=<secret-manager-injected-action-token>
 ```
 
-The Grafana endpoint must expose these official MCP tool operations:
-`get_alert_rule_by_uid`, `query_prometheus`, `query_loki_logs`, and `get_trace`.
-Tool results must provide structured content with `summary`, `values`, and,
-when available, `observed_at`, `run_id`, and `id`.
+The Grafana endpoint must expose the official `list_datasources`,
+`query_prometheus`, and `query_loki_logs` operations. CUTLINE uses their current
+official schemas, requires provider timestamps and `run_id` labels, and rejects
+missing, stale, malformed, or mismatched evidence instead of manufacturing
+provenance.
+
+`deploy/grafana-mcp/Dockerfile` pins the official Grafana MCP image used for the
+private Cloud Run evidence boundary. The MCP service receives its Grafana Cloud
+service-account token only from Secret Manager and is deployed with write tools
+disabled; CUTLINE authenticates to that private service with its Cloud Run
+identity token.
 
 The live action route is authenticated, plan-allowlisted, and idempotent.
 Cloud Run stores action records with atomic-create semantics in Firestore, so

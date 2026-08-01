@@ -1,0 +1,62 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 46 items
+
+tests/integration/test_api.py ..........                                 [ 21%]
+tests/integration/test_workflow.py .............                         [ 50%]
+tests/unit/test_actions.py ....                                          [ 58%]
+tests/unit/test_adapters.py ..........                                   [ 80%]
+tests/unit/test_agent_contract.py ..                                     [ 84%]
+tests/unit/test_agent_runtime.py ..                                      [ 89%]
+tests/unit/test_domain.py .....                                          [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     652      0    112      0   100%
+
+7 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+============================== 46 passed in 2.57s ==============================
+I001 [*] Import block is un-sorted or un-formatted
+  --> app/adapters.py:3:1
+   |
+ 1 |   """Evidence and action adapters with explicit local/live boundaries."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import json
+ 6 | | import os
+ 7 | | from abc import ABC, abstractmethod
+ 8 | | from asyncio import to_thread
+ 9 | | from datetime import UTC, datetime
+10 | | from datetime import timedelta
+11 | | from typing import Any
+12 | |
+13 | | import httpx
+14 | | from google.auth.transport.requests import Request as GoogleAuthRequest
+15 | | from google.oauth2.id_token import fetch_id_token
+16 | | from mcp import ClientSession
+17 | | from mcp.client.streamable_http import streamable_http_client
+18 | |
+19 | | from app.domain import Evidence, EvidenceMode, utcnow
+   | |_____________________________________________________^
+help: Organize imports
+   |
+8  | from asyncio import to_thread
+   - from datetime import UTC, datetime
+   - from datetime import timedelta
+9  + from datetime import UTC, datetime, timedelta
+10 | from typing import Any
+   |
+
+Found 1 error.
+[*] 1 fixable with the `--fix` option.

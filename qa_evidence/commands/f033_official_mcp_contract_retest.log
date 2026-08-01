@@ -1,0 +1,85 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 46 items
+
+tests/integration/test_api.py ..........                                 [ 21%]
+tests/integration/test_workflow.py .............                         [ 50%]
+tests/unit/test_actions.py ....                                          [ 58%]
+tests/unit/test_adapters.py ..........                                   [ 80%]
+tests/unit/test_agent_contract.py ..                                     [ 84%]
+tests/unit/test_agent_runtime.py ..                                      [ 89%]
+tests/unit/test_domain.py .....                                          [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     651      0    112      0   100%
+
+7 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+============================== 46 passed in 2.56s ==============================
+All checks passed!
+unformatted: File would be reformatted
+   --> app/adapters.py:126:37
+    |
+125 |         if self.use_google_identity and self.audience:
+    -             token = await to_thread(
+    -                 fetch_id_token, GoogleAuthRequest(), self.audience
+    -             )
+126 +             token = await to_thread(fetch_id_token, GoogleAuthRequest(), self.audience)
+127 |             return {"Authorization": f"Bearer {token}"}
+--------------------------------------------------------------------------------
+221 |             point = series.get("value")
+    -             if not isinstance(labels, dict) or not isinstance(point, list) or len(point) < 2:
+222 +             if (
+223 +                 not isinstance(labels, dict)
+224 +                 or not isinstance(point, list)
+225 +                 or len(point) < 2
+226 +             ):
+227 |                 continue
+--------------------------------------------------------------------------------
+313 |                     "datasourceUid": self._datasources["loki"],
+    -                     "logql": (
+    -                         f'{{service_name="cutline-workload",run_id="{run_id}"}}'
+    -                     ),
+314 +                     "logql": (f'{{service_name="cutline-workload",run_id="{run_id}"}}'),
+315 |                     "startRfc3339": "now-15m",
+    |
+
+unformatted: File would be reformatted
+   --> tests/unit/test_adapters.py:174:50
+    |
+173 |     monkeypatch.setattr("app.adapters.fetch_id_token", lambda *_args: "id-token")
+    -     assert await identity_adapter._headers() == {
+    -         "Authorization": "Bearer id-token"
+    -     }
+174 +     assert await identity_adapter._headers() == {"Authorization": "Bearer id-token"}
+175 |     identity_adapter.use_google_identity = False
+--------------------------------------------------------------------------------
+215 |         LiveGrafanaMCPAdapter._timestamp("not-time")
+    -     assert LiveGrafanaMCPAdapter._timestamp(
+    -         int(timestamp * 1_000_000_000)
+    -     ).tzinfo is not None
+216 +     assert (
+217 +         LiveGrafanaMCPAdapter._timestamp(int(timestamp * 1_000_000_000)).tzinfo
+218 +         is not None
+219 +     )
+220 |
+--------------------------------------------------------------------------------
+235 |     with pytest.raises(EvidenceUnavailable, match="METRIC_PROVENANCE_INVALID"):
+    -         LiveGrafanaMCPAdapter._metric_evidence(
+    -             invalid_series, "run-12345678", "pre"
+    -         )
+236 +         LiveGrafanaMCPAdapter._metric_evidence(invalid_series, "run-12345678", "pre")
+237 |
+    |
+
+2 files would be reformatted, 23 files already formatted
