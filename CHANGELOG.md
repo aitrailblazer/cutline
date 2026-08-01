@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-07-31 — Live Grafana MCP audit closure
+
+- Created least-privilege Grafana Viewer and telemetry-writer credentials,
+  stored their replacements in GCP Secret Manager, and deployed the official
+  pinned `grafana/mcp-grafana` image as a private Cloud Run service.
+- Added bounded Prometheus remote-write and Loki publishing for the controlled
+  release scenario, using a write-only token that is isolated from the MCP
+  service account.
+- Corrected live integration defects found during hosted testing: PromQL
+  same-label de-duplication, ambiguous datasource selection, official
+  list-shaped metric payloads, and quoted nanosecond Loki timestamps.
+- Completed hosted run `28d84011-b821-4574-a2bc-15ff0b38d24c` on revision
+  `cutline-00009-kh2`: real pre/post Grafana evidence, Gemini 2.5 Flash
+  synthesis, approval, authenticated Cloud Run execution, six passing
+  verification gates, and a final `VERIFIED` state.
+- Expanded the deterministic quality gate to 51 tests, 731 statements, and 128
+  branches at 100% coverage.
+- Closed F-032 and F-033 as Verified and regenerated the canonical CSV
+  tracker plus its XLSX and self-contained HTML views; all 33 tracked stories
+  are now Verified.
+
 ## 2026-07-31 — Submission compliance
 
 - Added a top-level Apache-2.0 license so the public source repository satisfies
