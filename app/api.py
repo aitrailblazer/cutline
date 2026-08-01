@@ -3,13 +3,21 @@
 from __future__ import annotations
 
 import os
+import secrets
 from pathlib import Path
+from typing import Literal
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
+from app.actions import (
+    ActionBoundaryError,
+    ActionRecordStore,
+    action_store_from_environment,
+    execute_recovery_action,
+)
 from app.adapters import (
     CloudRunActionExecutor,
     LiveGrafanaMCPAdapter,
@@ -31,6 +39,13 @@ class ExecuteRequest(BaseModel):
     idempotency_key: str = Field(min_length=8, max_length=120)
 
 
+class LiveActionRequest(BaseModel):
+    run_id: str = Field(min_length=8, max_length=80)
+    approval_id: str = Field(min_length=8, max_length=80)
+    idempotency_key: str = Field(min_length=8, max_length=120)
+    plan_version: Literal["sq42-recovery-v1"]
+
+
 def service_from_environment() -> CutlineService:
     live = os.getenv("CUTLINE_MODE", "local").lower() == "live"
     if live:
@@ -38,13 +53,17 @@ def service_from_environment() -> CutlineService:
     return CutlineService(LocalGrafanaAdapter(), LocalActionExecutor())
 
 
-def create_app(service: CutlineService | None = None) -> FastAPI:
+def create_app(
+    service: CutlineService | None = None,
+    action_store: ActionRecordStore | None = None,
+) -> FastAPI:
     app = FastAPI(
         title="CUTLINE",
         description="Release assurance for agentic cinema",
         version="1.0.0",
     )
     app.state.cutline = service or service_from_environment()
+    app.state.action_store = action_store or action_store_from_environment()
     app.mount("/assets", StaticFiles(directory=WEB), name="assets")
 
     @app.exception_handler(WorkflowError)
@@ -79,6 +98,7 @@ def create_app(service: CutlineService | None = None) -> FastAPI:
             os.getenv("GRAFANA_MCP_URL")
             and os.getenv("GRAFANA_MCP_TOKEN")
             and os.getenv("CUTLINE_ACTION_URL")
+            and os.getenv("CUTLINE_ACTION_TOKEN")
         )
         blockers = list(scenario.blockers)
         if live and not configured:
@@ -127,6 +147,27 @@ def create_app(service: CutlineService | None = None) -> FastAPI:
     @app.get("/api/audit")
     async def audit():
         return app.state.cutline.audit()
+
+    @app.post("/internal/actions/sq42-recovery")
+    async def live_action(request: Request, action: LiveActionRequest):
+        expected = os.getenv("CUTLINE_ACTION_TOKEN")
+        supplied = request.headers.get("authorization", "")
+        if not expected:
+            raise HTTPException(
+                status_code=503, detail="ACTION_BOUNDARY_NOT_CONFIGURED"
+            )
+        if not secrets.compare_digest(supplied, f"Bearer {expected}"):
+            raise HTTPException(status_code=401, detail="ACTION_BOUNDARY_UNAUTHORIZED")
+        try:
+            return await execute_recovery_action(
+                app.state.action_store,
+                run_id=action.run_id,
+                approval_id=action.approval_id,
+                idempotency_key=action.idempotency_key,
+                plan_version=action.plan_version,
+            )
+        except ActionBoundaryError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
 
     return app
 

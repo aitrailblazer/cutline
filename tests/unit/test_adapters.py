@@ -108,7 +108,7 @@ async def test_live_adapters_parse_success(monkeypatch):
     assert all(item.source_mode == EvidenceMode.LIVE for item in evidence)
     monkeypatch.setattr(httpx, "AsyncClient", FakeClient)
     FakeClient.response = FakeResponse({"executor_mode": "CLOUD_RUN", "transition": {}})
-    result = await CloudRunActionExecutor("https://action").execute(
+    result = await CloudRunActionExecutor("https://action", "token").execute(
         run_id="run", approval_id="approval", idempotency_key="12345678"
     )
     assert result["executor_mode"] == "CLOUD_RUN"
@@ -138,6 +138,6 @@ async def test_live_adapter_failures(monkeypatch, response, adapter, error):
         monkeypatch.setattr(httpx, "AsyncClient", FakeClient)
         FakeClient.response = response
         with pytest.raises(ActionUnavailable, match=error):
-            await CloudRunActionExecutor("https://action").execute(
+            await CloudRunActionExecutor("https://action", "token").execute(
                 run_id="run", approval_id="approval", idempotency_key="12345678"
             )

@@ -216,16 +216,20 @@ class LocalActionExecutor(ActionExecutor):
 
 
 class CloudRunActionExecutor(ActionExecutor):
-    def __init__(self, url: str | None = None) -> None:
+    def __init__(self, url: str | None = None, token: str | None = None) -> None:
         self.url = url or os.getenv("CUTLINE_ACTION_URL")
+        self.token = token or os.getenv("CUTLINE_ACTION_TOKEN")
 
     async def execute(
         self, *, run_id: str, approval_id: str, idempotency_key: str
     ) -> dict[str, Any]:
-        if not self.url:
+        if not self.url or not self.token:
             raise ActionUnavailable("CLOUD_RUN_ACTION_NOT_CONFIGURED")
         try:
-            async with httpx.AsyncClient(timeout=20) as client:
+            async with httpx.AsyncClient(
+                timeout=20,
+                headers={"Authorization": f"Bearer {self.token}"},
+            ) as client:
                 response = await client.post(
                     self.url,
                     json={

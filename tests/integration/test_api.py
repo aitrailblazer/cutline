@@ -1,5 +1,6 @@
 from fastapi.testclient import TestClient
 
+from app.actions import MemoryActionRecordStore
 from app.adapters import CloudRunActionExecutor, LiveGrafanaMCPAdapter
 from app.api import create_app, service_from_environment
 from app.domain import EvidenceMode
@@ -76,12 +77,72 @@ def test_environment_service_modes(monkeypatch):
     monkeypatch.setenv("GRAFANA_MCP_URL", "https://example")
     monkeypatch.setenv("GRAFANA_MCP_TOKEN", "secret")
     monkeypatch.setenv("CUTLINE_ACTION_URL", "https://action")
+    monkeypatch.setenv("CUTLINE_ACTION_TOKEN", "action-secret")
     ready = (
         TestClient(create_app(service_from_environment())).get("/api/readiness").json()
     )
     assert ready["ready"] is True
     monkeypatch.setenv("CUTLINE_MODE", "local")
     assert service_from_environment().get().mode == EvidenceMode.LOCAL
+
+
+def test_live_action_boundary_auth_validation_and_idempotency(client, monkeypatch):
+    payload = {
+        "run_id": "run-12345678",
+        "approval_id": "approval-12345678",
+        "idempotency_key": "action-key-12345678",
+        "plan_version": "sq42-recovery-v1",
+    }
+    path = "/internal/actions/sq42-recovery"
+    assert client.post(path, json=payload).status_code == 503
+    monkeypatch.setenv("CUTLINE_ACTION_TOKEN", "action-secret")
+    assert client.post(path, json=payload).status_code == 401
+    headers = {"Authorization": "Bearer action-secret"}
+    first = client.post(path, headers=headers, json=payload)
+    assert first.status_code == 200
+    assert first.json()["executor_mode"] == "CLOUD_RUN"
+    assert first.json()["replayed"] is False
+    replay = client.post(path, headers=headers, json=payload)
+    assert replay.json()["replayed"] is True
+    conflict = client.post(
+        path,
+        headers=headers,
+        json={**payload, "approval_id": "approval-different"},
+    )
+    assert conflict.status_code == 409
+    assert conflict.json()["detail"] == "IDEMPOTENCY_KEY_REUSE"
+    invalid = client.post(
+        path,
+        headers=headers,
+        json={**payload, "plan_version": "unapproved"},
+    )
+    assert invalid.status_code == 422
+    assert (
+        "action-secret" not in first.text + replay.text + conflict.text + invalid.text
+    )
+
+
+def test_live_action_boundary_handler_conflict(monkeypatch, service):
+    class RejectingStore(MemoryActionRecordStore):
+        async def create_or_get(self, *_args):
+            from app.actions import ActionBoundaryError
+
+            raise ActionBoundaryError("STORE_CONFLICT")
+
+    monkeypatch.setenv("CUTLINE_ACTION_TOKEN", "action-secret")
+    client = TestClient(create_app(service, RejectingStore()))
+    response = client.post(
+        "/internal/actions/sq42-recovery",
+        headers={"Authorization": "Bearer action-secret"},
+        json={
+            "run_id": "run-12345678",
+            "approval_id": "approval-12345678",
+            "idempotency_key": "action-key-12345678",
+            "plan_version": "sq42-recovery-v1",
+        },
+    )
+    assert response.status_code == 409
+    assert response.json()["detail"] == "STORE_CONFLICT"
 
 
 def test_five_consecutive_api_runs(client):
