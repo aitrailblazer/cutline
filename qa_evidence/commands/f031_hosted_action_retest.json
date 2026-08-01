@@ -1,0 +1,27 @@
+{
+  "conflict_status": 409,
+  "first": {
+    "annotation_id": "annotation-hosted-a",
+    "executor_mode": "CLOUD_RUN",
+    "replayed": false,
+    "transition": {
+      "concurrency_after": 1,
+      "concurrency_before": 3,
+      "reserve_workers_after": 4,
+      "reserve_workers_before": 0
+    }
+  },
+  "replay": {
+    "annotation_id": "annotation-hosted-a",
+    "executor_mode": "CLOUD_RUN",
+    "replayed": true,
+    "transition": {
+      "concurrency_after": 1,
+      "concurrency_before": 3,
+      "reserve_workers_after": 4,
+      "reserve_workers_before": 0
+    }
+  },
+  "revision": "cutline-00003-s2x",
+  "unauthorized_status": 401
+}

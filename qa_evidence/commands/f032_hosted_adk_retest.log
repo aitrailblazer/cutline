@@ -1,0 +1,117 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 44 items
+
+tests/integration/test_api.py ..........                                 [ 22%]
+tests/integration/test_workflow.py .............                         [ 52%]
+tests/unit/test_actions.py ....                                          [ 61%]
+tests/unit/test_adapters.py ........                                     [ 79%]
+tests/unit/test_agent_contract.py ..                                     [ 84%]
+tests/unit/test_agent_runtime.py ..                                      [ 88%]
+tests/unit/test_domain.py .....                                          [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     554      0     68      0   100%
+
+7 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+============================== 44 passed in 2.27s ==============================
+UP035 [*] Import from `collections.abc` instead: `Callable`
+ --> app/agent_runtime.py:6:1
+  |
+5 | from abc import ABC, abstractmethod
+6 | from typing import Any, Callable
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7 |
+8 | from google.adk.runners import InMemoryRunner
+  |
+help: Import from `collections.abc`
+  |
+5 | from abc import ABC, abstractmethod
+  - from typing import Any, Callable
+6 + from typing import Any
+7 + from collections.abc import Callable
+8 |
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> app/api.py:3:1
+   |
+ 1 |   """CUTLINE FastAPI product surface."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import os
+ 6 | | import secrets
+ 7 | | from pathlib import Path
+ 8 | | from typing import Literal
+ 9 | |
+10 | | from fastapi import FastAPI, HTTPException, Request
+11 | | from fastapi.responses import FileResponse, JSONResponse
+12 | | from fastapi.staticfiles import StaticFiles
+13 | | from pydantic import BaseModel, Field
+14 | |
+15 | | from app.actions import (
+16 | |     ActionBoundaryError,
+17 | |     ActionRecordStore,
+18 | |     action_store_from_environment,
+19 | |     execute_recovery_action,
+20 | | )
+21 | | from app.agent_runtime import (
+22 | |     ADKHostedInvestigator,
+23 | |     AgentSynthesisUnavailable,
+24 | |     HostedInvestigator,
+25 | | )
+26 | | from app.adapters import (
+27 | |     CloudRunActionExecutor,
+28 | |     LiveGrafanaMCPAdapter,
+29 | |     LocalActionExecutor,
+30 | |     LocalGrafanaAdapter,
+31 | | )
+32 | | from app.domain import EvidenceMode
+33 | | from app.service import CutlineService, WorkflowError
+   | |_____________________________________________________^
+34 |
+35 |   WEB = Path(__file__).parent / "web"
+   |
+help: Organize imports
+   |
+20 | )
+   - from app.agent_runtime import (
+   -     ADKHostedInvestigator,
+   -     AgentSynthesisUnavailable,
+   -     HostedInvestigator,
+   - )
+21 | from app.adapters import (
+--------------------------------------------------------------------------------
+26 | )
+27 + from app.agent_runtime import (
+28 +     ADKHostedInvestigator,
+29 +     AgentSynthesisUnavailable,
+30 +     HostedInvestigator,
+31 + )
+32 | from app.domain import EvidenceMode
+   |
+
+RUF012 Mutable default value for class attribute
+  --> tests/unit/test_agent_runtime.py:28:14
+   |
+27 | class FakeRunner:
+28 |     events = []
+   |              ^^
+29 |     run_error = None
+   |
+help: Consider initializing in `__init__` or annotating with `typing.ClassVar`
+
+Found 3 errors.
+[*] 2 fixable with the `--fix` option.

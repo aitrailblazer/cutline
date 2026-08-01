@@ -1,0 +1,1 @@
+{"ready":false,"mode":"LIVE_GRAFANA_MCP","run_id":"df12332b-7878-4d0e-ac70-bf4191e1e32a","state":"READY","blockers":["LIVE_RUNTIME_CONFIGURATION_INCOMPLETE"],"disclosure":"Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."}

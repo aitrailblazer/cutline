@@ -1,0 +1,12 @@
+{
+  "result": "PASS",
+  "run_id": "0431365a-4c91-4848-ac94-c72583e8e6c6",
+  "model": "gemini-2.5-flash",
+  "evidence_ids": [
+    "pre-1-0431365a",
+    "pre-2-0431365a",
+    "pre-3-0431365a",
+    "pre-4-0431365a"
+  ],
+  "synthesis": "**Observations:**\n*   A `RenderDeadlineRiskHigh` alert is active (evidence ID: `pre-1-0431365a`).\n*   The current backlog is 4800 frames, with a throughput of 120 frames/minute, a GPU memory ratio of 0.98, and a retry rate of 12 (evidence ID: `pre-2-0431365a`).\n*   CUDA Out Of Memory (OOM) persists in release `2026.07.31-rc3` (evidence ID: `pre-3-0431365a`).\n*   Traces show `render_shot` operations calling `texture_load` (evidence ID: `pre-4-0431365a`).\n*   The release is currently 16 minutes late for its 24-minute deadline, with 12 of 18 shots \"AT RISK\".\n*   The current state is `AWAITING_APPROVAL`.\n\n**Leading Hypothesis:**\nThe RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm (evidence IDs: `pre-1-0431365a`, `pre-2-0431365a`, `pre-3-0431365a`, `pre-4-0431365a`).\n\n**Strongest Alternative:**\nA specific SQ-42 texture asset increased per-shot memory pressure.\n\n**Falsifier:**\nOOM continues at the same rate after rollback to concurrency 1."
+}

@@ -1,0 +1,49 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 44 items
+
+tests/integration/test_api.py ..........                                 [ 22%]
+tests/integration/test_workflow.py .............                         [ 52%]
+tests/unit/test_actions.py ....                                          [ 61%]
+tests/unit/test_adapters.py ........                                     [ 79%]
+tests/unit/test_agent_contract.py ..                                     [ 84%]
+tests/unit/test_agent_runtime.py ..                                      [ 88%]
+tests/unit/test_domain.py .....                                          [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     555      0     68      0   100%
+
+7 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+============================== 44 passed in 2.55s ==============================
+All checks passed!
+unformatted: File would be reformatted
+   --> app/api.py:74:8
+    |
+73  |     app.state.investigator = investigator
+    -     if app.state.investigator is None and app.state.cutline.get().mode == EvidenceMode.LIVE:
+74  +     if (
+75  +         app.state.investigator is None
+76  +         and app.state.cutline.get().mode == EvidenceMode.LIVE
+77  +     ):
+78  |         app.state.investigator = ADKHostedInvestigator()
+--------------------------------------------------------------------------------
+141 |             synthesis = await app.state.investigator.synthesize(scenario.run_id)
+    -             return app.state.cutline.record_agent_synthesis(
+    -                 scenario.run_id, synthesis
+    -             )
+142 +             return app.state.cutline.record_agent_synthesis(scenario.run_id, synthesis)
+143 |         except AgentSynthesisUnavailable as exc:
+    |
+
+1 file would be reformatted, 24 files already formatted

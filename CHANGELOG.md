@@ -19,6 +19,11 @@
   Firestore idempotency for live mode.
 - Expanded the quality gate to 39 tests while retaining 100% statement and
   branch coverage over the deterministic application scope.
+- Added the F-032 live-only ADK runtime path: hosted investigations now require
+  Gemini 2.5 Flash synthesis after evidence collection, persist the bounded
+  synthesis on the run, and block approval if the provider is unavailable.
+- Expanded the quality gate to 44 tests at 100% statement and branch coverage;
+  a real Vertex runner smoke also cited all four active evidence IDs.
 
 ## 2026-07-31 — Initial feature-audit and implementation pass
 

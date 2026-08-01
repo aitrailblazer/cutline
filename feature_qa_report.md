@@ -4,17 +4,17 @@ Tracker source: `feature_status_tracker.csv`
 
 ## Totals
 
-- Total features discovered: 31
+- Total features discovered: 32
 - Total verified before fixes: 31
-- Total failed before fixes: 31
-- Total fixed: 0
+- Total failed before fixes: 32
+- Total fixed: 1
 - Total verified after retest: 31
 - Total still blocked: 0
 - Total needing product decision: 0
 
 ## Unresolved Critical Or High
 
-- None
+- F-032 `Hosted ADK Gemini investigation` — Critical — Retest Required
 
 ## Files Changed Or Audited
 
@@ -42,6 +42,7 @@ Tracker source: `feature_status_tracker.csv`
 - `app/agent.py; tests/unit/test_agent_contract.py; tests/eval/datasets/basic-dataset.json`
 - `app/api.py; app/service.py; tests/integration/test_api.py`
 - `app/actions.py; app/api.py; app/adapters.py; tests/unit/test_actions.py; tests/unit/test_adapters.py; tests/integration/test_api.py; pyproject.toml; uv.lock; .env.example`
+- `app/agent_runtime.py; app/api.py; app/domain.py; app/service.py; app/web/app.js; tests/unit/test_agent_runtime.py; tests/integration/test_api.py; tests/integration/test_workflow.py`
 
 ## Commits Recorded In Tracker
 
@@ -50,6 +51,7 @@ Tracker source: `feature_status_tracker.csv`
 - `cdaa0e2`
 - `1223c7e`
 - `6d3e13c`
+- `3212e19`
 
 ## Test Evidence
 
@@ -62,4 +64,4 @@ Tracker source: `feature_status_tracker.csv`
 
 ## Recommended Next Pass
 
-- Continue using the tracker loop for the next repo improvement and regenerate the workbook/report artifacts after changes.
+- Resolve the remaining unresolved critical/high rows before expanding scope.
