@@ -1,3 +1,5 @@
+from typing import Any
+
 from fastapi.testclient import TestClient
 
 from app.actions import MemoryActionRecordStore
@@ -156,7 +158,9 @@ def test_live_action_boundary_auth_validation_and_idempotency(client, monkeypatc
 
 def test_live_action_boundary_handler_conflict(monkeypatch, service):
     class RejectingStore(MemoryActionRecordStore):
-        async def create_or_get(self, *_args):
+        async def create_or_get(
+            self, idempotency_key: str, fingerprint: str, record: dict[str, Any]
+        ) -> tuple[dict[str, Any], bool]:
             from app.actions import ActionBoundaryError
 
             raise ActionBoundaryError("STORE_CONFLICT")
