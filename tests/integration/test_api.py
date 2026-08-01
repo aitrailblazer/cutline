@@ -9,6 +9,7 @@ def test_index_health_readiness_and_assets(client):
     assert client.get("/").status_code == 200
     assert "SQ-42 release command" in client.get("/").text
     assert client.get("/assets/app.js").status_code == 200
+    assert client.get("/health").json() == {"status": "ok"}
     assert client.get("/healthz").json() == {"status": "ok"}
     readiness = client.get("/api/readiness").json()
     assert readiness["ready"] is True

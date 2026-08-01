@@ -66,6 +66,7 @@ def create_app(service: CutlineService | None = None) -> FastAPI:
     async def index() -> FileResponse:
         return FileResponse(WEB / "index.html")
 
+    @app.get("/health")
     @app.get("/healthz")
     async def health() -> dict[str, str]:
         return {"status": "ok"}
