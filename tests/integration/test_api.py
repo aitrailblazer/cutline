@@ -4,6 +4,7 @@ from app.actions import MemoryActionRecordStore
 from app.adapters import (
     CloudRunActionExecutor,
     LiveGrafanaMCPAdapter,
+    LiveGrafanaTelemetryPublisher,
     LocalActionExecutor,
     LocalGrafanaAdapter,
 )
@@ -93,14 +94,22 @@ def test_environment_service_modes(monkeypatch):
     service = service_from_environment()
     assert isinstance(service.evidence_adapter, LiveGrafanaMCPAdapter)
     assert isinstance(service.executor, CloudRunActionExecutor)
+    assert isinstance(service.telemetry, LiveGrafanaTelemetryPublisher)
     client = TestClient(create_app(service))
     readiness = client.get("/api/readiness").json()
     assert readiness["ready"] is False
     assert "LIVE_RUNTIME_CONFIGURATION_INCOMPLETE" in readiness["blockers"]
     monkeypatch.setenv("GRAFANA_MCP_URL", "https://example")
     monkeypatch.setenv("GRAFANA_MCP_TOKEN", "secret")
+    monkeypatch.setenv("GRAFANA_PROMETHEUS_DATASOURCE_UID", "prom")
+    monkeypatch.setenv("GRAFANA_LOKI_DATASOURCE_UID", "loki")
     monkeypatch.setenv("CUTLINE_ACTION_URL", "https://action")
     monkeypatch.setenv("CUTLINE_ACTION_TOKEN", "action-secret")
+    monkeypatch.setenv("GRAFANA_PROMETHEUS_PUSH_URL", "https://prom/push")
+    monkeypatch.setenv("GRAFANA_PROMETHEUS_USER", "prom-user")
+    monkeypatch.setenv("GRAFANA_LOKI_PUSH_URL", "https://loki/push")
+    monkeypatch.setenv("GRAFANA_LOKI_USER", "loki-user")
+    monkeypatch.setenv("GRAFANA_TELEMETRY_TOKEN", "telemetry-secret")
     ready = (
         TestClient(create_app(service_from_environment())).get("/api/readiness").json()
     )

@@ -1,4 +1,5 @@
 from types import SimpleNamespace
+from typing import ClassVar
 
 import httpx
 import pytest
@@ -8,6 +9,7 @@ from app.adapters import (
     CloudRunActionExecutor,
     EvidenceUnavailable,
     LiveGrafanaMCPAdapter,
+    LiveGrafanaTelemetryPublisher,
     LocalActionExecutor,
     LocalGrafanaAdapter,
 )
@@ -93,6 +95,78 @@ class FakeClient:
         return self.response
 
 
+class RecordingClient:
+    responses: ClassVar[list[FakeResponse]] = [FakeResponse({}), FakeResponse({})]
+    calls: ClassVar[list[tuple[str, dict]]] = []
+
+    def __init__(self, **_kwargs):
+        pass
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *_args):
+        return None
+
+    async def post(self, url, **kwargs):
+        self.calls.append((url, kwargs))
+        return self.responses[len(self.calls) - 1]
+
+
+@pytest.mark.asyncio
+async def test_live_telemetry_publisher_success_and_encoding(monkeypatch):
+    monkeypatch.setattr(httpx, "AsyncClient", RecordingClient)
+    RecordingClient.calls = []
+    RecordingClient.responses = [FakeResponse({}), FakeResponse({})]
+    publisher = LiveGrafanaTelemetryPublisher(
+        prometheus_url="https://prom/push",
+        prometheus_user="prom-user",
+        loki_url="https://loki/push",
+        loki_user="loki-user",
+        token="write-only-token",
+    )
+    await publisher.publish("run-12345678", False)
+    assert [call[0] for call in RecordingClient.calls] == [
+        "https://prom/push",
+        "https://loki/push",
+    ]
+    metric_request = RecordingClient.calls[0][1]
+    assert metric_request["headers"]["Content-Encoding"] == "snappy"
+    assert b"cutline_release_backlog_frames" in metric_request["content"]
+    log_request = RecordingClient.calls[1][1]
+    stream = log_request["json"]["streams"][0]
+    assert stream["stream"]["run_id"] == "run-12345678"
+    assert stream["values"][0][1] == '{"oom":true,"event":"render_status"}'
+    assert LiveGrafanaTelemetryPublisher._varint(128) == b"\x80\x01"
+    assert LiveGrafanaTelemetryPublisher._snappy_literal(b"x") == b"\x01\x00x"
+
+    RecordingClient.calls = []
+    await publisher.publish("run-12345678", True)
+    assert (
+        RecordingClient.calls[1][1]["json"]["streams"][0]["values"][0][1]
+        == '{"oom":false,"event":"render_status"}'
+    )
+
+
+@pytest.mark.asyncio
+async def test_live_telemetry_publisher_guards(monkeypatch):
+    monkeypatch.delenv("GRAFANA_PROMETHEUS_PUSH_URL", raising=False)
+    with pytest.raises(EvidenceUnavailable, match="TELEMETRY_NOT_CONFIGURED"):
+        await LiveGrafanaTelemetryPublisher().publish("run", False)
+
+    monkeypatch.setattr(httpx, "AsyncClient", RecordingClient)
+    RecordingClient.calls = []
+    RecordingClient.responses = [FakeResponse({}, error=True), FakeResponse({})]
+    with pytest.raises(EvidenceUnavailable, match="TELEMETRY_PUBLISH_FAILED"):
+        await LiveGrafanaTelemetryPublisher(
+            prometheus_url="https://prom/push",
+            prometheus_user="prom-user",
+            loki_url="https://loki/push",
+            loki_user="loki-user",
+            token="write-only-token",
+        ).publish("run", False)
+
+
 @pytest.mark.asyncio
 async def test_live_adapters_parse_success(monkeypatch):
     timestamp = utcnow().timestamp()
@@ -164,7 +238,109 @@ async def test_live_adapters_parse_success(monkeypatch):
 
 
 @pytest.mark.asyncio
+async def test_live_grafana_retries_eventual_consistency(monkeypatch):
+    timestamp = utcnow().timestamp()
+    calls = {"metrics": 0, "sleep": 0}
+
+    async def fake_session_call(_self, _name, _arguments=None):
+        return SimpleNamespace(
+            tools=[
+                SimpleNamespace(name="list_datasources"),
+                SimpleNamespace(name="query_prometheus"),
+                SimpleNamespace(name="query_loki_logs"),
+            ]
+        )
+
+    async def fake_call(_self, name, _arguments):
+        if name == "list_datasources":
+            return {
+                "datasources": [
+                    {"uid": "prom", "type": "prometheus"},
+                    {"uid": "loki", "type": "loki"},
+                ]
+            }
+        if name == "query_prometheus":
+            calls["metrics"] += 1
+            if calls["metrics"] == 1:
+                return {"data": {"result": []}}
+            return {
+                "data": {
+                    "result": [
+                        {
+                            "metric": {
+                                "__name__": "cutline_release_backlog_frames",
+                                "run_id": "run-12345678",
+                            },
+                            "value": [timestamp, "4800"],
+                        },
+                        {
+                            "metric": {
+                                "__name__": "cutline_render_throughput_fpm",
+                                "run_id": "run-12345678",
+                            },
+                            "value": [timestamp, "320"],
+                        },
+                    ]
+                }
+            }
+        return {
+            "data": [
+                {
+                    "timestamp": timestamp,
+                    "line": '{"oom":false}',
+                    "labels": {"run_id": "run-12345678"},
+                }
+            ]
+        }
+
+    async def fake_sleep(_seconds):
+        calls["sleep"] += 1
+
+    monkeypatch.setattr(LiveGrafanaMCPAdapter, "_session_call", fake_session_call)
+    monkeypatch.setattr(LiveGrafanaMCPAdapter, "_call_tool", fake_call)
+    monkeypatch.setattr("app.adapters.sleep", fake_sleep)
+    result = await LiveGrafanaMCPAdapter("https://mcp", "token").collect(
+        "run-12345678", True
+    )
+    assert len(result) == 2
+    assert calls == {"metrics": 2, "sleep": 1}
+
+
+@pytest.mark.asyncio
+async def test_live_grafana_stops_after_retry_exhaustion(monkeypatch):
+    async def fake_session_call(_self, _name, _arguments=None):
+        return SimpleNamespace(
+            tools=[
+                SimpleNamespace(name="list_datasources"),
+                SimpleNamespace(name="query_prometheus"),
+                SimpleNamespace(name="query_loki_logs"),
+            ]
+        )
+
+    async def fake_call(_self, name, _arguments):
+        if name == "list_datasources":
+            return {
+                "datasources": [
+                    {"uid": "prom", "type": "prometheus"},
+                    {"uid": "loki", "type": "loki"},
+                ]
+            }
+        return {"data": {"result": []}} if name == "query_prometheus" else {"data": []}
+
+    async def fake_sleep(_seconds):
+        return None
+
+    monkeypatch.setattr(LiveGrafanaMCPAdapter, "_session_call", fake_session_call)
+    monkeypatch.setattr(LiveGrafanaMCPAdapter, "_call_tool", fake_call)
+    monkeypatch.setattr("app.adapters.sleep", fake_sleep)
+    with pytest.raises(EvidenceUnavailable, match="METRIC_EVIDENCE_MISSING"):
+        await LiveGrafanaMCPAdapter("https://mcp", "token").collect("run", False)
+
+
+@pytest.mark.asyncio
 async def test_live_grafana_auth_tool_and_datasource_guards(monkeypatch):
+    monkeypatch.delenv("GRAFANA_PROMETHEUS_DATASOURCE_UID", raising=False)
+    monkeypatch.delenv("GRAFANA_LOKI_DATASOURCE_UID", raising=False)
     token_adapter = LiveGrafanaMCPAdapter("https://mcp", "token")
     assert await token_adapter._headers() == {"Authorization": "Bearer token"}
 
@@ -186,6 +362,12 @@ async def test_live_grafana_auth_tool_and_datasource_guards(monkeypatch):
 
     identity_adapter._datasources = {"prometheus": "p", "loki": "l"}
     await identity_adapter._discover_datasources()
+    monkeypatch.setenv("GRAFANA_PROMETHEUS_DATASOURCE_UID", "configured-prom")
+    monkeypatch.setenv("GRAFANA_LOKI_DATASOURCE_UID", "configured-loki")
+    assert LiveGrafanaMCPAdapter("https://mcp")._datasources == {
+        "prometheus": "configured-prom",
+        "loki": "configured-loki",
+    }
     identity_adapter._datasources = {}
 
     async def malformed_datasources(_name, _arguments):
@@ -217,9 +399,34 @@ def test_live_grafana_provider_evidence_guards():
         LiveGrafanaMCPAdapter._timestamp(int(timestamp * 1_000_000_000)).tzinfo
         is not None
     )
+    assert LiveGrafanaMCPAdapter._timestamp(f'"{int(timestamp * 1_000_000_000)}"')
 
     with pytest.raises(EvidenceUnavailable, match="METRIC_EVIDENCE_MISSING"):
         LiveGrafanaMCPAdapter._metric_evidence({}, "run", "pre")
+    live_shape = {
+        "data": [
+            {
+                "metric": {
+                    "__name__": "cutline_release_backlog_frames",
+                    "run_id": "run",
+                },
+                "value": [timestamp, "4800"],
+            },
+            {
+                "metric": {
+                    "__name__": "cutline_render_throughput_fpm",
+                    "run_id": "run",
+                },
+                "value": [timestamp, "120"],
+            },
+        ]
+    }
+    assert (
+        LiveGrafanaMCPAdapter._metric_evidence(live_shape, "run", "pre").values[
+            "throughput"
+        ]
+        == 120
+    )
     invalid_series = {
         "data": {
             "result": [

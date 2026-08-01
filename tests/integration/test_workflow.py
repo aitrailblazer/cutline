@@ -2,7 +2,7 @@ from datetime import timedelta
 
 import pytest
 
-from app.adapters import LocalActionExecutor, LocalGrafanaAdapter
+from app.adapters import LocalActionExecutor, LocalGrafanaAdapter, TelemetryPublisher
 from app.domain import WorkflowState, utcnow
 from app.service import CutlineService, WorkflowError
 from tests.conftest import advance_to_approval, advance_to_verification
@@ -32,6 +32,25 @@ async def test_complete_success_and_audit(service):
     reset = service.reset()
     assert reset.run_id != initial.run_id
     assert service.audit()["prior_runs"][-1].prior_run
+
+
+@pytest.mark.asyncio
+async def test_telemetry_is_published_before_pre_and_post_evidence():
+    class RecordingTelemetry(TelemetryPublisher):
+        def __init__(self):
+            self.events = []
+
+        async def publish(self, run_id, after_action):
+            self.events.append((run_id, after_action))
+
+    telemetry = RecordingTelemetry()
+    service = CutlineService(
+        LocalGrafanaAdapter(), LocalActionExecutor(), telemetry=telemetry
+    )
+    run_id = service.get().run_id
+    await advance_to_verification(service)
+    await service.verify()
+    assert telemetry.events == [(run_id, False), (run_id, True)]
 
 
 @pytest.mark.asyncio

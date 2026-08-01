@@ -21,6 +21,7 @@ from app.actions import (
 from app.adapters import (
     CloudRunActionExecutor,
     LiveGrafanaMCPAdapter,
+    LiveGrafanaTelemetryPublisher,
     LocalActionExecutor,
     LocalGrafanaAdapter,
 )
@@ -54,7 +55,11 @@ class LiveActionRequest(BaseModel):
 def service_from_environment() -> CutlineService:
     live = os.getenv("CUTLINE_MODE", "local").lower() == "live"
     if live:
-        return CutlineService(LiveGrafanaMCPAdapter(), CloudRunActionExecutor())
+        return CutlineService(
+            LiveGrafanaMCPAdapter(),
+            CloudRunActionExecutor(),
+            LiveGrafanaTelemetryPublisher(),
+        )
     return CutlineService(LocalGrafanaAdapter(), LocalActionExecutor())
 
 
@@ -112,8 +117,15 @@ def create_app(
                 os.getenv("GRAFANA_MCP_TOKEN")
                 or os.getenv("GRAFANA_MCP_USE_GOOGLE_ID_TOKEN", "").lower() == "true"
             )
+            and os.getenv("GRAFANA_PROMETHEUS_DATASOURCE_UID")
+            and os.getenv("GRAFANA_LOKI_DATASOURCE_UID")
             and os.getenv("CUTLINE_ACTION_URL")
             and os.getenv("CUTLINE_ACTION_TOKEN")
+            and os.getenv("GRAFANA_PROMETHEUS_PUSH_URL")
+            and os.getenv("GRAFANA_PROMETHEUS_USER")
+            and os.getenv("GRAFANA_LOKI_PUSH_URL")
+            and os.getenv("GRAFANA_LOKI_USER")
+            and os.getenv("GRAFANA_TELEMETRY_TOKEN")
         )
         blockers = list(scenario.blockers)
         if live and not configured:

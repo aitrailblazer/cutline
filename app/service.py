@@ -11,6 +11,7 @@ from app.adapters import (
     ActionUnavailable,
     EvidenceUnavailable,
     GrafanaAdapter,
+    TelemetryPublisher,
 )
 from app.domain import (
     Decision,
@@ -34,9 +35,15 @@ class WorkflowError(RuntimeError):
 
 
 class CutlineService:
-    def __init__(self, evidence: GrafanaAdapter, executor: ActionExecutor) -> None:
+    def __init__(
+        self,
+        evidence: GrafanaAdapter,
+        executor: ActionExecutor,
+        telemetry: TelemetryPublisher | None = None,
+    ) -> None:
         self.evidence_adapter = evidence
         self.executor = executor
+        self.telemetry = telemetry
         self._lock = RLock()
         self._current = self._new_scenario()
         self._history: list[Scenario] = []
@@ -76,6 +83,8 @@ class CutlineService:
                 )
             run_id = self._current.run_id
         try:
+            if self.telemetry:
+                await self.telemetry.publish(run_id, False)
             evidence = await self.evidence_adapter.collect(run_id, False)
         except EvidenceUnavailable as exc:
             with self._lock:
@@ -237,6 +246,8 @@ class CutlineService:
                 )
             run_id = self._current.run_id
         try:
+            if self.telemetry:
+                await self.telemetry.publish(run_id, True)
             evidence = await self.evidence_adapter.collect(run_id, True)
         except EvidenceUnavailable as exc:
             with self._lock:

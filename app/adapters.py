@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import json
 import os
+import struct
 from abc import ABC, abstractmethod
-from asyncio import to_thread
+from asyncio import sleep, to_thread
+from base64 import b64encode
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
@@ -24,6 +26,146 @@ class EvidenceUnavailable(RuntimeError):
 
 class ActionUnavailable(RuntimeError):
     pass
+
+
+class TelemetryPublisher(ABC):
+    @abstractmethod
+    async def publish(self, run_id: str, after_action: bool) -> None:
+        raise NotImplementedError
+
+
+class LiveGrafanaTelemetryPublisher(TelemetryPublisher):
+    """Publish bounded scenario evidence with a write-only Grafana Cloud token."""
+
+    def __init__(
+        self,
+        *,
+        prometheus_url: str | None = None,
+        prometheus_user: str | None = None,
+        loki_url: str | None = None,
+        loki_user: str | None = None,
+        token: str | None = None,
+    ) -> None:
+        self.prometheus_url = prometheus_url or os.getenv("GRAFANA_PROMETHEUS_PUSH_URL")
+        self.prometheus_user = prometheus_user or os.getenv("GRAFANA_PROMETHEUS_USER")
+        self.loki_url = loki_url or os.getenv("GRAFANA_LOKI_PUSH_URL")
+        self.loki_user = loki_user or os.getenv("GRAFANA_LOKI_USER")
+        self.token = token or os.getenv("GRAFANA_TELEMETRY_TOKEN")
+
+    @staticmethod
+    def _varint(value: int) -> bytes:
+        encoded = bytearray()
+        while value > 0x7F:
+            encoded.append((value & 0x7F) | 0x80)
+            value >>= 7
+        encoded.append(value)
+        return bytes(encoded)
+
+    @classmethod
+    def _field(cls, number: int, value: bytes) -> bytes:
+        return cls._varint(number << 3 | 2) + cls._varint(len(value)) + value
+
+    @classmethod
+    def _label(cls, name: str, value: str) -> bytes:
+        return cls._field(1, name.encode()) + cls._field(2, value.encode())
+
+    @classmethod
+    def _series(
+        cls, metric: str, run_id: str, value: float, timestamp_ms: int
+    ) -> bytes:
+        labels = cls._field(1, cls._label("__name__", metric)) + cls._field(
+            1, cls._label("run_id", run_id)
+        )
+        sample = b"\x09" + struct.pack("<d", value)
+        sample += b"\x10" + cls._varint(timestamp_ms)
+        return cls._field(1, labels + cls._field(2, sample))
+
+    @classmethod
+    def _write_request(cls, run_id: str, throughput: int, timestamp_ms: int) -> bytes:
+        return cls._series(
+            "cutline_release_backlog_frames", run_id, 4800, timestamp_ms
+        ) + cls._series(
+            "cutline_render_throughput_fpm", run_id, throughput, timestamp_ms
+        )
+
+    @classmethod
+    def _snappy_literal(cls, payload: bytes) -> bytes:
+        length = len(payload)
+        if length < 61:
+            tag = bytes([(length - 1) << 2])
+        else:
+            byte_count = max(1, ((length - 1).bit_length() + 7) // 8)
+            tag = bytes([(59 + byte_count) << 2]) + (length - 1).to_bytes(
+                byte_count, "little"
+            )
+        return cls._varint(length) + tag + payload
+
+    async def publish(self, run_id: str, after_action: bool) -> None:
+        if not all(
+            (
+                self.prometheus_url,
+                self.prometheus_user,
+                self.loki_url,
+                self.loki_user,
+                self.token,
+            )
+        ):
+            raise EvidenceUnavailable("GRAFANA_TELEMETRY_NOT_CONFIGURED")
+        timestamp = datetime.now(UTC)
+        timestamp_ms = int(timestamp.timestamp() * 1000)
+        timestamp_ns = str(timestamp_ms * 1_000_000)
+        throughput = 320 if after_action else 120
+        auth = (
+            "Basic "
+            + b64encode(f"{self.prometheus_user}:{self.token}".encode()).decode()
+        )
+        loki_auth = (
+            "Basic " + b64encode(f"{self.loki_user}:{self.token}".encode()).decode()
+        )
+        try:
+            async with httpx.AsyncClient(timeout=20) as client:
+                metric_response = await client.post(
+                    self.prometheus_url,
+                    content=self._snappy_literal(
+                        self._write_request(run_id, throughput, timestamp_ms)
+                    ),
+                    headers={
+                        "Authorization": auth,
+                        "Content-Type": "application/x-protobuf",
+                        "Content-Encoding": "snappy",
+                        "X-Prometheus-Remote-Write-Version": "0.1.0",
+                    },
+                )
+                metric_response.raise_for_status()
+                log_response = await client.post(
+                    self.loki_url,
+                    json={
+                        "streams": [
+                            {
+                                "stream": {
+                                    "service_name": "cutline-workload",
+                                    "run_id": run_id,
+                                },
+                                "values": [
+                                    [
+                                        timestamp_ns,
+                                        json.dumps(
+                                            {
+                                                "oom": not after_action,
+                                                "event": "render_status",
+                                            },
+                                            separators=(",", ":"),
+                                        ),
+                                    ]
+                                ],
+                            }
+                        ]
+                    },
+                    headers={"Authorization": loki_auth},
+                )
+                log_response.raise_for_status()
+        except httpx.HTTPError as exc:
+            raise EvidenceUnavailable("GRAFANA_TELEMETRY_PUBLISH_FAILED") from exc
 
 
 class GrafanaAdapter(ABC):
@@ -117,6 +259,12 @@ class LiveGrafanaMCPAdapter(GrafanaAdapter):
         )
         self.audience = os.getenv("GRAFANA_MCP_AUDIENCE") or self.url
         self._datasources: dict[str, str] = {}
+        prometheus_uid = os.getenv("GRAFANA_PROMETHEUS_DATASOURCE_UID")
+        loki_uid = os.getenv("GRAFANA_LOKI_DATASOURCE_UID")
+        if prometheus_uid:
+            self._datasources["prometheus"] = prometheus_uid
+        if loki_uid:
+            self._datasources["loki"] = loki_uid
         self._tools_verified = False
 
     async def _headers(self) -> dict[str, str]:
@@ -177,7 +325,7 @@ class LiveGrafanaMCPAdapter(GrafanaAdapter):
         self._tools_verified = True
 
     async def _discover_datasources(self) -> None:
-        if self._datasources:
+        if {"prometheus", "loki"}.issubset(self._datasources):
             return
         payload = await self._call_tool("list_datasources", {"limit": 100})
         datasources = payload.get("datasources")
@@ -188,7 +336,7 @@ class LiveGrafanaMCPAdapter(GrafanaAdapter):
                 continue
             kind = str(item.get("type", "")).lower()
             uid = item.get("uid")
-            if uid and kind in {"prometheus", "loki"}:
+            if uid and kind in {"prometheus", "loki"} and kind not in self._datasources:
                 self._datasources[kind] = str(uid)
         if not {"prometheus", "loki"}.issubset(self._datasources):
             raise EvidenceUnavailable("GRAFANA_MCP_DATASOURCES_MISSING")
@@ -196,7 +344,7 @@ class LiveGrafanaMCPAdapter(GrafanaAdapter):
     @staticmethod
     def _timestamp(value: Any) -> datetime:
         try:
-            numeric = float(value)
+            numeric = float(value.strip('"') if isinstance(value, str) else value)
         except (TypeError, ValueError) as exc:
             raise EvidenceUnavailable("GRAFANA_MCP_TIMESTAMP_MISSING") from exc
         if numeric > 1_000_000_000_000:
@@ -208,7 +356,7 @@ class LiveGrafanaMCPAdapter(GrafanaAdapter):
         cls, payload: dict[str, Any], run_id: str, phase: str
     ) -> Evidence:
         data = payload.get("data")
-        result = data.get("result") if isinstance(data, dict) else None
+        result = data.get("result") if isinstance(data, dict) else data
         if not isinstance(result, list) or not result:
             raise EvidenceUnavailable("GRAFANA_MCP_METRIC_EVIDENCE_MISSING")
         values: dict[str, Any] = {}
@@ -295,33 +443,49 @@ class LiveGrafanaMCPAdapter(GrafanaAdapter):
         try:
             await self._verify_tools()
             await self._discover_datasources()
-            metric_payload = await self._call_tool(
-                "query_prometheus",
-                {
-                    "datasourceUid": self._datasources["prometheus"],
-                    "expr": (
-                        f'cutline_release_backlog_frames{{run_id="{run_id}"}} '
-                        f'or cutline_render_throughput_fpm{{run_id="{run_id}"}}'
-                    ),
-                    "endTime": "now",
-                    "queryType": "instant",
-                },
-            )
-            log_payload = await self._call_tool(
-                "query_loki_logs",
-                {
-                    "datasourceUid": self._datasources["loki"],
-                    "logql": (f'{{service_name="cutline-workload",run_id="{run_id}"}}'),
-                    "startRfc3339": "now-15m",
-                    "endRfc3339": "now",
-                    "limit": 1,
-                    "direction": "backward",
-                },
-            )
-            return [
-                self._metric_evidence(metric_payload, run_id, phase),
-                self._log_evidence(log_payload, run_id, phase),
-            ]
+            attempt = 0
+            while True:
+                metric_payload = await self._call_tool(
+                    "query_prometheus",
+                    {
+                        "datasourceUid": self._datasources["prometheus"],
+                        "expr": (
+                            "{__name__=~"
+                            '"cutline_release_backlog_frames|'
+                            'cutline_render_throughput_fpm",'
+                            f'run_id="{run_id}"}}'
+                        ),
+                        "endTime": "now",
+                        "queryType": "instant",
+                    },
+                )
+                log_payload = await self._call_tool(
+                    "query_loki_logs",
+                    {
+                        "datasourceUid": self._datasources["loki"],
+                        "logql": (
+                            f'{{service_name="cutline-workload",run_id="{run_id}"}}'
+                        ),
+                        "startRfc3339": "now-15m",
+                        "endRfc3339": "now",
+                        "limit": 1,
+                        "direction": "backward",
+                    },
+                )
+                try:
+                    return [
+                        self._metric_evidence(metric_payload, run_id, phase),
+                        self._log_evidence(log_payload, run_id, phase),
+                    ]
+                except EvidenceUnavailable as exc:
+                    retryable = str(exc) in {
+                        "GRAFANA_MCP_METRIC_EVIDENCE_MISSING",
+                        "GRAFANA_MCP_LOG_EVIDENCE_MISSING",
+                    }
+                    if not retryable or attempt >= 4:
+                        raise
+                    attempt += 1
+                    await sleep(1)
         except (httpx.HTTPError, OSError, ValueError, TypeError) as exc:
             raise EvidenceUnavailable("GRAFANA_MCP_REQUEST_FAILED") from exc
 
