@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-08-02 — Professional public repository presentation
+
+- Rebuilt the GitHub landing page around a branded CUTLINE hero, concise value
+  proposition, primary live/demo/submission actions, truthful technology and
+  verification badges, a five-stage workflow, Mermaid architecture, evidence
+  results, trust boundaries, setup guidance, and documentation links.
+- Added optimized project imagery for the README hero and collapsible verified
+  command-center proof.
+- Added the hosted Cloud Run app as the repository homepage, strengthened the
+  public description, and added twelve relevant discovery topics across Google
+  ADK, Gemini, Vertex AI, Cloud Run, Grafana MCP, observability, and
+  human-in-the-loop operation.
+- Added F-044 to the canonical feature tracker and verified GitHub-flavored
+  rendering, all local and first-party README links, public repository metadata,
+  and the unchanged 51-test/100%-coverage quality gate.
+- Regenerated the CSV-backed XLSX, HTML, and QA-report views with 44/44 stories
+  Verified.
+
 ## 2026-08-02 — Competition-readiness feature-audit closure
 
 - Completed the tracker-backed 43-story competition-readiness audit after

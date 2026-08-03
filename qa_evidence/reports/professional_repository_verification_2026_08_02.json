@@ -1,0 +1,60 @@
+{
+  "repository": "https://github.com/aitrailblazer/cutline",
+  "audit_date": "2026-08-02",
+  "story_id": "F-044",
+  "before": {
+    "homepage": "",
+    "topics": [],
+    "rendered_readme_images": 0,
+    "rendered_readme_tables": 0,
+    "finding": "Technically complete but text-heavy and not optimized for judge scanning or project discovery."
+  },
+  "after": {
+    "description": "Human-governed release assurance for agentic cinema—official Grafana MCP evidence, Gemini synthesis, approval-gated Cloud Run action, and fresh verification.",
+    "homepage": "https://cutline-vfz4s45c3q-uc.a.run.app/",
+    "topics": [
+      "agentic-ai",
+      "agentic-cinema",
+      "fastapi",
+      "gemini",
+      "google-adk",
+      "google-cloud-run",
+      "grafana",
+      "human-in-the-loop",
+      "mcp",
+      "observability",
+      "release-engineering",
+      "vertex-ai"
+    ],
+    "rendered_readme_images": 2,
+    "rendered_badges": 7,
+    "rendered_tables": 3,
+    "rendered_mermaid_diagrams": 1,
+    "rendered_details_panels": 1,
+    "primary_actions": [
+      "Launch CUTLINE",
+      "Watch the 2-minute demo",
+      "Read the submission package"
+    ],
+    "readme_links_checked": 28,
+    "first_party_or_local_link_failures": 0
+  },
+  "regression_gate": {
+    "automated_tests": 51,
+    "statements": 732,
+    "statement_coverage_percent": 100,
+    "branches": 128,
+    "branch_coverage_percent": 100,
+    "agents_cli_lint": "pass",
+    "javascript_syntax": "pass"
+  },
+  "claim_boundaries_preserved": [
+    "controlled workload remains disclosed",
+    "model has bounded synthesis authority",
+    "human approval remains mandatory",
+    "action remains authenticated, allowlisted, and idempotent",
+    "success still requires fresh evidence",
+    "local tests do not deploy or trigger paid evaluation"
+  ],
+  "result": "PASS"
+}

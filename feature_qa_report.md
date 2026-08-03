@@ -4,11 +4,11 @@ Tracker source: `feature_status_tracker.csv`
 
 ## Totals
 
-- Total features discovered: 43
+- Total features discovered: 44
 - Total verified before fixes: 37
-- Total failed before fixes: 6
-- Total fixed: 6
-- Total verified after retest: 43
+- Total failed before fixes: 7
+- Total fixed: 7
+- Total verified after retest: 44
 - Total still blocked: 0
 - Total needing product decision: 0
 
@@ -53,6 +53,7 @@ Tracker source: `feature_status_tracker.csv`
 - `feature_qa_report.md; feature_status_tracker.html; feature_status_tracker.xlsx`
 - `Cloud Run service configuration; README.md; .env.example`
 - `git history; repository metadata`
+- `README.md; docs/assets/cutline-hero.png; docs/assets/cutline-command-center.jpg; CHANGELOG.md; GitHub repository metadata; qa_evidence/reports/professional_repository_verification_2026_08_02.json`
 
 ## Commits Recorded In Tracker
 
@@ -66,7 +67,7 @@ Tracker source: `feature_status_tracker.csv`
 
 ## Test Evidence
 
-- Test types used: `Manual UI`, `Integration Test`, `Automated Test`, `Manual UI; Competition Compliance Review`, `Accessibility Review`, `Responsive Review`, `Regression Test`, `Contract Test; Hosted Integration Test`, `Hosted Browser; Integration Test`, `Competition Compliance Review`, `Static Compliance Scan; Contract Test`, `Hosted Browser; Evidence Review`, `Competition Compliance Review; Content Review`, `Competition Compliance Review; Media Review`, `Static Review`, `Artifact Parity Test`, `Cloud Configuration Review`
+- Test types used: `Manual UI`, `Integration Test`, `Automated Test`, `Manual UI; Competition Compliance Review`, `Accessibility Review`, `Responsive Review`, `Regression Test`, `Contract Test; Hosted Integration Test`, `Hosted Browser; Integration Test`, `Competition Compliance Review`, `Static Compliance Scan; Contract Test`, `Hosted Browser; Evidence Review`, `Competition Compliance Review; Content Review`, `Competition Compliance Review; Media Review`, `Static Review`, `Artifact Parity Test`, `Cloud Configuration Review`, `Public Repository UX Review; Link and Metadata Test`
 - Commands run are not captured as a dedicated tracker column, so this report only summarizes tracker-backed test evidence.
 
 ## Coverage Gaps
