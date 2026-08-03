@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CUTLINE Competition Audit — Phase 0 Orientation</title>
+  <style>
+    :root{color-scheme:dark;--bg:#08090b;--panel:#111419;--line:#29313b;--text:#f8fafc;--muted:#a9b3bf;--red:#ff5364;--orange:#ff9b54;--green:#56e0a2;--blue:#68b8ff}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif}.shell{max-width:1160px;margin:auto;padding:48px 24px 72px}
+    h1{font-size:clamp(42px,7vw,76px);line-height:.94;letter-spacing:-.055em;margin:8px 0 18px}h2{font-size:26px;margin:0 0 14px}.eyebrow{color:var(--orange);font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .lede{font-size:19px;color:#d9e1e9;max-width:850px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:24px 0}.panel{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:20px}
+    .metric{font-size:38px;font-weight:900}.muted{color:var(--muted)}.good{color:var(--green)}.risk{color:var(--red)}.warn{color:var(--orange)}ul{padding-left:20px}li{margin:8px 0}
+    table{width:100%;border-collapse:collapse}th,td{padding:11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+    code{color:#bfe2ff}details{margin-top:18px}pre{white-space:pre-wrap;word-break:break-word;background:#050607;padding:16px;border-radius:12px;color:#bde9cf}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.shell{padding:30px 14px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="eyebrow">Feature audit · Phase 0 · 2026-07-31</div>
+    <h1>CUTLINE is built.<br>The submission is not.</h1>
+    <p class="lede">Repository, hosted-runtime, official contest, Grafana-track, and prior QA evidence were inspected before changing code. The product has unusually strong live technical proof; its binding risks are judge-facing truth alignment and missing submission media.</p>
+
+    <section class="grid" aria-label="Orientation metrics">
+      <article class="panel"><div class="metric good">33 / 33</div><strong>Prior feature stories verified</strong><p class="muted">The new pass reopens every story for independent revalidation.</p></article>
+      <article class="panel"><div class="metric good">51 tests</div><strong>Prior deterministic gate</strong><p class="muted">731 statements and 128 branches at 100% in the declared deterministic scope.</p></article>
+      <article class="panel"><div class="metric good">LIVE</div><strong>Hosted partner path</strong><p class="muted">Revision <code>cutline-00009-kh2</code> and private official Grafana MCP revision <code>cutline-grafana-mcp-00002-4tp</code>.</p></article>
+      <article class="panel"><div class="metric risk">0</div><strong>Public demo videos found</strong><p class="muted">The official rules require a public YouTube/Vimeo demonstration of at most three minutes.</p></article>
+    </section>
+
+    <section class="panel">
+      <div class="eyebrow">User-visible inventory</div>
+      <h2>Surfaces in scope</h2>
+      <table>
+        <thead><tr><th>Surface</th><th>Visible behavior</th><th>Primary source</th></tr></thead>
+        <tbody>
+          <tr><td>Release command</td><td>Scenario identity, deadline, cutline projection, risk metrics, shot manifest, live disclosure.</td><td><code>app/web/index.html</code>, <code>app/web/app.js</code></td></tr>
+          <tr><td>Governed workflow</td><td>Reset, investigate, approve/reject, execute, verify, and reconstruct current state.</td><td><code>app/api.py</code>, <code>app/service.py</code></td></tr>
+          <tr><td>Evidence and synthesis</td><td>Official Grafana MCP metrics/logs, evidence ledger, adversarial diagnosis, Gemini synthesis.</td><td><code>app/adapters.py</code>, <code>app/agent_runtime.py</code></td></tr>
+          <tr><td>Trust and audit</td><td>Deterministic arithmetic, bounded proposal, immutable receipt, six verification gates, audit lineage.</td><td><code>app/domain.py</code>, <code>app/actions.py</code></td></tr>
+          <tr><td>Submission surface</td><td>Hosted URL, public repository/license, README, metadata, text description, video, judging proof.</td><td><code>README.md</code>, <code>pyproject.toml</code>, Devpost</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="eyebrow">Official rules</div>
+        <h2>Pass/fail requirements</h2>
+        <ul>
+          <li>Functional production-ready agent powered by Gemini and Google Cloud Agent Builder.</li>
+          <li>Active official Grafana MCP runtime use—not AI Observability alone.</li>
+          <li>Hosted web URL and public open-source repository with top-level license.</li>
+          <li>Text description covering features, technology, data sources, findings, and learnings.</li>
+          <li>Public English YouTube/Vimeo demo, no longer than three minutes.</li>
+          <li>Deadline: September 7, 2026 at 2:00 PM Pacific.</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <div class="eyebrow">Equal-weight judging</div>
+        <h2>Winning criteria</h2>
+        <ul>
+          <li><strong>Technological Implementation:</strong> strong current proof.</li>
+          <li><strong>Design:</strong> coherent product exists; judge narrative must foreground it.</li>
+          <li><strong>Potential Impact:</strong> credible workflow, but impact case is under-articulated.</li>
+          <li><strong>Quality of Idea:</strong> non-obvious release assurance thesis needs a memorable one-line frame.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="eyebrow">Discovery risks · no fixes applied</div>
+      <h2>Items entering the frozen test plan</h2>
+      <ol>
+        <li class="risk"><strong>Mandatory demo video absent.</strong></li>
+        <li class="risk"><strong>Final submission text/evidence package absent.</strong></li>
+        <li class="warn"><strong>Judge-facing live status is contradictory:</strong> the README says production live mode remains fail-closed, while the deployed app is live and verified; the footer says partner technology is “required” rather than active.</li>
+        <li class="warn"><strong>Packaging metadata appears unfinished:</strong> blank project description and placeholder author.</li>
+        <li class="warn"><strong>The generated Markdown QA report contradicts its canonical tracker:</strong> it reports unresolved F-032/F-033 although the CSV marks both Verified.</li>
+        <li><strong>Cost boundary must be rechecked</strong> because the owner explicitly requires a no-surprise-spend posture.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div class="eyebrow">Supervisory reasoning</div>
+      <h2>GEN-I-GENESIS-APEX-A2A-RUNTIME preflight</h2>
+      <p>The canonical backend-owned <code>genesis-apex</code> route returned model <code>gpt-5.6-sol</code> and independently ranked the missing video, missing submission package, and truth-alignment contradictions as the top three risks. Artifact bundle:</p>
+      <p><code>StrategiXAI/artifacts/strategixai-cli/cutline-competition-audit-20260801T055439Z</code></p>
+    </section>
+
+    <details>
+      <summary>Embedded machine-readable orientation contract</summary>
+      <pre id="contract">&lt;FeatureAuditOrientation artifact="competition_audit_phase_0_2026_07_31.html" target="CUTLINE" phase="0" fixes_applied="false"&gt;
+  &lt;Repository path="/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline" branch="codex/cutline-winning-build" head="ebe2d2b" clean_at_start="true"/&gt;
+  &lt;HostedApp url="https://cutline-vfz4s45c3q-uc.a.run.app/" revision="cutline-00009-kh2"/&gt;
+  &lt;GrafanaMCP revision="cutline-grafana-mcp-00002-4tp" visibility="private" implementation="official grafana/mcp-grafana"/&gt;
+  &lt;OfficialSources&gt;
+    &lt;Source url="https://agentic-cinema.devpost.com/rules"/&gt;
+    &lt;Source url="https://agentic-cinema.devpost.com/resources"/&gt;
+    &lt;Source url="https://agentic-cinema.devpost.com/details/grafana-resources"/&gt;
+  &lt;/OfficialSources&gt;
+  &lt;NextPhase&gt;Reconcile stable user stories and freeze test plans before executing or fixing behavior.&lt;/NextPhase&gt;
+&lt;/FeatureAuditOrientation&gt;</pre>
+    </details>
+  </main>
+</body>
+</html>

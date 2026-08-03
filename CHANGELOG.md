@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-08-02 — Competition-readiness feature-audit closure
+
+- Completed the tracker-backed 43-story competition-readiness audit after
+  discovery, user-story construction, and test-plan freeze; all 43 stories are
+  now independently retested and Verified.
+- Corrected the five pre-publication product and submission issues covering
+  truthful runtime disclosure, Google-only production dependency optics,
+  copy-ready Devpost material, submission metadata, and generated audit-view
+  consistency.
+- Produced a 128.65-second, 1280×720 H.264/AAC competition demo with Ava
+  Premium English narration, dated AITrailblazer opener/closer slides, hosted
+  workflow footage, and explicit Grafana MCP, Gemini, and Google Cloud
+  boundaries.
+- Published the demo at https://youtu.be/yoquhZPl8Cc and verified anonymous
+  YouTube oEmbed discovery plus an isolated-browser embed load with the correct
+  title, author, thumbnail, and playable video element.
+- Regenerated the canonical CSV tracker and its XLSX, self-contained HTML, and
+  QA-report views after closing F-039.
+- Re-ran the complete quality gate: 51 tests, 100% statement coverage, 100%
+  branch coverage, agents-cli lint, JavaScript syntax, hosted readiness, and
+  submission-link verification.
+
 ## 2026-07-31 — Live Grafana MCP audit closure
 
 - Created least-privilege Grafana Viewer and telemetry-writer credentials,

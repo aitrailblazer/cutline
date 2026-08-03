@@ -1,0 +1,185 @@
+{
+  "files_scanned": 13,
+  "prohibited_hits": [
+    {
+      "file": "uv.lock",
+      "line": 1713,
+      "match": "openai"
+    },
+    {
+      "file": "uv.lock",
+      "line": 2100,
+      "match": "openai"
+    },
+    {
+      "file": "uv.lock",
+      "line": 2113,
+      "match": "openai"
+    },
+    {
+      "file": "uv.lock",
+      "line": 2115,
+      "match": "openai"
+    }
+  ],
+  "google_ai_hits": [
+    {
+      "file": "pyproject.toml",
+      "line": 9,
+      "match": "google-adk"
+    },
+    {
+      "file": "pyproject.toml",
+      "line": 30,
+      "match": "google-adk"
+    },
+    {
+      "file": "uv.lock",
+      "line": 454,
+      "match": "google-adk"
+    },
+    {
+      "file": "uv.lock",
+      "line": 464,
+      "match": "google-adk"
+    },
+    {
+      "file": "uv.lock",
+      "line": 485,
+      "match": "google-adk"
+    },
+    {
+      "file": "uv.lock",
+      "line": 486,
+      "match": "google-adk"
+    },
+    {
+      "file": "uv.lock",
+      "line": 719,
+      "match": "google-adk"
+    },
+    {
+      "file": "uv.lock",
+      "line": 769,
+      "match": "google_adk"
+    },
+    {
+      "file": "uv.lock",
+      "line": 771,
+      "match": "google_adk"
+    },
+    {
+      "file": "app/service.py",
+      "line": 165,
+      "match": "gemini"
+    },
+    {
+      "file": "app/agent_runtime.py",
+      "line": 1,
+      "match": "Google ADK"
+    },
+    {
+      "file": "app/agent_runtime.py",
+      "line": 9,
+      "match": "google.adk"
+    },
+    {
+      "file": "app/api.py",
+      "line": 162,
+      "match": "Gemini"
+    },
+    {
+      "file": "app/agent.py",
+      "line": 1,
+      "match": "Google ADK"
+    },
+    {
+      "file": "app/agent.py",
+      "line": 5,
+      "match": "google.adk"
+    },
+    {
+      "file": "app/agent.py",
+      "line": 6,
+      "match": "google.adk"
+    },
+    {
+      "file": "app/agent.py",
+      "line": 7,
+      "match": "google.adk"
+    },
+    {
+      "file": "app/agent.py",
+      "line": 7,
+      "match": "Gemini"
+    },
+    {
+      "file": "app/agent.py",
+      "line": 25,
+      "match": "Gemini"
+    },
+    {
+      "file": "app/agent.py",
+      "line": 26,
+      "match": "gemini"
+    }
+  ],
+  "grafana_mcp_hits": [
+    {
+      "file": "app/api.py",
+      "line": 23,
+      "match": "GrafanaMCP"
+    },
+    {
+      "file": "app/api.py",
+      "line": 59,
+      "match": "GrafanaMCP"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 212,
+      "match": "query_prometheus"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 223,
+      "match": "query_loki_logs"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 249,
+      "match": "GrafanaMCP"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 322,
+      "match": "query_prometheus"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 322,
+      "match": "query_loki_logs"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 396,
+      "match": "query_prometheus"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 431,
+      "match": "query_loki_logs"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 449,
+      "match": "query_prometheus"
+    },
+    {
+      "file": "app/adapters.py",
+      "line": 463,
+      "match": "query_loki_logs"
+    }
+  ],
+  "pass": false
+}

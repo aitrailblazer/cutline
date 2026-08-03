@@ -1,0 +1,45 @@
+$ ./scripts/test
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 51 items
+
+tests/integration/test_api.py ..........                                 [ 19%]
+tests/integration/test_workflow.py ..............                        [ 47%]
+tests/unit/test_actions.py ....                                          [ 54%]
+tests/unit/test_adapters.py ..............                               [ 82%]
+tests/unit/test_agent_contract.py ..                                     [ 86%]
+tests/unit/test_agent_runtime.py ..                                      [ 90%]
+tests/unit/test_domain.py .....                                          [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     731      0    128      0   100%
+
+7 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+============================== 51 passed in 2.57s ==============================
+All checks passed!
+25 files already formatted
+
+$ agents-cli lint
+  ▸ uv sync --dev --extra lint
+Resolved 173 packages in 4ms
+Checked 140 packages in 4ms
+  ▸ uv run ruff check .
+All checks passed!
+  ▸ uv run ruff format . --check
+25 files already formatted
+  ▸ uv run codespell
+  ▸ uv run ty check .
+All checks passed!
+
+$ node --check app/web/app.js

@@ -1,0 +1,2736 @@
+{
+  "base": "https://cutline-vfz4s45c3q-uc.a.run.app",
+  "started_at": "2026-08-01T05:59:22Z",
+  "steps": {
+    "root": {
+      "status": 200,
+      "elapsed_s": 0.2,
+      "payload": {
+        "content_type": "text/html; charset=utf-8",
+        "bytes": 6213,
+        "title_present": true
+      }
+    },
+    "health": {
+      "status": 200,
+      "elapsed_s": 0.156,
+      "payload": {
+        "status": "ok"
+      }
+    },
+    "readiness": {
+      "status": 200,
+      "elapsed_s": 0.338,
+      "payload": {
+        "ready": true,
+        "mode": "LIVE_GRAFANA_MCP",
+        "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+        "state": "VERIFIED",
+        "blockers": [],
+        "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+      }
+    },
+    "reset": {
+      "status": 200,
+      "elapsed_s": 0.187,
+      "payload": {
+        "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+        "created_at": "2026-08-01T05:59:23.724197Z",
+        "state": "READY",
+        "mode": "LIVE_GRAFANA_MCP",
+        "production": "Eclipse Protocol \u2014 Episode 6",
+        "operator": "Maya Chen",
+        "sequence": "SQ-42",
+        "deadline_minutes": 24,
+        "backlog_frames": 4800,
+        "shots": [
+          {
+            "id": "SQ42-001",
+            "frame_start": 1,
+            "frame_end": 300,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 28,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-002",
+            "frame_start": 301,
+            "frame_end": 600,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 29,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-003",
+            "frame_start": 601,
+            "frame_end": 900,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 30,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-004",
+            "frame_start": 901,
+            "frame_end": 1200,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 31,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-005",
+            "frame_start": 1201,
+            "frame_end": 1500,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 32,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-006",
+            "frame_start": 1501,
+            "frame_end": 1800,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 33,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-007",
+            "frame_start": 1801,
+            "frame_end": 2100,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 34,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-008",
+            "frame_start": 2101,
+            "frame_end": 2400,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 35,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-009",
+            "frame_start": 2401,
+            "frame_end": 2700,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 36,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-010",
+            "frame_start": 2701,
+            "frame_end": 3000,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 37,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-011",
+            "frame_start": 3001,
+            "frame_end": 3300,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 38,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-012",
+            "frame_start": 3301,
+            "frame_end": 3600,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 39,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-013",
+            "frame_start": 3601,
+            "frame_end": 3900,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 22,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-014",
+            "frame_start": 3901,
+            "frame_end": 4200,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 23,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-015",
+            "frame_start": 4201,
+            "frame_end": 4500,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-03",
+            "eta_minutes": 24,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-016",
+            "frame_start": 4501,
+            "frame_end": 4800,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-04",
+            "eta_minutes": 25,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-017",
+            "frame_start": 4801,
+            "frame_end": 5100,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 26,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-018",
+            "frame_start": 5101,
+            "frame_end": 5400,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 27,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          }
+        ],
+        "evidence": [],
+        "diagnosis": null,
+        "agent_synthesis": null,
+        "agent_model": null,
+        "impact": {
+          "backlog_frames": 4800,
+          "deadline_minutes": 24,
+          "observed_throughput": 120,
+          "deadline_minimum": 200,
+          "safe_target": 240,
+          "projected_minutes": 40,
+          "variance_minutes": -16,
+          "label": "16 minutes late",
+          "formulas": [
+            "4800 / 24 = 200 deadline minimum",
+            "200 * 1.20 = 240 safe target",
+            "4800 / 120 = 40 projected minutes",
+            "24 - 40 = -16 deadline variance"
+          ]
+        },
+        "proposal": null,
+        "decision": null,
+        "receipt": null,
+        "verification": null,
+        "blockers": [],
+        "prior_run": false,
+        "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+      }
+    },
+    "investigate": {
+      "status": 200,
+      "elapsed_s": 10.106,
+      "payload": {
+        "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+        "created_at": "2026-08-01T05:59:23.724197Z",
+        "state": "AWAITING_APPROVAL",
+        "mode": "LIVE_GRAFANA_MCP",
+        "production": "Eclipse Protocol \u2014 Episode 6",
+        "operator": "Maya Chen",
+        "sequence": "SQ-42",
+        "deadline_minutes": 24,
+        "backlog_frames": 4800,
+        "shots": [
+          {
+            "id": "SQ42-001",
+            "frame_start": 1,
+            "frame_end": 300,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 28,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-002",
+            "frame_start": 301,
+            "frame_end": 600,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 29,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-003",
+            "frame_start": 601,
+            "frame_end": 900,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 30,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-004",
+            "frame_start": 901,
+            "frame_end": 1200,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 31,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-005",
+            "frame_start": 1201,
+            "frame_end": 1500,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 32,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-006",
+            "frame_start": 1501,
+            "frame_end": 1800,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 33,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-007",
+            "frame_start": 1801,
+            "frame_end": 2100,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 34,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-008",
+            "frame_start": 2101,
+            "frame_end": 2400,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 35,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-009",
+            "frame_start": 2401,
+            "frame_end": 2700,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 36,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-010",
+            "frame_start": 2701,
+            "frame_end": 3000,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 37,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-011",
+            "frame_start": 3001,
+            "frame_end": 3300,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 38,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-012",
+            "frame_start": 3301,
+            "frame_end": 3600,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 39,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-013",
+            "frame_start": 3601,
+            "frame_end": 3900,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 22,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-014",
+            "frame_start": 3901,
+            "frame_end": 4200,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 23,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-015",
+            "frame_start": 4201,
+            "frame_end": 4500,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-03",
+            "eta_minutes": 24,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-016",
+            "frame_start": 4501,
+            "frame_end": 4800,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-04",
+            "eta_minutes": 25,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-017",
+            "frame_start": 4801,
+            "frame_end": 5100,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 26,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-018",
+            "frame_start": 5101,
+            "frame_end": 5400,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 27,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "pre_action-metric-13dab181",
+            "kind": "metric",
+            "operation": "query_prometheus",
+            "summary": "Backlog 4800; throughput 120 frames/min",
+            "observed_at": "2026-08-01T05:59:27.971000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "backlog_frames": 4800,
+              "throughput": 120
+            }
+          },
+          {
+            "id": "pre_action-log-13dab181",
+            "kind": "log",
+            "operation": "query_loki_logs",
+            "summary": "CUDA OOM persists",
+            "observed_at": "2026-08-01T05:59:23.989000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "oom": true,
+              "event": "render_status"
+            }
+          }
+        ],
+        "diagnosis": {
+          "evidence_status": "Supported",
+          "hypothesis": "RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm.",
+          "alternative": "A specific SQ-42 texture asset increased per-shot memory pressure.",
+          "discriminator": "Failures span multiple shots and begin after concurrency changed 1\u21923.",
+          "falsifier": "OOM continues at the same rate after rollback to concurrency 1.",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181"
+          ],
+          "missing_evidence": []
+        },
+        "agent_synthesis": "**Observations:**\n*   The current backlog is 4800 frames with a throughput of 120 frames/minute (evidence ID: `pre_action-metric-13dab181`).\n*   CUDA Out-Of-Memory (OOM) errors persist (evidence ID: `pre_action-log-13dab181`).\n*   The release is currently 16 minutes late, with a projected completion in 40 minutes against a 24-minute deadline.\n*   The current state is AWAITING_APPROVAL.\n\n**Leading Hypothesis:**\n*   The RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm (evidence IDs: `pre_action-metric-13dab181`, `pre_action-log-13dab181`).\n\n**Strongest Alternative:**\n*   A specific SQ-42 texture asset increased per-shot memory pressure.\n\n**Falsifier:**\n*   OOM continues at the same rate after rollback to concurrency 1.",
+        "agent_model": "gemini-2.5-flash",
+        "impact": {
+          "backlog_frames": 4800,
+          "deadline_minutes": 24,
+          "observed_throughput": 120,
+          "deadline_minimum": 200,
+          "safe_target": 240,
+          "projected_minutes": 40,
+          "variance_minutes": -16,
+          "label": "16 minutes late",
+          "formulas": [
+            "4800 / 24 = 200 deadline minimum",
+            "200 * 1.20 = 240 safe target",
+            "4800 / 120 = 40 projected minutes",
+            "24 - 40 = -16 deadline variance"
+          ]
+        },
+        "proposal": {
+          "id": "proposal-13dab181",
+          "version": "sq42-recovery-v1",
+          "concurrency_before": 3,
+          "concurrency_after": 1,
+          "reserve_workers_before": 0,
+          "reserve_workers_after": 4,
+          "scope": "SQ-42 render pool only",
+          "scenario_cost_usd": 18,
+          "rollback": "Restore prior worker configuration",
+          "stop_condition": "Stop if OOM rate does not decline after rollback",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181"
+          ]
+        },
+        "decision": null,
+        "receipt": null,
+        "verification": null,
+        "blockers": [],
+        "prior_run": false,
+        "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+      }
+    },
+    "approve": {
+      "status": 200,
+      "elapsed_s": 0.293,
+      "payload": {
+        "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+        "created_at": "2026-08-01T05:59:23.724197Z",
+        "state": "AWAITING_APPROVAL",
+        "mode": "LIVE_GRAFANA_MCP",
+        "production": "Eclipse Protocol \u2014 Episode 6",
+        "operator": "Maya Chen",
+        "sequence": "SQ-42",
+        "deadline_minutes": 24,
+        "backlog_frames": 4800,
+        "shots": [
+          {
+            "id": "SQ42-001",
+            "frame_start": 1,
+            "frame_end": 300,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 28,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-002",
+            "frame_start": 301,
+            "frame_end": 600,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 29,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-003",
+            "frame_start": 601,
+            "frame_end": 900,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 30,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-004",
+            "frame_start": 901,
+            "frame_end": 1200,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 31,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-005",
+            "frame_start": 1201,
+            "frame_end": 1500,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 32,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-006",
+            "frame_start": 1501,
+            "frame_end": 1800,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 33,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-007",
+            "frame_start": 1801,
+            "frame_end": 2100,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 34,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-008",
+            "frame_start": 2101,
+            "frame_end": 2400,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 35,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-009",
+            "frame_start": 2401,
+            "frame_end": 2700,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 36,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-010",
+            "frame_start": 2701,
+            "frame_end": 3000,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 37,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-011",
+            "frame_start": 3001,
+            "frame_end": 3300,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 38,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-012",
+            "frame_start": 3301,
+            "frame_end": 3600,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 39,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-013",
+            "frame_start": 3601,
+            "frame_end": 3900,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 22,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-014",
+            "frame_start": 3901,
+            "frame_end": 4200,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 23,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-015",
+            "frame_start": 4201,
+            "frame_end": 4500,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-03",
+            "eta_minutes": 24,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-016",
+            "frame_start": 4501,
+            "frame_end": 4800,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-04",
+            "eta_minutes": 25,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-017",
+            "frame_start": 4801,
+            "frame_end": 5100,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 26,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-018",
+            "frame_start": 5101,
+            "frame_end": 5400,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 27,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "pre_action-metric-13dab181",
+            "kind": "metric",
+            "operation": "query_prometheus",
+            "summary": "Backlog 4800; throughput 120 frames/min",
+            "observed_at": "2026-08-01T05:59:27.971000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "backlog_frames": 4800,
+              "throughput": 120
+            }
+          },
+          {
+            "id": "pre_action-log-13dab181",
+            "kind": "log",
+            "operation": "query_loki_logs",
+            "summary": "CUDA OOM persists",
+            "observed_at": "2026-08-01T05:59:23.989000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "oom": true,
+              "event": "render_status"
+            }
+          }
+        ],
+        "diagnosis": {
+          "evidence_status": "Supported",
+          "hypothesis": "RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm.",
+          "alternative": "A specific SQ-42 texture asset increased per-shot memory pressure.",
+          "discriminator": "Failures span multiple shots and begin after concurrency changed 1\u21923.",
+          "falsifier": "OOM continues at the same rate after rollback to concurrency 1.",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181"
+          ],
+          "missing_evidence": []
+        },
+        "agent_synthesis": "**Observations:**\n*   The current backlog is 4800 frames with a throughput of 120 frames/minute (evidence ID: `pre_action-metric-13dab181`).\n*   CUDA Out-Of-Memory (OOM) errors persist (evidence ID: `pre_action-log-13dab181`).\n*   The release is currently 16 minutes late, with a projected completion in 40 minutes against a 24-minute deadline.\n*   The current state is AWAITING_APPROVAL.\n\n**Leading Hypothesis:**\n*   The RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm (evidence IDs: `pre_action-metric-13dab181`, `pre_action-log-13dab181`).\n\n**Strongest Alternative:**\n*   A specific SQ-42 texture asset increased per-shot memory pressure.\n\n**Falsifier:**\n*   OOM continues at the same rate after rollback to concurrency 1.",
+        "agent_model": "gemini-2.5-flash",
+        "impact": {
+          "backlog_frames": 4800,
+          "deadline_minutes": 24,
+          "observed_throughput": 120,
+          "deadline_minimum": 200,
+          "safe_target": 240,
+          "projected_minutes": 40,
+          "variance_minutes": -16,
+          "label": "16 minutes late",
+          "formulas": [
+            "4800 / 24 = 200 deadline minimum",
+            "200 * 1.20 = 240 safe target",
+            "4800 / 120 = 40 projected minutes",
+            "24 - 40 = -16 deadline variance"
+          ]
+        },
+        "proposal": {
+          "id": "proposal-13dab181",
+          "version": "sq42-recovery-v1",
+          "concurrency_before": 3,
+          "concurrency_after": 1,
+          "reserve_workers_before": 0,
+          "reserve_workers_after": 4,
+          "scope": "SQ-42 render pool only",
+          "scenario_cost_usd": 18,
+          "rollback": "Restore prior worker configuration",
+          "stop_condition": "Stop if OOM rate does not decline after rollback",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181"
+          ]
+        },
+        "decision": {
+          "id": "decision-236e7f17b683",
+          "proposal_id": "proposal-13dab181",
+          "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "approver": "Competition Audit",
+          "decided_at": "2026-08-01T05:59:34.113483Z",
+          "expires_at": "2026-08-01T06:09:34.113483Z",
+          "status": "APPROVED",
+          "reason": null
+        },
+        "receipt": null,
+        "verification": null,
+        "blockers": [],
+        "prior_run": false,
+        "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+      }
+    },
+    "execute": {
+      "status": 200,
+      "elapsed_s": 0.316,
+      "payload": {
+        "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+        "created_at": "2026-08-01T05:59:23.724197Z",
+        "state": "VERIFYING",
+        "mode": "LIVE_GRAFANA_MCP",
+        "production": "Eclipse Protocol \u2014 Episode 6",
+        "operator": "Maya Chen",
+        "sequence": "SQ-42",
+        "deadline_minutes": 24,
+        "backlog_frames": 4800,
+        "shots": [
+          {
+            "id": "SQ42-001",
+            "frame_start": 1,
+            "frame_end": 300,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 28,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-002",
+            "frame_start": 301,
+            "frame_end": 600,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 29,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-003",
+            "frame_start": 601,
+            "frame_end": 900,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 30,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-004",
+            "frame_start": 901,
+            "frame_end": 1200,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 31,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-005",
+            "frame_start": 1201,
+            "frame_end": 1500,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 32,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-006",
+            "frame_start": 1501,
+            "frame_end": 1800,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 33,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-007",
+            "frame_start": 1801,
+            "frame_end": 2100,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 34,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-008",
+            "frame_start": 2101,
+            "frame_end": 2400,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 35,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-009",
+            "frame_start": 2401,
+            "frame_end": 2700,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-01",
+            "eta_minutes": 36,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-010",
+            "frame_start": 2701,
+            "frame_end": 3000,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-02",
+            "eta_minutes": 37,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-011",
+            "frame_start": 3001,
+            "frame_end": 3300,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-03",
+            "eta_minutes": 38,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-012",
+            "frame_start": 3301,
+            "frame_end": 3600,
+            "remaining_frames": 400,
+            "attempts": 3,
+            "worker": "gpu-04",
+            "eta_minutes": 39,
+            "dependency": "Streaming package",
+            "at_risk": true,
+            "status": "AT RISK"
+          },
+          {
+            "id": "SQ42-013",
+            "frame_start": 3601,
+            "frame_end": 3900,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 22,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-014",
+            "frame_start": 3901,
+            "frame_end": 4200,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 23,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-015",
+            "frame_start": 4201,
+            "frame_end": 4500,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-03",
+            "eta_minutes": 24,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-016",
+            "frame_start": 4501,
+            "frame_end": 4800,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-04",
+            "eta_minutes": 25,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-017",
+            "frame_start": 4801,
+            "frame_end": 5100,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 26,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-018",
+            "frame_start": 5101,
+            "frame_end": 5400,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 27,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "pre_action-metric-13dab181",
+            "kind": "metric",
+            "operation": "query_prometheus",
+            "summary": "Backlog 4800; throughput 120 frames/min",
+            "observed_at": "2026-08-01T05:59:27.971000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "backlog_frames": 4800,
+              "throughput": 120
+            }
+          },
+          {
+            "id": "pre_action-log-13dab181",
+            "kind": "log",
+            "operation": "query_loki_logs",
+            "summary": "CUDA OOM persists",
+            "observed_at": "2026-08-01T05:59:23.989000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "oom": true,
+              "event": "render_status"
+            }
+          }
+        ],
+        "diagnosis": {
+          "evidence_status": "Supported",
+          "hypothesis": "RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm.",
+          "alternative": "A specific SQ-42 texture asset increased per-shot memory pressure.",
+          "discriminator": "Failures span multiple shots and begin after concurrency changed 1\u21923.",
+          "falsifier": "OOM continues at the same rate after rollback to concurrency 1.",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181"
+          ],
+          "missing_evidence": []
+        },
+        "agent_synthesis": "**Observations:**\n*   The current backlog is 4800 frames with a throughput of 120 frames/minute (evidence ID: `pre_action-metric-13dab181`).\n*   CUDA Out-Of-Memory (OOM) errors persist (evidence ID: `pre_action-log-13dab181`).\n*   The release is currently 16 minutes late, with a projected completion in 40 minutes against a 24-minute deadline.\n*   The current state is AWAITING_APPROVAL.\n\n**Leading Hypothesis:**\n*   The RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm (evidence IDs: `pre_action-metric-13dab181`, `pre_action-log-13dab181`).\n\n**Strongest Alternative:**\n*   A specific SQ-42 texture asset increased per-shot memory pressure.\n\n**Falsifier:**\n*   OOM continues at the same rate after rollback to concurrency 1.",
+        "agent_model": "gemini-2.5-flash",
+        "impact": {
+          "backlog_frames": 4800,
+          "deadline_minutes": 24,
+          "observed_throughput": 120,
+          "deadline_minimum": 200,
+          "safe_target": 240,
+          "projected_minutes": 40,
+          "variance_minutes": -16,
+          "label": "16 minutes late",
+          "formulas": [
+            "4800 / 24 = 200 deadline minimum",
+            "200 * 1.20 = 240 safe target",
+            "4800 / 120 = 40 projected minutes",
+            "24 - 40 = -16 deadline variance"
+          ]
+        },
+        "proposal": {
+          "id": "proposal-13dab181",
+          "version": "sq42-recovery-v1",
+          "concurrency_before": 3,
+          "concurrency_after": 1,
+          "reserve_workers_before": 0,
+          "reserve_workers_after": 4,
+          "scope": "SQ-42 render pool only",
+          "scenario_cost_usd": 18,
+          "rollback": "Restore prior worker configuration",
+          "stop_condition": "Stop if OOM rate does not decline after rollback",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181"
+          ]
+        },
+        "decision": {
+          "id": "decision-236e7f17b683",
+          "proposal_id": "proposal-13dab181",
+          "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "approver": "Competition Audit",
+          "decided_at": "2026-08-01T05:59:34.113483Z",
+          "expires_at": "2026-08-01T06:09:34.113483Z",
+          "status": "APPROVED",
+          "reason": null
+        },
+        "receipt": {
+          "id": "action-46e6f7e44b5b",
+          "approval_id": "decision-236e7f17b683",
+          "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "idempotency_key": "competition-audit-13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "executor_mode": "CLOUD_RUN",
+          "status": "COMPLETED",
+          "requested_at": "2026-08-01T05:59:34.288614Z",
+          "completed_at": "2026-08-01T05:59:34.437061Z",
+          "transition": {
+            "concurrency_before": 3,
+            "concurrency_after": 1,
+            "reserve_workers_before": 0,
+            "reserve_workers_after": 4
+          },
+          "annotation_id": "annotation-13dab181",
+          "error_code": null
+        },
+        "verification": null,
+        "blockers": [],
+        "prior_run": false,
+        "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+      }
+    },
+    "verify": {
+      "status": 200,
+      "elapsed_s": 3.289,
+      "payload": {
+        "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+        "created_at": "2026-08-01T05:59:23.724197Z",
+        "state": "VERIFIED",
+        "mode": "LIVE_GRAFANA_MCP",
+        "production": "Eclipse Protocol \u2014 Episode 6",
+        "operator": "Maya Chen",
+        "sequence": "SQ-42",
+        "deadline_minutes": 24,
+        "backlog_frames": 4800,
+        "shots": [
+          {
+            "id": "SQ42-001",
+            "frame_start": 1,
+            "frame_end": 300,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 10,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-002",
+            "frame_start": 301,
+            "frame_end": 600,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 11,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-003",
+            "frame_start": 601,
+            "frame_end": 900,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-03",
+            "eta_minutes": 12,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-004",
+            "frame_start": 901,
+            "frame_end": 1200,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-04",
+            "eta_minutes": 13,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-005",
+            "frame_start": 1201,
+            "frame_end": 1500,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 14,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-006",
+            "frame_start": 1501,
+            "frame_end": 1800,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 15,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-007",
+            "frame_start": 1801,
+            "frame_end": 2100,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-03",
+            "eta_minutes": 16,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-008",
+            "frame_start": 2101,
+            "frame_end": 2400,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-04",
+            "eta_minutes": 17,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-009",
+            "frame_start": 2401,
+            "frame_end": 2700,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 18,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-010",
+            "frame_start": 2701,
+            "frame_end": 3000,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 19,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-011",
+            "frame_start": 3001,
+            "frame_end": 3300,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-03",
+            "eta_minutes": 20,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-012",
+            "frame_start": 3301,
+            "frame_end": 3600,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-04",
+            "eta_minutes": 21,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-013",
+            "frame_start": 3601,
+            "frame_end": 3900,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 22,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-014",
+            "frame_start": 3901,
+            "frame_end": 4200,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 23,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-015",
+            "frame_start": 4201,
+            "frame_end": 4500,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-03",
+            "eta_minutes": 24,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-016",
+            "frame_start": 4501,
+            "frame_end": 4800,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-04",
+            "eta_minutes": 25,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-017",
+            "frame_start": 4801,
+            "frame_end": 5100,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-01",
+            "eta_minutes": 26,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          },
+          {
+            "id": "SQ42-018",
+            "frame_start": 5101,
+            "frame_end": 5400,
+            "remaining_frames": 0,
+            "attempts": 1,
+            "worker": "gpu-02",
+            "eta_minutes": 27,
+            "dependency": "Streaming package",
+            "at_risk": false,
+            "status": "READY"
+          }
+        ],
+        "evidence": [
+          {
+            "id": "pre_action-metric-13dab181",
+            "kind": "metric",
+            "operation": "query_prometheus",
+            "summary": "Backlog 4800; throughput 120 frames/min",
+            "observed_at": "2026-08-01T05:59:27.971000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "backlog_frames": 4800,
+              "throughput": 120
+            }
+          },
+          {
+            "id": "pre_action-log-13dab181",
+            "kind": "log",
+            "operation": "query_loki_logs",
+            "summary": "CUDA OOM persists",
+            "observed_at": "2026-08-01T05:59:23.989000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "oom": true,
+              "event": "render_status"
+            }
+          },
+          {
+            "id": "post_action-metric-13dab181",
+            "kind": "metric",
+            "operation": "query_prometheus",
+            "summary": "Backlog 4800; throughput 320 frames/min",
+            "observed_at": "2026-08-01T05:59:36.621000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "backlog_frames": 4800,
+              "throughput": 320
+            }
+          },
+          {
+            "id": "post_action-log-13dab181",
+            "kind": "log",
+            "operation": "query_loki_logs",
+            "summary": "No new CUDA OOM events",
+            "observed_at": "2026-08-01T05:59:34.677000Z",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "source_mode": "LIVE_GRAFANA_MCP",
+            "values": {
+              "oom": false,
+              "event": "render_status"
+            }
+          }
+        ],
+        "diagnosis": {
+          "evidence_status": "Supported",
+          "hypothesis": "RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm.",
+          "alternative": "A specific SQ-42 texture asset increased per-shot memory pressure.",
+          "discriminator": "Failures span multiple shots and begin after concurrency changed 1\u21923.",
+          "falsifier": "OOM continues at the same rate after rollback to concurrency 1.",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181"
+          ],
+          "missing_evidence": []
+        },
+        "agent_synthesis": "**Observations:**\n*   The current backlog is 4800 frames with a throughput of 120 frames/minute (evidence ID: `pre_action-metric-13dab181`).\n*   CUDA Out-Of-Memory (OOM) errors persist (evidence ID: `pre_action-log-13dab181`).\n*   The release is currently 16 minutes late, with a projected completion in 40 minutes against a 24-minute deadline.\n*   The current state is AWAITING_APPROVAL.\n\n**Leading Hypothesis:**\n*   The RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm (evidence IDs: `pre_action-metric-13dab181`, `pre_action-log-13dab181`).\n\n**Strongest Alternative:**\n*   A specific SQ-42 texture asset increased per-shot memory pressure.\n\n**Falsifier:**\n*   OOM continues at the same rate after rollback to concurrency 1.",
+        "agent_model": "gemini-2.5-flash",
+        "impact": {
+          "backlog_frames": 4800,
+          "deadline_minutes": 24,
+          "observed_throughput": 320,
+          "deadline_minimum": 200,
+          "safe_target": 240,
+          "projected_minutes": 15,
+          "variance_minutes": 9,
+          "label": "9 minutes early",
+          "formulas": [
+            "4800 / 24 = 200 deadline minimum",
+            "200 * 1.20 = 240 safe target",
+            "4800 / 320 = 15 projected minutes",
+            "24 - 15 = 9 deadline variance"
+          ]
+        },
+        "proposal": {
+          "id": "proposal-13dab181",
+          "version": "sq42-recovery-v1",
+          "concurrency_before": 3,
+          "concurrency_after": 1,
+          "reserve_workers_before": 0,
+          "reserve_workers_after": 4,
+          "scope": "SQ-42 render pool only",
+          "scenario_cost_usd": 18,
+          "rollback": "Restore prior worker configuration",
+          "stop_condition": "Stop if OOM rate does not decline after rollback",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181"
+          ]
+        },
+        "decision": {
+          "id": "decision-236e7f17b683",
+          "proposal_id": "proposal-13dab181",
+          "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "approver": "Competition Audit",
+          "decided_at": "2026-08-01T05:59:34.113483Z",
+          "expires_at": "2026-08-01T06:09:34.113483Z",
+          "status": "APPROVED",
+          "reason": null
+        },
+        "receipt": {
+          "id": "action-46e6f7e44b5b",
+          "approval_id": "decision-236e7f17b683",
+          "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "idempotency_key": "competition-audit-13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "executor_mode": "CLOUD_RUN",
+          "status": "COMPLETED",
+          "requested_at": "2026-08-01T05:59:34.288614Z",
+          "completed_at": "2026-08-01T05:59:34.437061Z",
+          "transition": {
+            "concurrency_before": 3,
+            "concurrency_after": 1,
+            "reserve_workers_before": 0,
+            "reserve_workers_after": 4
+          },
+          "annotation_id": "annotation-13dab181",
+          "error_code": null
+        },
+        "verification": {
+          "id": "verification-d60c9910594b",
+          "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "verified_at": "2026-08-01T05:59:37.664777Z",
+          "passed": true,
+          "gates": {
+            "active_run": true,
+            "fresh_after_execution": true,
+            "safe_throughput": true,
+            "oom_declining": true,
+            "configuration_confirmed": true,
+            "ahead_of_deadline": true
+          },
+          "impact": {
+            "backlog_frames": 4800,
+            "deadline_minutes": 24,
+            "observed_throughput": 320,
+            "deadline_minimum": 200,
+            "safe_target": 240,
+            "projected_minutes": 15,
+            "variance_minutes": 9,
+            "label": "9 minutes early",
+            "formulas": [
+              "4800 / 24 = 200 deadline minimum",
+              "200 * 1.20 = 240 safe target",
+              "4800 / 320 = 15 projected minutes",
+              "24 - 15 = 9 deadline variance"
+            ]
+          },
+          "evidence_ids": [
+            "post_action-metric-13dab181",
+            "post_action-log-13dab181"
+          ],
+          "reasons": []
+        },
+        "blockers": [],
+        "prior_run": false,
+        "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+      }
+    },
+    "audit": {
+      "status": 200,
+      "elapsed_s": 0.196,
+      "payload": {
+        "current": {
+          "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "created_at": "2026-08-01T05:59:23.724197Z",
+          "state": "VERIFIED",
+          "mode": "LIVE_GRAFANA_MCP",
+          "production": "Eclipse Protocol \u2014 Episode 6",
+          "operator": "Maya Chen",
+          "sequence": "SQ-42",
+          "deadline_minutes": 24,
+          "backlog_frames": 4800,
+          "shots": [
+            {
+              "id": "SQ42-001",
+              "frame_start": 1,
+              "frame_end": 300,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-01",
+              "eta_minutes": 10,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-002",
+              "frame_start": 301,
+              "frame_end": 600,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-02",
+              "eta_minutes": 11,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-003",
+              "frame_start": 601,
+              "frame_end": 900,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-03",
+              "eta_minutes": 12,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-004",
+              "frame_start": 901,
+              "frame_end": 1200,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-04",
+              "eta_minutes": 13,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-005",
+              "frame_start": 1201,
+              "frame_end": 1500,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-01",
+              "eta_minutes": 14,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-006",
+              "frame_start": 1501,
+              "frame_end": 1800,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-02",
+              "eta_minutes": 15,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-007",
+              "frame_start": 1801,
+              "frame_end": 2100,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-03",
+              "eta_minutes": 16,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-008",
+              "frame_start": 2101,
+              "frame_end": 2400,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-04",
+              "eta_minutes": 17,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-009",
+              "frame_start": 2401,
+              "frame_end": 2700,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-01",
+              "eta_minutes": 18,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-010",
+              "frame_start": 2701,
+              "frame_end": 3000,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-02",
+              "eta_minutes": 19,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-011",
+              "frame_start": 3001,
+              "frame_end": 3300,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-03",
+              "eta_minutes": 20,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-012",
+              "frame_start": 3301,
+              "frame_end": 3600,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-04",
+              "eta_minutes": 21,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-013",
+              "frame_start": 3601,
+              "frame_end": 3900,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-01",
+              "eta_minutes": 22,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-014",
+              "frame_start": 3901,
+              "frame_end": 4200,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-02",
+              "eta_minutes": 23,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-015",
+              "frame_start": 4201,
+              "frame_end": 4500,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-03",
+              "eta_minutes": 24,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-016",
+              "frame_start": 4501,
+              "frame_end": 4800,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-04",
+              "eta_minutes": 25,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-017",
+              "frame_start": 4801,
+              "frame_end": 5100,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-01",
+              "eta_minutes": 26,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            },
+            {
+              "id": "SQ42-018",
+              "frame_start": 5101,
+              "frame_end": 5400,
+              "remaining_frames": 0,
+              "attempts": 1,
+              "worker": "gpu-02",
+              "eta_minutes": 27,
+              "dependency": "Streaming package",
+              "at_risk": false,
+              "status": "READY"
+            }
+          ],
+          "evidence": [
+            {
+              "id": "pre_action-metric-13dab181",
+              "kind": "metric",
+              "operation": "query_prometheus",
+              "summary": "Backlog 4800; throughput 120 frames/min",
+              "observed_at": "2026-08-01T05:59:27.971000Z",
+              "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+              "source_mode": "LIVE_GRAFANA_MCP",
+              "values": {
+                "backlog_frames": 4800,
+                "throughput": 120
+              }
+            },
+            {
+              "id": "pre_action-log-13dab181",
+              "kind": "log",
+              "operation": "query_loki_logs",
+              "summary": "CUDA OOM persists",
+              "observed_at": "2026-08-01T05:59:23.989000Z",
+              "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+              "source_mode": "LIVE_GRAFANA_MCP",
+              "values": {
+                "oom": true,
+                "event": "render_status"
+              }
+            },
+            {
+              "id": "post_action-metric-13dab181",
+              "kind": "metric",
+              "operation": "query_prometheus",
+              "summary": "Backlog 4800; throughput 320 frames/min",
+              "observed_at": "2026-08-01T05:59:36.621000Z",
+              "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+              "source_mode": "LIVE_GRAFANA_MCP",
+              "values": {
+                "backlog_frames": 4800,
+                "throughput": 320
+              }
+            },
+            {
+              "id": "post_action-log-13dab181",
+              "kind": "log",
+              "operation": "query_loki_logs",
+              "summary": "No new CUDA OOM events",
+              "observed_at": "2026-08-01T05:59:34.677000Z",
+              "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+              "source_mode": "LIVE_GRAFANA_MCP",
+              "values": {
+                "oom": false,
+                "event": "render_status"
+              }
+            }
+          ],
+          "diagnosis": {
+            "evidence_status": "Supported",
+            "hypothesis": "RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm.",
+            "alternative": "A specific SQ-42 texture asset increased per-shot memory pressure.",
+            "discriminator": "Failures span multiple shots and begin after concurrency changed 1\u21923.",
+            "falsifier": "OOM continues at the same rate after rollback to concurrency 1.",
+            "evidence_ids": [
+              "pre_action-metric-13dab181",
+              "pre_action-log-13dab181"
+            ],
+            "missing_evidence": []
+          },
+          "agent_synthesis": "**Observations:**\n*   The current backlog is 4800 frames with a throughput of 120 frames/minute (evidence ID: `pre_action-metric-13dab181`).\n*   CUDA Out-Of-Memory (OOM) errors persist (evidence ID: `pre_action-log-13dab181`).\n*   The release is currently 16 minutes late, with a projected completion in 40 minutes against a 24-minute deadline.\n*   The current state is AWAITING_APPROVAL.\n\n**Leading Hypothesis:**\n*   The RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm (evidence IDs: `pre_action-metric-13dab181`, `pre_action-log-13dab181`).\n\n**Strongest Alternative:**\n*   A specific SQ-42 texture asset increased per-shot memory pressure.\n\n**Falsifier:**\n*   OOM continues at the same rate after rollback to concurrency 1.",
+          "agent_model": "gemini-2.5-flash",
+          "impact": {
+            "backlog_frames": 4800,
+            "deadline_minutes": 24,
+            "observed_throughput": 320,
+            "deadline_minimum": 200,
+            "safe_target": 240,
+            "projected_minutes": 15,
+            "variance_minutes": 9,
+            "label": "9 minutes early",
+            "formulas": [
+              "4800 / 24 = 200 deadline minimum",
+              "200 * 1.20 = 240 safe target",
+              "4800 / 320 = 15 projected minutes",
+              "24 - 15 = 9 deadline variance"
+            ]
+          },
+          "proposal": {
+            "id": "proposal-13dab181",
+            "version": "sq42-recovery-v1",
+            "concurrency_before": 3,
+            "concurrency_after": 1,
+            "reserve_workers_before": 0,
+            "reserve_workers_after": 4,
+            "scope": "SQ-42 render pool only",
+            "scenario_cost_usd": 18,
+            "rollback": "Restore prior worker configuration",
+            "stop_condition": "Stop if OOM rate does not decline after rollback",
+            "evidence_ids": [
+              "pre_action-metric-13dab181",
+              "pre_action-log-13dab181"
+            ]
+          },
+          "decision": {
+            "id": "decision-236e7f17b683",
+            "proposal_id": "proposal-13dab181",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "approver": "Competition Audit",
+            "decided_at": "2026-08-01T05:59:34.113483Z",
+            "expires_at": "2026-08-01T06:09:34.113483Z",
+            "status": "APPROVED",
+            "reason": null
+          },
+          "receipt": {
+            "id": "action-46e6f7e44b5b",
+            "approval_id": "decision-236e7f17b683",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "idempotency_key": "competition-audit-13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "executor_mode": "CLOUD_RUN",
+            "status": "COMPLETED",
+            "requested_at": "2026-08-01T05:59:34.288614Z",
+            "completed_at": "2026-08-01T05:59:34.437061Z",
+            "transition": {
+              "concurrency_before": 3,
+              "concurrency_after": 1,
+              "reserve_workers_before": 0,
+              "reserve_workers_after": 4
+            },
+            "annotation_id": "annotation-13dab181",
+            "error_code": null
+          },
+          "verification": {
+            "id": "verification-d60c9910594b",
+            "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+            "verified_at": "2026-08-01T05:59:37.664777Z",
+            "passed": true,
+            "gates": {
+              "active_run": true,
+              "fresh_after_execution": true,
+              "safe_throughput": true,
+              "oom_declining": true,
+              "configuration_confirmed": true,
+              "ahead_of_deadline": true
+            },
+            "impact": {
+              "backlog_frames": 4800,
+              "deadline_minutes": 24,
+              "observed_throughput": 320,
+              "deadline_minimum": 200,
+              "safe_target": 240,
+              "projected_minutes": 15,
+              "variance_minutes": 9,
+              "label": "9 minutes early",
+              "formulas": [
+                "4800 / 24 = 200 deadline minimum",
+                "200 * 1.20 = 240 safe target",
+                "4800 / 320 = 15 projected minutes",
+                "24 - 15 = 9 deadline variance"
+              ]
+            },
+            "evidence_ids": [
+              "post_action-metric-13dab181",
+              "post_action-log-13dab181"
+            ],
+            "reasons": []
+          },
+          "blockers": [],
+          "prior_run": false,
+          "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+        },
+        "prior_runs": [
+          {
+            "run_id": "d0f58697-7b00-4614-89ad-6a0978e85d5d",
+            "created_at": "2026-08-01T05:29:10.503624Z",
+            "state": "READY",
+            "mode": "LIVE_GRAFANA_MCP",
+            "production": "Eclipse Protocol \u2014 Episode 6",
+            "operator": "Maya Chen",
+            "sequence": "SQ-42",
+            "deadline_minutes": 24,
+            "backlog_frames": 4800,
+            "shots": [
+              {
+                "id": "SQ42-001",
+                "frame_start": 1,
+                "frame_end": 300,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-01",
+                "eta_minutes": 28,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-002",
+                "frame_start": 301,
+                "frame_end": 600,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-02",
+                "eta_minutes": 29,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-003",
+                "frame_start": 601,
+                "frame_end": 900,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-03",
+                "eta_minutes": 30,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-004",
+                "frame_start": 901,
+                "frame_end": 1200,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-04",
+                "eta_minutes": 31,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-005",
+                "frame_start": 1201,
+                "frame_end": 1500,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-01",
+                "eta_minutes": 32,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-006",
+                "frame_start": 1501,
+                "frame_end": 1800,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-02",
+                "eta_minutes": 33,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-007",
+                "frame_start": 1801,
+                "frame_end": 2100,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-03",
+                "eta_minutes": 34,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-008",
+                "frame_start": 2101,
+                "frame_end": 2400,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-04",
+                "eta_minutes": 35,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-009",
+                "frame_start": 2401,
+                "frame_end": 2700,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-01",
+                "eta_minutes": 36,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-010",
+                "frame_start": 2701,
+                "frame_end": 3000,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-02",
+                "eta_minutes": 37,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-011",
+                "frame_start": 3001,
+                "frame_end": 3300,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-03",
+                "eta_minutes": 38,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-012",
+                "frame_start": 3301,
+                "frame_end": 3600,
+                "remaining_frames": 400,
+                "attempts": 3,
+                "worker": "gpu-04",
+                "eta_minutes": 39,
+                "dependency": "Streaming package",
+                "at_risk": true,
+                "status": "AT RISK"
+              },
+              {
+                "id": "SQ42-013",
+                "frame_start": 3601,
+                "frame_end": 3900,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-01",
+                "eta_minutes": 22,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-014",
+                "frame_start": 3901,
+                "frame_end": 4200,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-02",
+                "eta_minutes": 23,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-015",
+                "frame_start": 4201,
+                "frame_end": 4500,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-03",
+                "eta_minutes": 24,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-016",
+                "frame_start": 4501,
+                "frame_end": 4800,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-04",
+                "eta_minutes": 25,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-017",
+                "frame_start": 4801,
+                "frame_end": 5100,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-01",
+                "eta_minutes": 26,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-018",
+                "frame_start": 5101,
+                "frame_end": 5400,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-02",
+                "eta_minutes": 27,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              }
+            ],
+            "evidence": [],
+            "diagnosis": null,
+            "agent_synthesis": null,
+            "agent_model": null,
+            "impact": {
+              "backlog_frames": 4800,
+              "deadline_minutes": 24,
+              "observed_throughput": 120,
+              "deadline_minimum": 200,
+              "safe_target": 240,
+              "projected_minutes": 40,
+              "variance_minutes": -16,
+              "label": "16 minutes late",
+              "formulas": [
+                "4800 / 24 = 200 deadline minimum",
+                "200 * 1.20 = 240 safe target",
+                "4800 / 120 = 40 projected minutes",
+                "24 - 40 = -16 deadline variance"
+              ]
+            },
+            "proposal": null,
+            "decision": null,
+            "receipt": null,
+            "verification": null,
+            "blockers": [],
+            "prior_run": true,
+            "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+          },
+          {
+            "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+            "created_at": "2026-08-01T05:30:22.870818Z",
+            "state": "VERIFIED",
+            "mode": "LIVE_GRAFANA_MCP",
+            "production": "Eclipse Protocol \u2014 Episode 6",
+            "operator": "Maya Chen",
+            "sequence": "SQ-42",
+            "deadline_minutes": 24,
+            "backlog_frames": 4800,
+            "shots": [
+              {
+                "id": "SQ42-001",
+                "frame_start": 1,
+                "frame_end": 300,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-01",
+                "eta_minutes": 10,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-002",
+                "frame_start": 301,
+                "frame_end": 600,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-02",
+                "eta_minutes": 11,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-003",
+                "frame_start": 601,
+                "frame_end": 900,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-03",
+                "eta_minutes": 12,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-004",
+                "frame_start": 901,
+                "frame_end": 1200,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-04",
+                "eta_minutes": 13,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-005",
+                "frame_start": 1201,
+                "frame_end": 1500,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-01",
+                "eta_minutes": 14,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-006",
+                "frame_start": 1501,
+                "frame_end": 1800,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-02",
+                "eta_minutes": 15,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-007",
+                "frame_start": 1801,
+                "frame_end": 2100,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-03",
+                "eta_minutes": 16,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-008",
+                "frame_start": 2101,
+                "frame_end": 2400,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-04",
+                "eta_minutes": 17,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-009",
+                "frame_start": 2401,
+                "frame_end": 2700,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-01",
+                "eta_minutes": 18,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-010",
+                "frame_start": 2701,
+                "frame_end": 3000,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-02",
+                "eta_minutes": 19,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-011",
+                "frame_start": 3001,
+                "frame_end": 3300,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-03",
+                "eta_minutes": 20,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-012",
+                "frame_start": 3301,
+                "frame_end": 3600,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-04",
+                "eta_minutes": 21,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-013",
+                "frame_start": 3601,
+                "frame_end": 3900,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-01",
+                "eta_minutes": 22,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-014",
+                "frame_start": 3901,
+                "frame_end": 4200,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-02",
+                "eta_minutes": 23,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-015",
+                "frame_start": 4201,
+                "frame_end": 4500,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-03",
+                "eta_minutes": 24,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-016",
+                "frame_start": 4501,
+                "frame_end": 4800,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-04",
+                "eta_minutes": 25,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-017",
+                "frame_start": 4801,
+                "frame_end": 5100,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-01",
+                "eta_minutes": 26,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              },
+              {
+                "id": "SQ42-018",
+                "frame_start": 5101,
+                "frame_end": 5400,
+                "remaining_frames": 0,
+                "attempts": 1,
+                "worker": "gpu-02",
+                "eta_minutes": 27,
+                "dependency": "Streaming package",
+                "at_risk": false,
+                "status": "READY"
+              }
+            ],
+            "evidence": [
+              {
+                "id": "pre_action-metric-28d84011",
+                "kind": "metric",
+                "operation": "query_prometheus",
+                "summary": "Backlog 4800; throughput 120 frames/min",
+                "observed_at": "2026-08-01T05:30:26.457000Z",
+                "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+                "source_mode": "LIVE_GRAFANA_MCP",
+                "values": {
+                  "backlog_frames": 4800,
+                  "throughput": 120
+                }
+              },
+              {
+                "id": "pre_action-log-28d84011",
+                "kind": "log",
+                "operation": "query_loki_logs",
+                "summary": "CUDA OOM persists",
+                "observed_at": "2026-08-01T05:30:23.278000Z",
+                "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+                "source_mode": "LIVE_GRAFANA_MCP",
+                "values": {
+                  "oom": true,
+                  "event": "render_status"
+                }
+              },
+              {
+                "id": "post_action-metric-28d84011",
+                "kind": "metric",
+                "operation": "query_prometheus",
+                "summary": "Backlog 4800; throughput 320 frames/min",
+                "observed_at": "2026-08-01T05:30:35.239000Z",
+                "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+                "source_mode": "LIVE_GRAFANA_MCP",
+                "values": {
+                  "backlog_frames": 4800,
+                  "throughput": 320
+                }
+              },
+              {
+                "id": "post_action-log-28d84011",
+                "kind": "log",
+                "operation": "query_loki_logs",
+                "summary": "No new CUDA OOM events",
+                "observed_at": "2026-08-01T05:30:33.324000Z",
+                "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+                "source_mode": "LIVE_GRAFANA_MCP",
+                "values": {
+                  "oom": false,
+                  "event": "render_status"
+                }
+              }
+            ],
+            "diagnosis": {
+              "evidence_status": "Supported",
+              "hypothesis": "RC3 concurrency increase caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm.",
+              "alternative": "A specific SQ-42 texture asset increased per-shot memory pressure.",
+              "discriminator": "Failures span multiple shots and begin after concurrency changed 1\u21923.",
+              "falsifier": "OOM continues at the same rate after rollback to concurrency 1.",
+              "evidence_ids": [
+                "pre_action-metric-28d84011",
+                "pre_action-log-28d84011"
+              ],
+              "missing_evidence": []
+            },
+            "agent_synthesis": "**Observations:**\n*   The current backlog is 4800 frames, with a throughput of 120 frames/minute (evidence ID: `pre_action-metric-28d84011`).\n*   CUDA Out Of Memory (OOM) errors are persisting (evidence ID: `pre_action-log-28d84011`).\n*   The release is projected to be 16 minutes late, with a projected completion time of 40 minutes against a 24-minute deadline.\n\n**Leading Hypothesis:**\n*   The RC3 concurrency increase from 1 to 3 workers caused aggregate VRAM saturation and a multi-shot CUDA OOM retry storm (evidence IDs: `pre_action-metric-28d84011`, `pre_action-log-28d84011`).\n\n**Strongest Alternative:**\n*   A specific SQ-42 texture asset increased per-shot memory pressure.\n\n**Falsifier:**\n*   OOM continues at the same rate after rollback to concurrency 1.",
+            "agent_model": "gemini-2.5-flash",
+            "impact": {
+              "backlog_frames": 4800,
+              "deadline_minutes": 24,
+              "observed_throughput": 320,
+              "deadline_minimum": 200,
+              "safe_target": 240,
+              "projected_minutes": 15,
+              "variance_minutes": 9,
+              "label": "9 minutes early",
+              "formulas": [
+                "4800 / 24 = 200 deadline minimum",
+                "200 * 1.20 = 240 safe target",
+                "4800 / 320 = 15 projected minutes",
+                "24 - 15 = 9 deadline variance"
+              ]
+            },
+            "proposal": {
+              "id": "proposal-28d84011",
+              "version": "sq42-recovery-v1",
+              "concurrency_before": 3,
+              "concurrency_after": 1,
+              "reserve_workers_before": 0,
+              "reserve_workers_after": 4,
+              "scope": "SQ-42 render pool only",
+              "scenario_cost_usd": 18,
+              "rollback": "Restore prior worker configuration",
+              "stop_condition": "Stop if OOM rate does not decline after rollback",
+              "evidence_ids": [
+                "pre_action-metric-28d84011",
+                "pre_action-log-28d84011"
+              ]
+            },
+            "decision": {
+              "id": "decision-1e5a9a88de14",
+              "proposal_id": "proposal-28d84011",
+              "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+              "approver": "Maya Chen",
+              "decided_at": "2026-08-01T05:30:32.138055Z",
+              "expires_at": "2026-08-01T05:40:32.138055Z",
+              "status": "APPROVED",
+              "reason": "Bounded recovery approved for controlled demo."
+            },
+            "receipt": {
+              "id": "action-d0f7ecc4317a",
+              "approval_id": "decision-1e5a9a88de14",
+              "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+              "idempotency_key": "live-28d84011-b821-4574-a2bc-15ff0b38d24c",
+              "executor_mode": "CLOUD_RUN",
+              "status": "COMPLETED",
+              "requested_at": "2026-08-01T05:30:32.666378Z",
+              "completed_at": "2026-08-01T05:30:32.876553Z",
+              "transition": {
+                "concurrency_before": 3,
+                "concurrency_after": 1,
+                "reserve_workers_before": 0,
+                "reserve_workers_after": 4
+              },
+              "annotation_id": "annotation-28d84011",
+              "error_code": null
+            },
+            "verification": {
+              "id": "verification-4d6c0172c009",
+              "run_id": "28d84011-b821-4574-a2bc-15ff0b38d24c",
+              "verified_at": "2026-08-01T05:30:36.313608Z",
+              "passed": true,
+              "gates": {
+                "active_run": true,
+                "fresh_after_execution": true,
+                "safe_throughput": true,
+                "oom_declining": true,
+                "configuration_confirmed": true,
+                "ahead_of_deadline": true
+              },
+              "impact": {
+                "backlog_frames": 4800,
+                "deadline_minutes": 24,
+                "observed_throughput": 320,
+                "deadline_minimum": 200,
+                "safe_target": 240,
+                "projected_minutes": 15,
+                "variance_minutes": 9,
+                "label": "9 minutes early",
+                "formulas": [
+                  "4800 / 24 = 200 deadline minimum",
+                  "200 * 1.20 = 240 safe target",
+                  "4800 / 320 = 15 projected minutes",
+                  "24 - 15 = 9 deadline variance"
+                ]
+              },
+              "evidence_ids": [
+                "post_action-metric-28d84011",
+                "post_action-log-28d84011"
+              ],
+              "reasons": []
+            },
+            "blockers": [],
+            "prior_run": true,
+            "disclosure": "Controlled synthetic workload; local evidence adapter for development. Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
+          }
+        ],
+        "lineage": {
+          "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+          "evidence_ids": [
+            "pre_action-metric-13dab181",
+            "pre_action-log-13dab181",
+            "post_action-metric-13dab181",
+            "post_action-log-13dab181"
+          ],
+          "proposal_id": "proposal-13dab181",
+          "decision_id": "decision-236e7f17b683",
+          "action_id": "action-46e6f7e44b5b",
+          "verification_id": "verification-d60c9910594b"
+        }
+      }
+    }
+  },
+  "run_id": "13dab181-29e0-4c88-b085-add4ed2d4ea9",
+  "ended_at": "2026-08-01T05:59:37Z"
+}

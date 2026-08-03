@@ -1,0 +1,37 @@
+{
+  "verified_at": "2026-08-02T22:03:58-07:00",
+  "public_url": "https://youtu.be/yoquhZPl8Cc",
+  "resolved_url": "https://www.youtube.com/watch?v=yoquhZPl8Cc&feature=youtu.be",
+  "anonymous_http": {
+    "status": 200
+  },
+  "youtube_oembed": {
+    "status": 200,
+    "title": "CUTLINE — The Release-Assurance Agent for Agentic Cinema",
+    "author_name": "Constantine Vassilev",
+    "author_url": "https://www.youtube.com/@aitrailblazerX",
+    "provider_name": "YouTube",
+    "type": "video",
+    "thumbnail_url": "https://i.ytimg.com/vi/yoquhZPl8Cc/hqdefault.jpg",
+    "embed_url": "https://www.youtube.com/embed/yoquhZPl8Cc?feature=oembed"
+  },
+  "isolated_browser": {
+    "authenticated": false,
+    "http_status": 200,
+    "page_title": "CUTLINE — The Release-Assurance Agent for Agentic Cinema - YouTube",
+    "visible_title": "CUTLINE — The Release-Assurance Agent for Agentic Cinema",
+    "visible_author": "Constantine Vassilev",
+    "video_element_count": 1,
+    "screenshot": "qa_evidence/screenshots/competition_demo_public_youtube_2026_08_02.png"
+  },
+  "local_media_cross_check": {
+    "duration_seconds": 128.65,
+    "competition_limit_seconds": 180,
+    "within_limit": true,
+    "resolution": "1280x720",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "sha256": "a3dfc77984d398d645793afb10a7af20a5b7f553648fcb2021f8c6bfdd67c976"
+  },
+  "result": "PASS"
+}

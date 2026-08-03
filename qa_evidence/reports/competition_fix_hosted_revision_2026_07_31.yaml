@@ -1,0 +1,14 @@
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '2'
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 575.0.0
+        run.googleapis.com/cpu-throttling: 'false'
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containerConcurrency: 20
+      serviceAccountName: cutline-runtime@cutline-agentic-cinema.iam.gserviceaccount.com
+status:
+  latestReadyRevisionName: cutline-00010-lck

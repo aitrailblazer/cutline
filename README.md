@@ -11,6 +11,8 @@ package lock.
 
 **Hosted controlled build:** https://cutline-vfz4s45c3q-uc.a.run.app/
 
+**Competition demo:** https://youtu.be/yoquhZPl8Cc
+
 ## Why this is not “an AI that makes a movie”
 
 CUTLINE does not generate a finished film. It solves a production problem that
@@ -103,9 +105,12 @@ The approved managed Vertex evaluation completed all three cases with 100%
 final-response-quality and safety pass rates. Curated traces and grader results
 are under `qa_evidence/eval/`.
 
-The included Dockerfile is Cloud Run-ready. The public controlled-mode revision
-is deployed to the hosted URL above; production live mode remains fail-closed
-until Grafana MCP and the action boundary are configured through Secret Manager.
+The included Dockerfile is Cloud Run-ready. The public hosted revision runs in
+live mode with Gemini 2.5 Flash on Vertex AI, a private official
+`grafana/mcp-grafana` Cloud Run service, and an authenticated Google Cloud action
+boundary. Provider credentials are configured through Secret Manager and never
+shipped to the browser. Live readiness and investigation remain fail-closed if
+any required provider, identity, datasource, or action configuration is absent.
 
 ```bash
 gcloud config set project <dedicated-cutline-project>

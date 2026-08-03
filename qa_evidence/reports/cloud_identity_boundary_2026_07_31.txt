@@ -1,0 +1,33 @@
+--- billing project ---
+{
+  "billingAccountName": "billingAccounts/018530-615AB8-696753",
+  "billingEnabled": true,
+  "name": "projects/cutline-agentic-cinema/billingInfo",
+  "projectId": "cutline-agentic-cinema"
+}
+--- service public IAM ---
+{
+  "bindings": [
+    {
+      "members": [
+        "allUsers"
+      ],
+      "role": "roles/run.invoker"
+    }
+  ],
+  "etag": "BwZX8YyzW5Q=",
+  "version": 1
+}
+--- MCP private IAM ---
+{
+  "bindings": [
+    {
+      "members": [
+        "serviceAccount:cutline-runtime@cutline-agentic-cinema.iam.gserviceaccount.com"
+      ],
+      "role": "roles/run.invoker"
+    }
+  ],
+  "etag": "BwZX9YqTQgw=",
+  "version": 1
+}

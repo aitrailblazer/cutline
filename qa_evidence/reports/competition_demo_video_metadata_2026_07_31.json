@@ -1,0 +1,18 @@
+{
+  "title": "CUTLINE \u2014 The Release-Assurance Agent for Agentic Cinema",
+  "description": "CUTLINE is a human-governed release-assurance agent for agentic cinema. It retrieves live Prometheus and Loki evidence through the official Grafana MCP, uses Gemini 2.5 Flash on Vertex AI for bounded synthesis, requires explicit operator approval, executes an authenticated Google Cloud action, and verifies recovery with fresh evidence.\n\nTry the hosted app: https://cutline-vfz4s45c3q-uc.a.run.app/\nSource (Apache-2.0): https://github.com/aitrailblazer/cutline\n\nBuilt for Agentic Cinema: The Blockbuster Hackathon. The Eclipse Protocol / SQ-42 workload is a controlled deterministic scenario; provider evidence, AI synthesis, and the Google Cloud action are disclosed in the app. CUTLINE does not generate a finished movie.\n\n#AgenticCinema #Gemini #GoogleCloud #Grafana #MCP #AI #VFX",
+  "visibility": "public",
+  "audience": "not made for kids",
+  "language": "English",
+  "competition_limit_seconds": 180,
+  "duration_seconds": 116.64,
+  "width": 1280,
+  "height": 720,
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "size_bytes": 4139547,
+  "sha256": "6d9a101a90c8685366c4c23372f1decdc3500b52d202791d6e6319b550d7e525",
+  "local_path": "/Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline/artifacts/submission-video/CUTLINE_Agentic_Cinema_Demo_Narrated_2026_07_31.mp4",
+  "public_url": null,
+  "status": "READY_FOR_YOUTUBE_UPLOAD"
+}

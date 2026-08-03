@@ -1,9 +1,9 @@
 [project]
 name = "cutline"
 version = "0.1.0"
-description = ""
+description = "Evidence-backed release assurance for agentic cinema production."
 authors = [
-    {name = "Your Name", email = "your@email.com"},
+    {name = "Constantine Vassilev"},
 ]
 dependencies = [
     "google-adk>=1.15.0,<2.0.0",
@@ -26,10 +26,6 @@ dev = [
 ]
 
 [project.optional-dependencies]
-eval = [
-    "google-adk[eval]>=1.15.0,<2.0.0",
-    "google-cloud-aiplatform[evaluation]>=1.150.0",
-]
 lint = [
     "ruff>=0.4.6,<1.0.0",
     "ty>=0.0.1a0",
@@ -79,7 +75,7 @@ deprecated = "ignore"
 
 [tool.codespell]
 ignore-words-list = "rouge"
-skip = "./locust_env/*,uv.lock,.venv,./frontend,**/package-lock.json,qa_evidence"
+skip = "./locust_env/*,uv.lock,.venv,./frontend,**/package-lock.json,qa_evidence,artifacts"
 
 
 

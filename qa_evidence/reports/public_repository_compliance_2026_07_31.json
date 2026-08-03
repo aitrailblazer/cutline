@@ -1,0 +1,188 @@
+{
+  "repository": {
+    "id": 1318830433,
+    "node_id": "R_kgDOTpvBYQ",
+    "name": "cutline",
+    "full_name": "aitrailblazer/cutline",
+    "private": false,
+    "owner": {
+      "login": "aitrailblazer",
+      "id": 116667597,
+      "node_id": "U_kgDOBvQ0zQ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/116667597?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/aitrailblazer",
+      "html_url": "https://github.com/aitrailblazer",
+      "followers_url": "https://api.github.com/users/aitrailblazer/followers",
+      "following_url": "https://api.github.com/users/aitrailblazer/following{/other_user}",
+      "gists_url": "https://api.github.com/users/aitrailblazer/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/aitrailblazer/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/aitrailblazer/subscriptions",
+      "organizations_url": "https://api.github.com/users/aitrailblazer/orgs",
+      "repos_url": "https://api.github.com/users/aitrailblazer/repos",
+      "events_url": "https://api.github.com/users/aitrailblazer/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/aitrailblazer/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "html_url": "https://github.com/aitrailblazer/cutline",
+    "description": "Human-governed release assurance for agentic cinema, powered by Google ADK and Grafana MCP",
+    "fork": false,
+    "url": "https://api.github.com/repos/aitrailblazer/cutline",
+    "forks_url": "https://api.github.com/repos/aitrailblazer/cutline/forks",
+    "keys_url": "https://api.github.com/repos/aitrailblazer/cutline/keys{/key_id}",
+    "collaborators_url": "https://api.github.com/repos/aitrailblazer/cutline/collaborators{/collaborator}",
+    "teams_url": "https://api.github.com/repos/aitrailblazer/cutline/teams",
+    "hooks_url": "https://api.github.com/repos/aitrailblazer/cutline/hooks",
+    "issue_events_url": "https://api.github.com/repos/aitrailblazer/cutline/issues/events{/number}",
+    "events_url": "https://api.github.com/repos/aitrailblazer/cutline/events",
+    "assignees_url": "https://api.github.com/repos/aitrailblazer/cutline/assignees{/user}",
+    "branches_url": "https://api.github.com/repos/aitrailblazer/cutline/branches{/branch}",
+    "tags_url": "https://api.github.com/repos/aitrailblazer/cutline/tags",
+    "blobs_url": "https://api.github.com/repos/aitrailblazer/cutline/git/blobs{/sha}",
+    "git_tags_url": "https://api.github.com/repos/aitrailblazer/cutline/git/tags{/sha}",
+    "git_refs_url": "https://api.github.com/repos/aitrailblazer/cutline/git/refs{/sha}",
+    "trees_url": "https://api.github.com/repos/aitrailblazer/cutline/git/trees{/sha}",
+    "statuses_url": "https://api.github.com/repos/aitrailblazer/cutline/statuses/{sha}",
+    "languages_url": "https://api.github.com/repos/aitrailblazer/cutline/languages",
+    "stargazers_url": "https://api.github.com/repos/aitrailblazer/cutline/stargazers",
+    "contributors_url": "https://api.github.com/repos/aitrailblazer/cutline/contributors",
+    "subscribers_url": "https://api.github.com/repos/aitrailblazer/cutline/subscribers",
+    "subscription_url": "https://api.github.com/repos/aitrailblazer/cutline/subscription",
+    "commits_url": "https://api.github.com/repos/aitrailblazer/cutline/commits{/sha}",
+    "git_commits_url": "https://api.github.com/repos/aitrailblazer/cutline/git/commits{/sha}",
+    "comments_url": "https://api.github.com/repos/aitrailblazer/cutline/comments{/number}",
+    "issue_comment_url": "https://api.github.com/repos/aitrailblazer/cutline/issues/comments{/number}",
+    "contents_url": "https://api.github.com/repos/aitrailblazer/cutline/contents/{+path}",
+    "compare_url": "https://api.github.com/repos/aitrailblazer/cutline/compare/{base}...{head}",
+    "merges_url": "https://api.github.com/repos/aitrailblazer/cutline/merges",
+    "archive_url": "https://api.github.com/repos/aitrailblazer/cutline/{archive_format}{/ref}",
+    "downloads_url": "https://api.github.com/repos/aitrailblazer/cutline/downloads",
+    "issues_url": "https://api.github.com/repos/aitrailblazer/cutline/issues{/number}",
+    "pulls_url": "https://api.github.com/repos/aitrailblazer/cutline/pulls{/number}",
+    "milestones_url": "https://api.github.com/repos/aitrailblazer/cutline/milestones{/number}",
+    "notifications_url": "https://api.github.com/repos/aitrailblazer/cutline/notifications{?since,all,participating}",
+    "labels_url": "https://api.github.com/repos/aitrailblazer/cutline/labels{/name}",
+    "releases_url": "https://api.github.com/repos/aitrailblazer/cutline/releases{/id}",
+    "deployments_url": "https://api.github.com/repos/aitrailblazer/cutline/deployments",
+    "created_at": "2026-07-31T23:47:43Z",
+    "updated_at": "2026-08-01T00:53:12Z",
+    "pushed_at": "2026-08-01T05:42:05Z",
+    "git_url": "git://github.com/aitrailblazer/cutline.git",
+    "ssh_url": "git@github.com:aitrailblazer/cutline.git",
+    "clone_url": "https://github.com/aitrailblazer/cutline.git",
+    "svn_url": "https://github.com/aitrailblazer/cutline",
+    "homepage": null,
+    "size": 1433,
+    "stargazers_count": 0,
+    "watchers_count": 0,
+    "language": "HTML",
+    "has_issues": true,
+    "has_projects": true,
+    "has_downloads": false,
+    "has_wiki": true,
+    "has_pages": false,
+    "has_discussions": false,
+    "forks_count": 0,
+    "mirror_url": null,
+    "archived": false,
+    "disabled": false,
+    "open_issues_count": 0,
+    "license": {
+      "key": "apache-2.0",
+      "name": "Apache License 2.0",
+      "spdx_id": "Apache-2.0",
+      "url": "https://api.github.com/licenses/apache-2.0",
+      "node_id": "MDc6TGljZW5zZTI="
+    },
+    "allow_forking": true,
+    "is_template": false,
+    "web_commit_signoff_required": false,
+    "has_pull_requests": true,
+    "pull_request_creation_policy": "all",
+    "topics": [],
+    "visibility": "public",
+    "forks": 0,
+    "open_issues": 0,
+    "watchers": 0,
+    "default_branch": "main",
+    "permissions": {
+      "admin": true,
+      "maintain": true,
+      "push": true,
+      "triage": true,
+      "pull": true
+    },
+    "temp_clone_token": "",
+    "allow_squash_merge": true,
+    "allow_merge_commit": true,
+    "allow_rebase_merge": true,
+    "allow_auto_merge": false,
+    "delete_branch_on_merge": false,
+    "allow_update_branch": false,
+    "use_squash_pr_title_as_default": false,
+    "squash_merge_commit_message": "COMMIT_MESSAGES",
+    "squash_merge_commit_title": "COMMIT_OR_PR_TITLE",
+    "merge_commit_message": "PR_TITLE",
+    "merge_commit_title": "MERGE_MESSAGE",
+    "security_and_analysis": {
+      "secret_scanning": {
+        "status": "enabled"
+      },
+      "secret_scanning_push_protection": {
+        "status": "enabled"
+      },
+      "dependabot_security_updates": {
+        "status": "disabled"
+      },
+      "secret_scanning_non_provider_patterns": {
+        "status": "disabled"
+      },
+      "secret_scanning_validity_checks": {
+        "status": "disabled"
+      }
+    },
+    "network_count": 0,
+    "subscribers_count": 0
+  },
+  "earliest_commits": [
+    {
+      "sha": "8db728e826fd95cc980c91a3e974a57c2f4cfe1f",
+      "author_date": "2026-07-31T23:27:45Z",
+      "committer_date": "2026-07-31T23:27:45Z",
+      "message": "feat: implement CUTLINE winning prototype"
+    },
+    {
+      "sha": "cdaa0e24dd04281a0d11d65f880fb2ce0fc9c333",
+      "author_date": "2026-07-31T23:32:27Z",
+      "committer_date": "2026-07-31T23:32:27Z",
+      "message": "fix(F-026): meet button contrast requirement"
+    },
+    {
+      "sha": "e8ee96050a00d779a54348b1802d803c6d54d7cb",
+      "author_date": "2026-07-31T23:35:26Z",
+      "committer_date": "2026-07-31T23:35:26Z",
+      "message": "docs: complete CUTLINE feature audit and evidence"
+    },
+    {
+      "sha": "fa32e623a99d2b6a8b6f47dcd69c1ba59e588571",
+      "author_date": "2026-07-31T23:47:32Z",
+      "committer_date": "2026-07-31T23:47:32Z",
+      "message": "docs: add Apache-2.0 submission license"
+    },
+    {
+      "sha": "1223c7ea055cce97fa7989aee8c1197f188dc07f",
+      "author_date": "2026-07-31T23:59:03Z",
+      "committer_date": "2026-07-31T23:59:03Z",
+      "message": "fix(F-029): use Vertex Gemini and harden agent boundaries"
+    }
+  ],
+  "license_file": {
+    "name": "LICENSE",
+    "path": "LICENSE",
+    "sha": "206189c5983e817137c8b9751a20b3f673d59e5a",
+    "size": 10765,
+    "html_url": "https://github.com/aitrailblazer/cutline/blob/main/LICENSE"
+  }
+}

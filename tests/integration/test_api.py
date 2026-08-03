@@ -42,6 +42,9 @@ def test_index_health_readiness_and_assets(client):
     assert readiness["ready"] is True
     assert readiness["mode"] == "LOCAL_CONTROLLED"
     assert "GRAFANA_MCP_TOKEN" not in str(readiness)
+    scenario = client.get("/api/scenario").json()
+    assert "deterministic local evidence and action adapters" in scenario["disclosure"]
+    assert "no live provider claim" in scenario["disclosure"]
 
 
 def test_api_success_journey_and_refresh(client):
@@ -188,6 +191,9 @@ def test_live_investigation_invokes_agent_and_records_synthesis():
     response = client.post("/api/scenario/investigate")
     assert response.status_code == 200
     scenario = response.json()
+    assert "official Grafana MCP runtime" in scenario["disclosure"]
+    assert "Gemini 2.5 Flash" in scenario["disclosure"]
+    assert "authenticated Google Cloud action" in scenario["disclosure"]
     assert investigator.run_ids == [scenario["run_id"]]
     assert scenario["agent_model"] == "gemini-2.5-flash"
     assert "pre-1" in scenario["agent_synthesis"]

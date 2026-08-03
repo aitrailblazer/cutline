@@ -1,0 +1,13 @@
+{
+  "audit_date": "2026-07-31",
+  "production_source_prohibited_provider_matches": [],
+  "public_lock_contains_openai": false,
+  "public_lock_contains_litellm": false,
+  "production_no_dev_environment": {
+    "google.adk": true,
+    "openai": false,
+    "litellm": false
+  },
+  "declared_ai_runtime": "google-adk / Gemini 2.5 Flash on Vertex AI",
+  "result": "PASS"
+}

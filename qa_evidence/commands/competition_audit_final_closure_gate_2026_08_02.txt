@@ -1,0 +1,78 @@
+CUTLINE competition audit final closure gate — 2026-08-02
+== deterministic test and coverage gate ==
+============================= test session starts ==============================
+platform darwin -- Python 3.12.8, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/constantinevassilev02/MyLocalDocuments/go-projects/SyntheonArchive/GENI/cutline
+configfile: pyproject.toml
+plugins: asyncio-1.4.0, cov-6.3.0, anyio-4.14.2
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collected 51 items
+
+tests/integration/test_api.py ..........                                 [ 19%]
+tests/integration/test_workflow.py ..............                        [ 47%]
+tests/unit/test_actions.py ....                                          [ 54%]
+tests/unit/test_adapters.py ..............                               [ 82%]
+tests/unit/test_agent_contract.py ..                                     [ 86%]
+tests/unit/test_agent_runtime.py ..                                      [ 90%]
+tests/unit/test_domain.py .....                                          [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.12.8-final-0 _______________
+
+Name    Stmts   Miss Branch BrPart  Cover   Missing
+---------------------------------------------------
+TOTAL     732      0    128      0   100%
+
+7 files skipped due to complete coverage.
+Coverage HTML written to dir qa_evidence/reports/htmlcov
+Coverage XML written to file qa_evidence/reports/coverage.xml
+Required test coverage of 100.0% reached. Total coverage: 100.00%
+============================== 51 passed in 2.90s ==============================
+All checks passed!
+25 files already formatted
+== agents-cli lint ==
+  ▸ uv sync --dev --extra lint
+Resolved 145 packages in 4ms
+Checked 140 packages in 4ms
+  ▸ uv run ruff check .
+All checks passed!
+  ▸ uv run ruff format . --check
+25 files already formatted
+  ▸ uv run codespell
+  ▸ uv run ty check .
+All checks passed!
+== browser JavaScript syntax ==
+== tracker and submission parity ==
+PASS: 43 unique stories; 43 final Verified; CSV/XLSX/HTML/report/submission parity; JSON valid
+== hosted readiness ==
+PASS: 200 {"blockers": [], "disclosure": "Controlled synthetic workload. Live evidence comes from the official Grafana MCP runtime; Gemini 2.5 Flash synthesizes the investigation; approved recovery executes through an authenticated Google Cloud action.", "mode": "LIVE_GRAFANA_MCP", "ready": true, "run_id": "0369c919-d214-46d8-a883-5940e31e97ab", "state": "READY"}
+== public YouTube verification ==
+PASS: 200 CUTLINE — The Release-Assurance Agent for Agentic Cinema Constantine Vassilev https://i.ytimg.com/vi/yoquhZPl8Cc/hqdefault.jpg
+== final media integrity ==
+artifacts/submission-video/CUTLINE_Agentic_Cinema_Competition_Final_2026_08_02.mp4: OK
+{
+    "programs": [
+
+    ],
+    "stream_groups": [
+
+    ],
+    "streams": [
+        {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1280,
+            "height": 720
+        },
+        {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 1
+        }
+    ],
+    "format": {
+        "duration": "128.650000",
+        "size": "5162301"
+    }
+}

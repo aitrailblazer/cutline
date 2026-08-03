@@ -16,6 +16,7 @@ from app.adapters import (
 from app.domain import (
     Decision,
     Diagnosis,
+    EvidenceMode,
     Receipt,
     RecoveryProposal,
     Scenario,
@@ -51,6 +52,16 @@ class CutlineService:
 
     def _new_scenario(self) -> Scenario:
         run_id = str(uuid4())
+        disclosure = (
+            "Controlled synthetic workload. Live evidence comes from the official "
+            "Grafana MCP runtime; Gemini 2.5 Flash synthesizes the investigation; "
+            "approved recovery executes through an authenticated Google Cloud action."
+            if self.evidence_adapter.mode == EvidenceMode.LIVE
+            else (
+                "Controlled synthetic workload. Development mode uses deterministic "
+                "local evidence and action adapters; no live provider claim is made."
+            )
+        )
         return Scenario(
             run_id=run_id,
             created_at=utcnow(),
@@ -58,6 +69,7 @@ class CutlineService:
             mode=self.evidence_adapter.mode,
             shots=seed_shots(),
             impact=calculate_impact(4800, 24, 120),
+            disclosure=disclosure,
         )
 
     def get(self) -> Scenario:

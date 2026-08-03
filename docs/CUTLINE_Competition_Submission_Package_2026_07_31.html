@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CUTLINE — Agentic Cinema Submission Package</title>
+  <style>
+    :root{color-scheme:dark;--bg:#08090b;--panel:#12161c;--line:#2b3541;--text:#f7fbff;--muted:#aab5c2;--red:#ff5364;--orange:#ff9a5c;--green:#57e39b;--blue:#71c5ff}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0,#38202a,transparent 34rem),var(--bg);color:var(--text);font:15px/1.58 system-ui,sans-serif}
+    main{max-width:1160px;margin:auto;padding:46px 24px 80px}h1{font-size:clamp(3rem,8vw,7rem);line-height:.82;letter-spacing:-.07em;margin:.18em 0}h2{font-size:1.55rem}h3{color:var(--orange)}
+    .eyebrow{color:var(--orange);font-weight:900;letter-spacing:.16em;text-transform:uppercase}.lede{max-width:800px;font-size:1.2rem;color:#dce5ee}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:22px 0}
+    section,.card{background:rgba(18,22,28,.95);border:1px solid var(--line);border-radius:18px;padding:22px;margin:14px 0}.criterion{border-top:3px solid var(--red)}code{color:#bde8ff}a{color:var(--blue)}li{margin:.55em 0}
+    .copy{white-space:pre-wrap;background:#090c10;border:1px solid var(--line);border-radius:12px;padding:16px}.tag{display:inline-block;border:1px solid #42617b;border-radius:999px;padding:5px 9px;margin:3px;color:#d8edff}
+    table{width:100%;border-collapse:collapse}th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:10px 8px}.ok{color:var(--green)}.pending{color:#ffd06e}.muted{color:var(--muted)}
+    @media(max-width:650px){table{display:block;overflow:auto}}
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Copy-ready Devpost package • Agentic Cinema • finalized August 2, 2026</p>
+  <h1>CUTLINE</h1>
+  <p class="lede"><strong>The release-assurance agent for agentic cinema.</strong> CUTLINE turns live Grafana evidence into a bounded recovery proposal, requires a human decision, executes only through an authenticated Google Cloud action, and proves recovery with fresh evidence.</p>
+  <p><span class="tag">Google ADK</span><span class="tag">Gemini 2.5 Flash</span><span class="tag">Vertex AI</span><span class="tag">Cloud Run</span><span class="tag">Official Grafana MCP</span><span class="tag">Prometheus</span><span class="tag">Loki</span></p>
+
+  <section>
+    <h2>Submission links</h2>
+    <ul>
+      <li>Hosted app: <a href="https://cutline-vfz4s45c3q-uc.a.run.app/">cutline-vfz4s45c3q-uc.a.run.app</a></li>
+      <li>Public source: <a href="https://github.com/aitrailblazer/cutline">github.com/aitrailblazer/cutline</a> — Apache-2.0</li>
+      <li>Public demo video: <a id="video-url" href="https://youtu.be/yoquhZPl8Cc">youtu.be/yoquhZPl8Cc</a> — 2:08.65, English narration</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Devpost short description</h2>
+    <div class="copy">CUTLINE is a human-governed release-assurance agent for agentic cinema. It investigates a failing VFX sequence through the official Grafana MCP, uses Gemini 2.5 Flash on Vertex AI to synthesize bounded evidence, proposes a deterministic recovery, requires operator approval, executes through Google Cloud, and verifies success with fresh telemetry and an auditable receipt.</div>
+  </section>
+
+  <section>
+    <h2>What it does</h2>
+    <div class="copy">Agentic cinema makes content creation faster, but it also creates a new production risk: many automated workers can fail together near a release deadline. CUTLINE answers the operational question that a creative team actually faces: “Will the final shots cross package lock, and can we prove a safe recovery?”
+
+The Eclipse Protocol demonstration starts with 18 final VFX shots, 4,800 frames of backlog, and 24 minutes until package lock. CUTLINE retrieves current Prometheus metrics and Loki logs through the official Grafana MCP runtime, correlates every item to one run, and asks Gemini 2.5 Flash to synthesize the evidence without giving the model authority over arithmetic, approval, execution, or verification.
+
+CUTLINE shows the root-cause hypothesis, alternative explanation, discriminator, falsifier, and deterministic deadline math. A human operator must approve the bounded recovery. Only then can the authenticated Google Cloud action execute. CUTLINE retrieves fresh post-action evidence and marks the run VERIFIED only when all six gates pass. The result includes an immutable receipt and complete audit lineage.</div>
+  </section>
+
+  <section>
+    <h2>How we built it</h2>
+    <div class="copy">CUTLINE is a Google ADK application deployed on Google Cloud Run. Gemini 2.5 Flash runs on Vertex AI and receives only a bounded evidence packet. A FastAPI workflow service owns state transitions, deterministic impact arithmetic, approval invariants, idempotency, receipts, and verification gates.
+
+The partner integration is the official grafana/mcp-grafana runtime, pinned by image digest and deployed as a private Cloud Run service with write tools disabled. CUTLINE authenticates to it with service identity, discovers Prometheus and Loki datasources, calls query_prometheus and query_loki_logs, and rejects missing, stale, malformed, or run-mismatched results.
+
+The only mutation path is an authenticated, allowlisted, idempotent Google Cloud action. Secrets are injected from Secret Manager and never exposed to the browser. Firestore provides durable action idempotency. The accessible web command center makes every evidence source, model boundary, operator decision, receipt, and verification gate visible.</div>
+  </section>
+
+  <section>
+    <h2>Data sources and partner use</h2>
+    <table><thead><tr><th>Source</th><th>Use</th><th>Boundary</th></tr></thead><tbody>
+      <tr><td>Grafana Prometheus</td><td>Failure rate, throughput, OOM and recovery metrics.</td><td>Read through official MCP; provider timestamps and run labels required.</td></tr>
+      <tr><td>Grafana Loki</td><td>CUDA OOM and worker-event logs.</td><td>Read through official MCP; stale or mismatched evidence rejected.</td></tr>
+      <tr><td>Gemini 2.5 Flash / Vertex AI</td><td>Adversarial synthesis of the bounded evidence packet.</td><td>Cannot approve, execute, calculate authoritative impact, or declare success.</td></tr>
+      <tr><td>Cloud Run + Firestore</td><td>Authenticated recovery action and durable idempotent receipt.</td><td>Allowlisted plan, human approval, no browser credential.</td></tr>
+    </tbody></table>
+  </section>
+
+  <section>
+    <h2>Challenges, accomplishments, and learnings</h2>
+    <div class="grid">
+      <article class="card"><h3>Challenge</h3><p>Agent demos often blur synthetic scenarios, model inference, provider evidence, and real actions. We designed CUTLINE so each boundary is explicit and fail-closed.</p></article>
+      <article class="card"><h3>Accomplishment</h3><p>A live end-to-end run changed failure rate from 120 to 320 frames/minute, cleared the OOM state, returned a Cloud Run receipt, and passed all six fresh-evidence gates.</p></article>
+      <article class="card"><h3>Learning</h3><p>The winning pattern is not maximum autonomy. It is visible evidence, narrow model authority, human control, bounded mutation, and proof after action.</p></article>
+      <article class="card"><h3>Next</h3><p>Add real studio pipeline connectors, multi-sequence release portfolios, role-based approvals, and historical risk calibration without weakening the evidence boundary.</p></article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Judging-criterion evidence</h2>
+    <div class="grid">
+      <article class="card criterion"><h3>Technical Implementation</h3><p>Production-hosted ADK/Gemini path, private official Grafana MCP runtime, service identity, deterministic workflow, authenticated action, fresh verification, 51 automated tests, and 100% statement/branch coverage.</p></article>
+      <article class="card criterion"><h3>Design</h3><p>A media-native release command, accessible desktop/mobile UI, explicit evidence ledger, adversarial diagnosis, human approval card, receipt, verification report, and audit lineage.</p></article>
+      <article class="card criterion"><h3>Potential Impact</h3><p>Agentic media scales output and operational risk together. CUTLINE is a reusable control plane for proving that automated production can meet deadlines without sacrificing human authority or auditability.</p></article>
+      <article class="card criterion"><h3>Quality of Idea</h3><p>Rather than making another generative movie tool, CUTLINE addresses the neglected last mile: safely getting agent-created work across the release cutline.</p></article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Three-minute video script</h2>
+    <table><thead><tr><th>Time</th><th>Screen</th><th>Narration / caption</th></tr></thead><tbody>
+      <tr><td>0:00–0:15</td><td>Title + release command</td><td>“Agentic cinema can create shots faster. But can a production prove those shots will ship? This is CUTLINE.”</td></tr>
+      <tr><td>0:15–0:35</td><td>Risk projection and disclosure</td><td>“Eighteen final VFX shots face package lock. The workload is controlled; the live evidence, Gemini synthesis, and Google Cloud action are real and disclosed.”</td></tr>
+      <tr><td>0:35–1:10</td><td>Investigate</td><td>“CUTLINE calls the official Grafana MCP for Prometheus and Loki evidence. Every item carries provider time and this run ID. Gemini 2.5 Flash synthesizes the bounded packet, while deterministic code owns the deadline math.”</td></tr>
+      <tr><td>1:10–1:35</td><td>Diagnosis + proposal</td><td>“The evidence points to a concurrency-driven CUDA OOM retry storm. CUTLINE shows the alternative, discriminator, falsifier, and a narrow rollback plan.”</td></tr>
+      <tr><td>1:35–2:05</td><td>Approve + execute</td><td>“Nothing mutates without Maya’s approval. The approved allowlisted plan executes through an authenticated Google Cloud boundary and returns an idempotent receipt.”</td></tr>
+      <tr><td>2:05–2:35</td><td>Verify</td><td>“CUTLINE asks Grafana for fresh post-action proof. Throughput rises from 120 to 320 frames per minute, OOM clears, and all six gates pass.”</td></tr>
+      <tr><td>2:35–2:55</td><td>Audit + architecture card</td><td>“The final record joins evidence, Gemini synthesis, human decision, Cloud Run action, and verification. CUTLINE is how agentic cinema crosses the release cutline safely.”</td></tr>
+    </tbody></table>
+  </section>
+
+  <section>
+    <h2>Submission checklist</h2>
+    <ul>
+      <li class="ok">Functional hosted URL with clean-room access</li>
+      <li class="ok">Public Apache-2.0 source repository</li>
+      <li class="ok">Google ADK, Gemini 2.5 Flash, Vertex AI, and Cloud Run</li>
+      <li class="ok">Official Grafana MCP used in the core live workflow</li>
+      <li class="ok">Features, technology, data sources, findings, and learnings documented</li>
+      <li class="ok">Public YouTube demo verified anonymously at 2:08.65, within the three-minute limit</li>
+      <li class="ok">No claim that CUTLINE creates a finished movie; it is a production release-assurance agent</li>
+    </ul>
+  </section>
+
+  <script type="application/xml" id="strategix-contract">
+    <submission artifact="CUTLINE-Competition-Submission-Package" date="2026-08-02" competition="Agentic Cinema">
+      <project name="CUTLINE" tagline="The release-assurance agent for agentic cinema"/>
+      <links hosted="https://cutline-vfz4s45c3q-uc.a.run.app/" source="https://github.com/aitrailblazer/cutline" video="https://youtu.be/yoquhZPl8Cc" video-status="verified-public"/>
+      <runtime ai="Gemini 2.5 Flash on Vertex AI" framework="Google ADK" hosting="Google Cloud Run" partner="official grafana/mcp-grafana"/>
+      <authority model="bounded-synthesis" approval="human-required" action="authenticated-allowlisted-idempotent" verification="fresh-evidence-six-gates"/>
+      <criteria technical="covered" design="covered" impact="covered" idea="covered"/>
+      <claims controlled-workload="true" live-provider-evidence="true" creates-finished-movie="false"/>
+      <remaining requirement="none"/>
+    </submission>
+  </script>
+</main>
+</body>
+</html>

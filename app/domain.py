@@ -144,10 +144,7 @@ class Scenario(BaseModel):
     verification: Verification | None = None
     blockers: list[str] = Field(default_factory=list)
     prior_run: bool = False
-    disclosure: str = (
-        "Controlled synthetic workload; local evidence adapter for development. "
-        "Submitted live mode requires real Grafana MCP evidence and Google Cloud action."
-    )
+    disclosure: str = "Controlled synthetic workload."
 
 
 def utcnow() -> datetime:
